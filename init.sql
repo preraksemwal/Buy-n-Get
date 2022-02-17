@@ -1,7 +1,3 @@
-create database test;
-use test;
-
-
 
 create table accounts(
 	username varchar(50) unique primary key,
@@ -28,5 +24,5 @@ create table orders(
     item_id int,
     quantity int,
     customer_id int,
-    foreign key(customer_id) references customers
+    foreign key(customer_id) references customers(customer_id)
 );
