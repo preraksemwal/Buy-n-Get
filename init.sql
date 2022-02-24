@@ -26,3 +26,4 @@ create table orders(
     customer_id int,
     foreign key(customer_id) references customers(customer_id)
 );
+
