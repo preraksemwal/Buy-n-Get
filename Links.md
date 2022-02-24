@@ -1,4 +1,4 @@
-[About BuynGet](https://docs.google.com/document/d/1C13IVlaGU6Gg-0Zb1DyQGzpvn7jkDD65R3MRnMmodTA/edit)
+[About BuynGet](https://docs.google.com/document/d/1QEvfz7lhWIvfQ54ANqvYT_S8jbBNtCbRxYkOeCFZzX8/edit)
 
 [ER Diagram (Miro)](https://miro.com/app/board/uXjVON4nzeE=/)
 
