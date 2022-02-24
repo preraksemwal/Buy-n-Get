@@ -8,7 +8,12 @@
 
 [SQL Queries](https://docs.google.com/document/d/1kCsNpRLPhs_i74fmH_ey2lMbN1teQphSfU1-OaP_i7k/edit)
 
+----------------------------------------------------------------------------------------------------
 
+
+[TA Guidelines](https://mail.google.com/mail/u/0/?tab=wm#inbox/FMfcgzGmvBqnqhtpnGGbgkMvBhflMJfl)
+
+[Rubric](https://classroom.google.com/u/0/w/NDU1ODc0NjYxNDg3/t/all)
 
 [Groups Excel Sheet](https://docs.google.com/spreadsheets/d/1RaRwv7N5YDMgLShk2L9gERgNzPbT_H4H2jSAsWD1Dow/edit#gid=0)
 
