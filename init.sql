@@ -1,22 +1,22 @@
 
-create table accounts(
-	username varchar(50) unique primary key,
-    password varchar(50),
-    email varchar(50),
-    customer_id int
+create table accounts (
+	username VARCHAR(50),
+	email VARCHAR(50),
+	password VARCHAR(50),
+	customer_id INT
 );
 
-create table customer(
-	customer_id int primary key,
-    customer_name varchar(100),
-    age int,
-    gender varchar(20),
-    phone_no varchar(15),
-    country varchar(30),
-    state varchar(60),
-    street_name varchar(50),
-    street_no int,
-    pincode int
+create table customers (
+	customer_id INT,
+	customer_name VARCHAR(50),
+	age INT,
+	gender VARCHAR(50),
+	phone VARCHAR(50),
+	country VARCHAR(50),
+	state VARCHAR(50),
+	street_name VARCHAR(50),
+	street_no VARCHAR(50),
+	pincode VARCHAR(50)
 );
 
 create table orders(
