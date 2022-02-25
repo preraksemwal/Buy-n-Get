@@ -16,7 +16,7 @@ CREATE TABLE customers (
 	state VARCHAR(50) NOT NULL,
 	street_name VARCHAR(50) NOT NULL,
 	street_no INT NOT NULL,
-	pincode INT NOT NULL CHECK
+	pincode INT NOT NULL CHECK(pincode > 9999)
 );
 
 
@@ -30,10 +30,9 @@ CREATE TABLE buyers(
 CREATE TABLE carts(
 	cart_id INT PRIMARY KEY AUTO_INCREMENT, 
 	customer_id INT UNIQUE NOT NULL,
-	items ,
+	items varchar(16000),
 	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
-
 
 
 CREATE TABLE orders(
@@ -41,8 +40,16 @@ CREATE TABLE orders(
     item_id INT NOT NULL,
     customer_id INT NOT NULL,
     quantity INT CHECK(quantity > 0),
-    order_date DATE DEFAULT SYSDATE(),
+    order_date DATE,
+    delivery_date DATE,
     FOREIGN KEY(customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY(item_id) REFERENCES items(item_id)
+);
+
+
+CREATE TABLE sellers(
+	customer_id INT PRIMARY KEY,
+	cart_id INT NOT NULL,
+	FOREIGN KEY(cart_id) REFERENCES carts(cart_id)
 );
 
