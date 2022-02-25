@@ -1,8 +1,16 @@
+CREATE TABLE owners(
+	owner_id INT PRIMARY KEY,
+	owner_name VARCHAR(50) NOT NULL,
+	email UNIQUE VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL CHECK(LENGTH(password) >= 12),
+	phone_no UNIQUE VARCHAR(20)
+);
+
 
 CREATE TABLE accounts (
 	username VARCHAR(50)  PRIMARY KEY,
-	email VARCHAR(50) UNIQUE CHECK(POSITION("@" IN email) != 0),
-	password VARCHAR(50) CHECK(LENGTH(password) >= 6),
+	email VARCHAR(50) NOT NULL UNIQUE CHECK(POSITION("@" IN email) != 0),
+	password VARCHAR(50) NOT NULL CHECK(LENGTH(password) >= 6),
 	customer_id INT UNIQUE AUTO_INCREMENT
 );
 
@@ -49,7 +57,17 @@ CREATE TABLE orders(
 
 CREATE TABLE sellers(
 	customer_id INT PRIMARY KEY,
-	cart_id INT NOT NULL,
-	FOREIGN KEY(cart_id) REFERENCES carts(cart_id)
+	items_id VARCHAR(12000) NOT NULL,
 );
+
+
+CREATE TABLE items(
+	item_id INT PRIMARY KEY,
+	item_name VARCHAR(50) NOT NULL,
+	item_type VARCHAR(20) NOT NULL,
+	quantity INT CHECK(quantity > 0),
+	price INT NOT NULL CHECK(price > 0),
+);
+
+
 
