@@ -39,7 +39,7 @@ CREATE TABLE buyers(
 CREATE TABLE carts(
 	cart_id INT PRIMARY KEY AUTO_INCREMENT, 
 	customer_id INT UNIQUE NOT NULL,
-	items varchar(16000)
+	items varchar(16000)             
 );
 
 
@@ -66,7 +66,32 @@ CREATE TABLE items(
 	item_name VARCHAR(50) NOT NULL,
 	item_type VARCHAR(20) NOT NULL,
 	quantity INT CHECK(quantity > 0),
-	price INT NOT NULL CHECK(price > 0)
+	cost_price INT NOT NULL CHECK(price > 0),
+	selling_price INT NOT NULL CHECK(selling_price > cost_price)
 );
 
 
+CREATE TABLE feedback(
+	customer_id INT PRIMARY KEY,
+	stars_rate INT CHECK(stars_rate BETWEEN 1 AND 5)
+);
+
+
+CREATE TABLE support(
+	support_id INT PRIMARY KEY AUTO_INCREMENT,
+	customer_id INT,
+	issue VARCHAR(1000)
+);
+
+
+
+CREATE TABLE payments(
+	payment_id INT PRIMARY KEY,
+	customer_id INT NOT NULL,
+	mode VARCHAR(20) NOT NULL,
+	amount INT NOT NULL	
+);
+
+CREATE TABLE transactions(
+	customer_id INT PRIMARY KEY
+);
