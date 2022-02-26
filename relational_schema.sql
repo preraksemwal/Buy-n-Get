@@ -23,8 +23,8 @@ CREATE TABLE customers (
 	country VARCHAR(50) NOT NULL,
 	state VARCHAR(50) NOT NULL,
 	street_name VARCHAR(50) NOT NULL,
-	street_no INT NOT NULL,
-	pincode INT NOT NULL CHECK(pincode BETWEEN 10000 AND 99999)
+		street_no INT NOT NULL,
+		pincode INT NOT NULL CHECK(pincode BETWEEN 10000 AND 99999)
 );
 
 
@@ -32,7 +32,7 @@ CREATE TABLE buyers(
 	customer_id INT PRIMARY KEY,
 	cart_id INT NOT NULL,
 	FOREIGN KEY(cart_id) REFERENCES carts(cart_id),
-    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+     	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
 
 
