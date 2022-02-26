@@ -9,7 +9,7 @@ CREATE TABLE owners(
 
 CREATE TABLE accounts (
 	username VARCHAR(50) PRIMARY KEY,
-    customer_id INT UNIQUE AUTO_INCREMENT,
+    	customer_id INT UNIQUE AUTO_INCREMENT,
 	email VARCHAR(50) NOT NULL UNIQUE CHECK(POSITION("@" IN email) != 0),
 	password VARCHAR(50) NOT NULL CHECK(LENGTH(password) >= 6)
 );
@@ -23,8 +23,8 @@ CREATE TABLE customers (
 	country VARCHAR(50) NOT NULL,
 	state VARCHAR(50) NOT NULL,
 	street_name VARCHAR(50) NOT NULL,
-		street_no INT NOT NULL,
-		pincode INT NOT NULL CHECK(pincode BETWEEN 10000 AND 99999)
+	street_no INT NOT NULL,
+	pincode INT NOT NULL CHECK(pincode BETWEEN 10000 AND 99999)
 );
 
 
@@ -32,7 +32,7 @@ CREATE TABLE buyers(
 	customer_id INT PRIMARY KEY,
 	cart_id INT NOT NULL,
 	FOREIGN KEY(cart_id) REFERENCES carts(cart_id),
-     	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+    	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
 
 
@@ -45,19 +45,19 @@ CREATE TABLE carts(
 
 CREATE TABLE orders(
 	order_id INT PRIMARY KEY AUTO_INCREMENT,
-    item_id INT NOT NULL,
-    customer_id INT NOT NULL,
-    quantity INT CHECK(quantity > 0),
-    order_date DATE NOT NULL,
-    delivery_date DATE NOT NULL,
-    FOREIGN KEY(customer_id) REFERENCES buyers(customer_id)
+    	item_id INT NOT NULL,
+    	customer_id INT NOT NULL,
+    	quantity INT CHECK(quantity > 0),
+    	order_date DATE NOT NULL,
+    	delivery_date DATE NOT NULL,
+    	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id)
 );
 
 
 CREATE TABLE sellers(
 	customer_id INT PRIMARY KEY,
 	items_id VARCHAR(12000) NOT NULL,
-    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+    	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
 
 
