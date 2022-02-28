@@ -64,7 +64,7 @@ CREATE TABLE orders(
 CREATE TABLE sellers(
 	customer_id INT PRIMARY KEY,
 	items_id VARCHAR(12000) NOT NULL,
-    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+    	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
 
 
