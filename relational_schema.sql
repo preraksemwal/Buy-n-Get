@@ -77,7 +77,7 @@ CREATE TABLE items(
 
 CREATE TABLE feedback(
 	customer_id INT PRIMARY KEY,
-	stars_rate INT CHECK(stars_rate BETWEEN 1 AND 5)
+	rating INT CHECK(stars_rate BETWEEN 1 AND 5)
 );
 
 
