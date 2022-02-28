@@ -66,7 +66,7 @@ CREATE TABLE sellers(
 
 
 CREATE TABLE items(
-	item_id INT PRIMARY KEY,
+	item_id INT PRIMARY KEY AUTO_INCREMENT,
 	item_name VARCHAR(50) NOT NULL,
 	item_type VARCHAR(20) NOT NULL,
 	quantity INT CHECK(quantity > 0),
@@ -90,14 +90,14 @@ CREATE TABLE support(
 
 
 CREATE TABLE payments(
-	payment_id INT PRIMARY KEY,
+	payment_id INT PRIMARY KEY AUTO_INCREMENT,
 	customer_id INT NOT NULL,
 	mode VARCHAR(20) NOT NULL,
 	amount INT NOT NULL	
 );
 
 CREATE TABLE transactions(
-	transaction_id INT PRIMARY KEY,
+	transaction_id INT PRIMARY KEY AUTO_INCREMENT,
 	customer_id INT NOT NULL,
 	mode VARCHAR(20) NOT NULL,
 	amount INT NOT NULL		
