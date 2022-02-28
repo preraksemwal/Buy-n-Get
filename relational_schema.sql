@@ -11,9 +11,9 @@ CREATE TABLE owners(
 
 CREATE TABLE accounts (
 	username VARCHAR(50) PRIMARY KEY,
-    	customer_id INT UNIQUE AUTO_INCREMENT,
 	email VARCHAR(50) NOT NULL UNIQUE CHECK(POSITION("@" IN email) != 0),
-	password VARCHAR(50) NOT NULL CHECK(LENGTH(password) >= 6)
+	password VARCHAR(50) NOT NULL CHECK(LENGTH(password) >= 6),
+	customer_id INT UNIQUE AUTO_INCREMENT
 );
 
 CREATE TABLE customers (
