@@ -21,7 +21,7 @@ CREATE TABLE customers (
 	customer_name VARCHAR(50) NOT NULL,
 	age INT CHECK(age >= 16),
 	gender VARCHAR(50),
-	phone VARCHAR(50) NOT NULL, 
+	phone_no VARCHAR(50) NOT NULL, 
 	country VARCHAR(50) NOT NULL,
 	state VARCHAR(50) NOT NULL,
 	street_name VARCHAR(50) NOT NULL,
