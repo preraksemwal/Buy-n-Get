@@ -61,6 +61,13 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Electrical toothbrush', 22, 39 , 100, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Washing Machine', 230, 312 , 158, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Refrigerator', 180, 240 , 125, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Air Purifier', 100, 150 , 88, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Toaster', 25, 40 , 75, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Hair straightener', 25, 40 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Blender', 40, 65 , 134, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Inverter Battery', 90, 140 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Projector', 1500, 2000 , 50, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Microwave', 50, 70 , 100, 'Electronics');
 
 
 
