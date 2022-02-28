@@ -73,9 +73,9 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('inverter battery', 90, 140 , 100, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('projector', 1500, 2000 , 50, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('microwave', 50, 70 , 100, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('iron', , , 40, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('heater', , , 52, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('microphone', , , 33, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('iron',20 , 30, 40, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('heater', 29,32 , 52, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('microphone', 10,15 , 33, 'Electronics');
 
 
 
