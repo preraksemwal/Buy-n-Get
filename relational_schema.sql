@@ -1,3 +1,8 @@
+drop database buynget;
+create database buynget;
+use buynget;
+
+
 CREATE TABLE owners(
 	owner_id INT PRIMARY KEY,
 	owner_name VARCHAR(50) NOT NULL,
@@ -28,6 +33,14 @@ CREATE TABLE customers (
 );
 
 
+
+CREATE TABLE carts(
+	cart_id INT PRIMARY KEY AUTO_INCREMENT, 
+	customer_id INT UNIQUE NOT NULL,
+	items varchar(16000)             
+);
+
+
 CREATE TABLE buyers(
 	customer_id INT PRIMARY KEY,
 	cart_id INT NOT NULL,
@@ -35,12 +48,6 @@ CREATE TABLE buyers(
     	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
 
-
-CREATE TABLE carts(
-	cart_id INT PRIMARY KEY AUTO_INCREMENT, 
-	customer_id INT UNIQUE NOT NULL,
-	items varchar(16000)             
-);
 
 
 CREATE TABLE orders(
@@ -57,7 +64,7 @@ CREATE TABLE orders(
 CREATE TABLE sellers(
 	customer_id INT PRIMARY KEY,
 	items_id VARCHAR(12000) NOT NULL,
-    	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
 
 
@@ -66,8 +73,8 @@ CREATE TABLE items(
 	item_name VARCHAR(50) NOT NULL,
 	item_type VARCHAR(20) NOT NULL,
 	quantity INT CHECK(quantity > 0),
-	cost_price INT NOT NULL CHECK(price > 0),
-	selling_price INT NOT NULL CHECK(selling_price > cost_price)
+	cost_price INT NOT NULL CHECK(cost_price > 0),
+	selling_price INT NOT NULL CHECK(selling_price > 0)
 );
 
 
