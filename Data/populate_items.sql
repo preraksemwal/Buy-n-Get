@@ -33,14 +33,12 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('chikoo',0.026, 0.066, 500, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('fenugreek',0.11 , 0.16, 360, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('avocado',1.58 , 1.72, 130, 'Grocery');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('olive oil', , , 20, 'Grocery');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('canned milk', , , 32, 'Grocery');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('brown sugar', , , 29, 'Grocery');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('sugar', , , 55, 'Grocery');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('instant noodles', , , 57, 'Grocery');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('cherries', , , 100, 'Grocery');
-
-
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('olive oil', 5,9 , 20, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('canned milk', 0.94, 1.38, 32, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('brown sugar', 2, 4.7 , 29, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('sugar', 1.54 , 4, 55, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('instant noodles', 2 , 4, 57, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('cherries', 2.54, 3.66 , 100, 'Grocery');
 
 
 
