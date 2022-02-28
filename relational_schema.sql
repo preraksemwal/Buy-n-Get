@@ -98,7 +98,7 @@ CREATE TABLE payments(
 
 CREATE TABLE transactions(
 	transaction_id INT PRIMARY KEY AUTO_INCREMENT,
-	order_id INT NOT NULL,
+	order_id INT UNIQUE NOT NULL,
 	customer_id INT NOT NULL,
 	mode VARCHAR(20) NOT NULL,
 	amount INT NOT NULL		
