@@ -88,7 +88,7 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('soap', 1,2 , 900,'Daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hairspray',16 ,20 , 120,'Daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair shampoo',6 ,9 , 210,'Daily care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('dental floss',7 ,10 , ,'Daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('dental floss',7 ,10 , 113,'Daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('face mask',4 ,6 , 3000,'Daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('sanitizer',8 ,14 , 1000,'Daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('liquid handwash',3 ,5 , 234,'Daily care');
