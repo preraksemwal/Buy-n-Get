@@ -38,36 +38,36 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 
 
 
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Mobile',120 , 200, 700, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Air Conditioner',450 , 550, 150, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Television',280 ,390 , 100, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Beard Trimmer',50 ,69 , 200, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Body Trimmer',12 ,19 , 200, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('LED bulb',3 ,5 , 200, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Extension cord',4 ,6 , 70, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Earphones', 7 ,9 , 500, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Power Bank', 18 ,24 , 300, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Wifi router', 38 ,60 , 100, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Wrist Watch', 70 ,99 , 700, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Wall Clock', 45 ,70 , 200, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Fitbit', 55 ,70 , 1000, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Headphones', 180 ,279 , 400, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Apple air pods', 100 ,200 , 300, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Laptop', 350 ,460 , 250, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Gaming Mouse', 27 ,42 , 500, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Keyboard', 15 ,28 , 400, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Table lamp', 9, 15 , 100, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Flashlight', 9, 17 , 230, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Electrical toothbrush', 22, 39 , 100, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Washing Machine', 230, 312 , 158, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Refrigerator', 180, 240 , 125, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Air Purifier', 100, 150 , 88, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Toaster', 25, 40 , 75, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Hair straightener', 25, 40 , 100, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Blender', 40, 65 , 134, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Inverter Battery', 90, 140 , 100, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Projector', 1500, 2000 , 50, 'Electronics');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Microwave', 50, 70 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('mobile',120 , 200, 700, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('air Conditioner',450 , 550, 150, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('television',280 ,390 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('beard Trimmer',50 ,69 , 200, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('body Trimmer',12 ,19 , 200, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('light bulb',3 ,5 , 200, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('extension cord',4 ,6 , 70, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('earphones', 7 ,9 , 500, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('power Bank', 18 ,24 , 300, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('wifi router', 38 ,60 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('wrist Watch', 70 ,99 , 700, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('wall Clock', 45 ,70 , 200, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('fitbit', 55 ,70 , 1000, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('headphones', 180 ,279 , 400, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('apple air pods', 100 ,200 , 300, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('laptop', 350 ,460 , 250, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('gaming Mouse', 27 ,42 , 500, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('keyboard', 15 ,28 , 400, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('table lamp', 9, 15 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('flashlight', 9, 17 , 230, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('electrical toothbrush', 22, 39 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('washing Machine', 230, 312 , 158, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('refrigerator', 180, 240 , 125, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('air Purifier', 100, 150 , 88, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('toaster', 25, 40 , 75, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair straightener', 25, 40 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('blender', 40, 65 , 134, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('inverter Battery', 90, 140 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('projector', 1500, 2000 , 50, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('microwave', 50, 70 , 100, 'Electronics');
 
 
 
