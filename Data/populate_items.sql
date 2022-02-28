@@ -33,6 +33,12 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('chikoo',0.026, 0.066, 500, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('fenugreek',0.11 , 0.16, 360, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('avocado',1.58 , 1.72, 130, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('olive oil', , , 20, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('canned milk', , , 32, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('brown sugar', , , 29, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('sugar', , , 55, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('instant noodles', , , 57, 'Grocery');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('cherries', , , 100, 'Grocery');
 
 
 
@@ -68,6 +74,9 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Inverter Battery', 90, 140 , 100, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Projector', 1500, 2000 , 50, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Microwave', 50, 70 , 100, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('iron', , , 40, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('heater', , , 52, 'Electronics');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('microphone', , , 33, 'Electronics');
 
 
 
@@ -97,3 +106,10 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('lipstick',5 ,7 , 100,'daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('eyeliner',6 ,7 , 88,'daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('mascara',9 ,12 , 54,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('nail polish remover', , , 90,'Daily Care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('nail polish', , , 179,'Daily Care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('eye lubricant', , , 50,'Daily Care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('sunscreen lotion', , , 69,'Daily Care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair serum', , , 99,'Daily Care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair oil', , , ,'Daily Care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('tooth picks', , , ,'Daily Care');
