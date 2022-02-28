@@ -42,8 +42,7 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 
 
 
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('olive oil', , , 20, 'Grocery');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('canned milk', , , 32, 'Grocery');
+
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('mobile',120 , 200, 700, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('air conditioner',450 , 550, 150, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('television',280 ,390 , 100, 'Electronics');
