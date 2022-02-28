@@ -26,7 +26,7 @@ CREATE TABLE customers (
 	state VARCHAR(50) NOT NULL,
 	street_name VARCHAR(50) NOT NULL,
 	street_no INT NOT NULL,
-	pincode VARCHAR(20) NOT NULL CHECK(length(pincode) = 5)
+	pincode VARCHAR(5) NOT NULL
 );
 
 
