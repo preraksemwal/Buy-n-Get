@@ -70,8 +70,8 @@ CREATE TABLE items(
 	item_name VARCHAR(50) NOT NULL,
 	item_type VARCHAR(20) NOT NULL,
 	quantity INT CHECK(quantity > 0),
-	cost_price INT NOT NULL CHECK(cost_price > 0),
-	selling_price INT NOT NULL CHECK(selling_price > 0)
+	cost_price FLOAT NOT NULL CHECK(cost_price > 0),
+	selling_price FLOAT NOT NULL CHECK(selling_price > 0)
 );
 
 
