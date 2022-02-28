@@ -83,21 +83,19 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 
 
 
-
-
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('tooth-paste', , , 1000,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('tooth-brush', , ,1500 ,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('diapers', , , 700,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('facewash', , , 300,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('perfume', , , 169,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('soap', , , 900,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hairspray', , , 120,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair shampoo', , , 210,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('dental floss', , , ,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('face mask', , , 3000,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('sanitizer', , , 1000,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('liquid handwash', , , 234,'Daily Care');
-insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('lotion', , , 199,'Daily Care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('tooth-paste',7 ,9 , 1000,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('tooth-brush',9 ,15 ,1500 ,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('diapers',50 ,60 , 700,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('facewash',11 ,15 , 300,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('perfume',40 ,45 , 169,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('soap', 1,2 , 900,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hairspray',16 ,20 , 120,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair shampoo',6 ,9 , 210,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('dental floss',7 ,10 , ,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('face mask',4 ,6 , 3000,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('sanitizer',8 ,14 , 1000,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('liquid handwash',3 ,5 , 234,'daily care');
+insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('lotion',6 ,8 , 199,'daily care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('nail clippers',5 ,7 , 78,'Daily Care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('moisturizer',20 ,27 , 200,'Daily Care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('foundation',15 ,20 , 60,'Daily Care');
