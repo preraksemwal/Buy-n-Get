@@ -34,7 +34,7 @@ CREATE TABLE customers (
 CREATE TABLE carts(
 	cart_id INT PRIMARY KEY AUTO_INCREMENT, 
 	customer_id INT UNIQUE NOT NULL,
-	items varchar(16000)             
+	items_id varchar(16000)             
 );
 
 
