@@ -1,21 +1,17 @@
 
 import mysql.connector as myConnector
 import csv
+import random 
+
 
 myDataBase = myConnector.connect(host="localhost",user="prerak",passwd="prerak",database="buynget")
 myCursor = myDataBase.cursor()
 myCursor.execute("use buynget")
 
-myCursor.execute("drop table accounts") 
-myCursor.execute("drop table customers") 
 
-myCursor.execute("create table accounts (username VARCHAR(50), email VARCHAR(50), password VARCHAR(50), customer_id INT);")
-myCursor.execute("create table customers(customer_id INT, customer_name VARCHAR(50), age INT, gender VARCHAR(50), phone VARCHAR(50), country VARCHAR(50), state VARCHAR(50), street_name VARCHAR(50), street_no INT, pincode INT);")
-
-
+# populate accounts
 customer_id = 1
-
-with open('accounts.csv','r') as csv_file:
+with open('accounts.csv','r') as csv_file:        
 	csv_reader = csv.reader(csv_file)
 
 	next(csv_reader)
@@ -27,8 +23,9 @@ with open('accounts.csv','r') as csv_file:
 		customer_id += 1
 		
 
+# populate customers
 customer_id = 1
-with open('customers.csv','r') as csv_file:   
+with open('customers.csv','r') as csv_file:      
 	csv_reader = csv.reader(csv_file)
 
 	next(csv_reader)
@@ -38,3 +35,23 @@ with open('customers.csv','r') as csv_file:
 		myCursor.execute(query)
 		myDataBase.commit()
 		customer_id += 1
+
+
+# populate sellers
+customer_id = 1
+while customer_id <= 15:
+    ids = ''
+    ids += str(random.randint(1,104))
+    myCursor.execute( "insert into sellers values({}, '{}')".format(customer_id, ids) )
+    myDataBase.commit()
+    customer_id += 1
+
+cart_id = 1
+while customer_id <= 950:
+	myCursor.execute( "insert into carts values({}, '{}')".format(cart_id))
+    myCursor.execute( "insert into buyers values({}, '{}')".format(customer_id, ) )
+    myDataBase.commit()
+    customer_id += 1
+
+
+
