@@ -1,1 +1,37 @@
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (1, ‘apple’, 28, 30, 50, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (2, ‘banana’,4, 5, 65, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (3, ‘pear’, 21, 25, 60, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (4, ‘figs’,7 , 10, 20, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (5, ‘onion’,6 , 7, 100, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (6, ‘strawberry’,5 , 7, 70, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (7, ‘pineapple’,45 , 50, 10, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (8, ‘watermelon’,70 , 75, 15, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (9, ‘pomegranate’,40 , 46, 45, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (10, ‘muskmelon’,59 , 60, 5, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (11, ‘guava’,8 , 10, 34, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (12, ‘orange’,20 , 22, 70, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (13, ‘potato’,3,  4, 50, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (14, ‘cauliflower’,47 , 50, 7, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (15, ‘corn’,15 , 16, 12, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (16, ‘pumpkin’,77 , 80, 9, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (17, ‘papaya’,44 , 45, 18, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (18, ‘cabbage’,69 , 70, 35, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (19, ‘coconut’,12 , 15, 6, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (20, ‘broccoli’,30 , 35, 15, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (21, ‘tomato’,2 , 5, 80, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (22, ‘ginger’,7 , 10, 10, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (23, ‘lemon’,5 , 7, 100, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (24, ‘kiwi’,26 , 30, 17, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (25, ‘coriander’,4 , 5, 53, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (26, ‘spinach’,3 , 7, 42, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (27, ‘lettuce’,21 , 25, 33, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (28, ‘mint’,5 , 6, 26, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (29, ‘cucumber’,4 , 5, 32, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (30, ‘garlic’,20 , 27, 80, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (31, ‘brinjal’,10 , 11, 60, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (32, ‘grapes’,36 , 37, 77, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (33, ‘chikoo’,2 , 5, 50, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (34, ‘fenugreek’,8 , 12, 36, ‘Grocery’);
+insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (35, ‘avocado’,120 , 130, 13, ‘Grocery’);
+
 
