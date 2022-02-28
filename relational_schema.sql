@@ -1,6 +1,3 @@
-drop database buynget;
-create database buynget;
-use buynget;
 
 
 CREATE TABLE owners(
