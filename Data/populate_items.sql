@@ -34,6 +34,10 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('fenugreek',0.11 , 0.16, 360, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('avocado',1.58 , 1.72, 130, 'Grocery');
 
+
+
+
+
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Mobile',120 , 200, 700, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Air Conditioner',450 , 550, 150, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Television',280 ,390 , 100, 'Electronics');
@@ -57,6 +61,9 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Electrical toothbrush', 22, 39 , 100, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Washing Machine', 230, 312 , 158, 'Electronics');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('Refrigerator', 180, 240 , 125, 'Electronics');
+
+
+
 
 
 
