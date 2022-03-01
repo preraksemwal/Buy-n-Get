@@ -46,12 +46,14 @@ while customer_id <= 15:
     myDataBase.commit()
     customer_id += 1
 
+# populate carts first then buyers
 cart_id = 1
 while customer_id <= 950:
-	myCursor.execute( "insert into carts values({}, '{}')".format(cart_id))
-    myCursor.execute( "insert into buyers values({}, '{}')".format(customer_id, ) )
+    myCursor.execute( "insert into carts values({}, '{}')".format(cart_id))
+    myCursor.execute( "insert into buyers values({}, '{}')".format(customer_id, cart_id))
     myDataBase.commit()
     customer_id += 1
+    cart_id += 1
 
 
 
