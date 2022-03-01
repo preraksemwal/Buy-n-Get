@@ -123,3 +123,10 @@ insert into support (support_id, customer_id, issue) values(1, 269, 'Ihe colour 
 insert into support (customer_id, issue) values( 450, 'I am not able to add the products to my cart');
 insert into support (customer_id, issue) values( 73, 'The iron i ordered is not getting heatup properly');
 insert into support (customer_id, issue) values( 90, 'The lid of the blender was broken');
+
+
+insert into payments(payment_id, customer_id, mode, amount) values (1, 2, 'NetBanking', 100);
+insert into payments(customer_id, mode, amount) values (3, 'UPI', 70);
+insert into payments(customer_id, mode, amount) values (5, 'UPI', 140);
+insert into payments(customer_id, mode, amount) values (2, 'UPI', 500);
+insert into payments(customer_id, mode, amount) values (6, 'Credit-Card', 212);
