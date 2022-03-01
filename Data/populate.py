@@ -56,4 +56,3 @@ while customer_id <= 950:
     cart_id += 1
 
 
-
