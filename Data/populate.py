@@ -39,7 +39,7 @@ with open('customers.csv','r') as csv_file:
 
 # populate sellers
 customer_id = 1
-while customer_id <= 15:
+while customer_id <= 20:
     ids = ''
     ids += str(random.randint(1,104))
     myCursor.execute( "insert into sellers values({}, '{}')".format(customer_id, ids) )
@@ -47,12 +47,15 @@ while customer_id <= 15:
     customer_id += 1
 
 # populate carts first then buyers
+customer_id = 15
 cart_id = 1
 while customer_id <= 950:
-    myCursor.execute( "insert into carts values({}, '{}')".format(cart_id))
+    myCursor.execute( "insert into carts (cart_id, customer_id) values({}, {})".format(cart_id, customer_id))
+    myDataBase.commit()
     myCursor.execute( "insert into buyers values({}, '{}')".format(customer_id, cart_id))
     myDataBase.commit()
     customer_id += 1
     cart_id += 1
+
 
 
