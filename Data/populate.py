@@ -59,3 +59,18 @@ while customer_id <= 950:
 
 
 
+
+# populate orders first and then transaction
+order_id = 1
+customer_id = 23
+item_id = 3
+modes = ['NetBanking', 'UPI', 'Credit-Card', 'Debit-Card']
+while order_id <= 49:
+	
+	myCursor.execute("insert into orders values({}, {}, {}, {}, {}, current_date() + {}, current_date() + {})".format(order_id, item_id, customer_id, random.randint(20, 50), random.randint(0,10), random.randint(11,17)))
+	myDataBase.commit()
+	myCursor.execute("insert into transactions values({}, {}, '{}', {})".format(order_id, customer_id, modes[random.randint(0,len(modes)-1)], random.randint(0,10)))
+	myDataBase.commit()
+	customer_id += 3
+	item_id += 2
+	order_id += 1
