@@ -84,7 +84,8 @@ CREATE TABLE feedback(
 CREATE TABLE support(
 	support_id INT PRIMARY KEY AUTO_INCREMENT,
 	customer_id INT,
-	issue VARCHAR(1000)
+	issue VARCHAR(1000),
+	issue_date date
 );
 
 
