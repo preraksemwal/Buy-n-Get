@@ -67,14 +67,14 @@ item_id = 3
 modes = ['NetBanking', 'UPI', 'Credit-Card', 'Debit-Card']
 while order_id <= 49:
 	
-	myCursor.execute("select selling_price from items where item_id = {}".format(item_id))
-	currPrice = myCursor.fetchone()
+    myCursor.execute("select selling_price from items where item_id = {}".format(item_id))
+    currPrice = myCursor.fetchone()
     currQuantity = random.randint(20, 50)
 	
-	myCursor.execute("insert into orders values({}, {}, {}, {}, current_date() + {}, current_date() + {})".format(order_id, item_id, customer_id, currQuantity, random.randint(0,10), random.randint(11,17)))
-	myDataBase.commit()
-	myCursor.execute("insert into transactions values({}, {}, '{}', {})".format(order_id, customer_id, modes[random.randint(0,len(modes)-1)], currQuantity * currPrice[0]))
-	myDataBase.commit()
-	customer_id += 3
-	item_id += 2
-	order_id += 1
+    myCursor.execute("insert into orders values({}, {}, {}, {}, current_date() + {}, current_date() + {})".format(order_id, item_id, customer_id, currQuantity, random.randint(0,10), random.randint(11,17)))
+    myDataBase.commit()
+    myCursor.execute("insert into transactions values({}, {}, '{}', {})".format(order_id, customer_id, modes[random.randint(0,len(modes)-1)], currQuantity * currPrice[0]))
+    myDataBase.commit()
+    customer_id += 3
+    item_id += 2
+    order_id += 1
