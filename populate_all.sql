@@ -156,8 +156,7 @@ insert into owners values(2, 'Prerak Semwal', 'prerak20105@iiitd.ac.in', '@edve$
 insert into owners values(3, 'Janhavi Bayanwar', 'bayanwar20043@iiitd.ac.in', '^yrHa!643DFGsdf', '9231231235');
 insert into owners values(4, 'Abhinav Kumar Sinha', 'abhinav20012@iiitd.ac.in', 'werwr$%#@46422', '9545767691');	
 
-
-insert into support (support_id, customer_id, issue) values(1, 269, 'Ihe colour of phone does not match with the one I ordered', '2021-10-10');
+insert into support (support_id, customer_id, issue,issue_date) values(1, 269, 'Ihe colour of phone does not match with the one I ordered', '2021-10-10');
 insert into support (customer_id, issue, issue_date) values( 450, 'I am not able to add products to my cart', '2022-11-12');
 insert into support (customer_id, issue, issue_date) values( 73, 'The iron I ordered is not heating up properly', '2022-01-27');
 insert into support (customer_id, issue, issue_date) values( 90, 'The lid of the blender was broken', '2022-02-19');
