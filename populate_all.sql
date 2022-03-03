@@ -236,3 +236,5 @@ UPDATE carts SET items_id = '9-9,12-12' WHERE customer_id = 21;
 UPDATE carts SET items_id = '4-6,17-5' WHERE customer_id = 22;
 UPDATE carts SET items_id = '5-10,10-6' WHERE customer_id = 15;
 UPDATE carts SET items_id = '12-8,7-2' WHERE customer_id = 16;
+
+insert into orders values(50,65,169,25,'2021-12-12','2022-01-18');
