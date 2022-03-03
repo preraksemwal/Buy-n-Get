@@ -1,0 +1,10 @@
+UPDATE carts SET items_id = '1-10,13-100' WHERE customer_id = 41;
+UPDATE carts SET items_id = '3-20,1-500' WHERE customer_id = 42;
+UPDATE carts SET items_id = '5-1,7-2' WHERE customer_id = 23;
+UPDATE carts SET items_id = '8-6,1-9' WHERE customer_id = 24;
+UPDATE carts SET items_id = '21-32,15-6' WHERE customer_id = 17;
+UPDATE carts SET items_id = '22-4,7-2' WHERE customer_id = 18;
+UPDATE carts SET items_id = '9-9,12-12' WHERE customer_id = 21;
+UPDATE carts SET items_id = '4-6,17-5' WHERE customer_id = 22;
+UPDATE carts SET items_id = '5-10,10-6' WHERE customer_id = 15;
+UPDATE carts SET items_id = '12-8,7-2' WHERE customer_id = 16;
