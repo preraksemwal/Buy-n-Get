@@ -13,7 +13,7 @@
 
 [TA Guidelines](https://mail.google.com/mail/u/0/?tab=wm#inbox/FMfcgzGmvBqnqhtpnGGbgkMvBhflMJfl)
 
-[Rubric](https://classroom.google.com/u/0/w/NDU1ODc0NjYxNDg3/t/all)
+[Rubric](https://classroom.google.com/u/0/c/NDU1ODc0NjYxNDg3/m/NDg0MjA4NzgzNTUy/details)
 
 [Groups Excel Sheet](https://docs.google.com/spreadsheets/d/1RaRwv7N5YDMgLShk2L9gERgNzPbT_H4H2jSAsWD1Dow/edit#gid=0)
 
