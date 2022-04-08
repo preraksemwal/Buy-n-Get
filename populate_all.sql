@@ -1,44 +1,7 @@
-insert into feedback values(23, 4);
-insert into feedback values(1, 5);
-insert into feedback values(44, 3);
-insert into feedback values(3, 5);
-insert into feedback values(66, 4);
-insert into feedback values(90, 3);
-insert into feedback values(46, 2);
-insert into feedback values(780, 4);
-insert into feedback values(555, 4);
-insert into feedback values(333, 5);
-insert into feedback values(900, 3);
-insert into feedback values(69, 3);
-insert into feedback values(96, 4);
-insert into feedback values(67, 2);
-insert into feedback values(420, 4);
-insert into feedback values(619, 4);
-insert into feedback values(123, 3);
-insert into feedback values(234, 3);
-insert into feedback values(771, 3);
-insert into feedback values(212, 5);
-insert into feedback values(153, 5);
-insert into feedback values(105, 5);
-insert into feedback values(89, 3);
-insert into feedback values(50, 3);
-insert into feedback values(850, 4);
-insert into feedback values(700, 4);
-insert into feedback values(403, 3);
-insert into feedback values(543, 5);
-insert into feedback values(137, 4);
-insert into feedback values(810, 4);
-insert into feedback values(654, 2);
-insert into feedback values(383, 4);
-insert into feedback values(504, 4);
-insert into feedback values(77, 4);
-insert into feedback values(199, 5);
-insert into feedback values(200, 5);
-insert into feedback values(299, 2);
-insert into feedback values(399, 3);
-insert into feedback values(666, 3);
-insert into feedback values(786, 5);
-insert into feedback values(903, 5);
+insert into owners values(1, 'Vineet Kaul', 'vineet20153@iiitd.ac.in', 'sdfs$#etjdg1R', '9876543222');
+insert into owners values(2, 'Prerak Semwal', 'prerak20105@iiitd.ac.in', '@edve$%#Dgsgsd', '9234567899');
+insert into owners values(3, 'Janhavi Bayanwar', 'bayanwar20043@iiitd.ac.in', '^yrHa!643DFGsdf', '9231231235');
+insert into owners values(4, 'Abhinav Kumar Sinha', 'abhinav20012@iiitd.ac.in', 'werwr$%#@46422', '9545767691');	
 
 insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (1, 'apple', 0.37, 0.40, 500, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('banana',0.053, 0.066, 165, 'Grocery');
@@ -145,10 +108,56 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair oil',7 ,8 ,90 ,'Daily Care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('tooth picks',2 ,3 ,150 ,'Daily Care');
 
-insert into owners values(1, 'Vineet Kaul', 'vineet20153@iiitd.ac.in', 'sdfs$#etjdg1R', '9876543222');
-insert into owners values(2, 'Prerak Semwal', 'prerak20105@iiitd.ac.in', '@edve$%#Dgsgsd', '9234567899');
-insert into owners values(3, 'Janhavi Bayanwar', 'bayanwar20043@iiitd.ac.in', '^yrHa!643DFGsdf', '9231231235');
-insert into owners values(4, 'Abhinav Kumar Sinha', 'abhinav20012@iiitd.ac.in', 'werwr$%#@46422', '9545767691');	
+
+
+
+
+
+
+
+
+
+insert into feedback values(23, 4);
+insert into feedback values(1, 5);
+insert into feedback values(44, 3);
+insert into feedback values(3, 5);
+insert into feedback values(66, 4);
+insert into feedback values(90, 3);
+insert into feedback values(46, 2);
+insert into feedback values(780, 4);
+insert into feedback values(555, 4);
+insert into feedback values(333, 5);
+insert into feedback values(900, 3);
+insert into feedback values(69, 3);
+insert into feedback values(96, 4);
+insert into feedback values(67, 2);
+insert into feedback values(420, 4);
+insert into feedback values(619, 4);
+insert into feedback values(123, 3);
+insert into feedback values(234, 3);
+insert into feedback values(771, 3);
+insert into feedback values(212, 5);
+insert into feedback values(153, 5);
+insert into feedback values(105, 5);
+insert into feedback values(89, 3);
+insert into feedback values(50, 3);
+insert into feedback values(850, 4);
+insert into feedback values(700, 4);
+insert into feedback values(403, 3);
+insert into feedback values(543, 5);
+insert into feedback values(137, 4);
+insert into feedback values(810, 4);
+insert into feedback values(654, 2);
+insert into feedback values(383, 4);
+insert into feedback values(504, 4);
+insert into feedback values(77, 4);
+insert into feedback values(199, 5);
+insert into feedback values(200, 5);
+insert into feedback values(299, 2);
+insert into feedback values(399, 3);
+insert into feedback values(666, 3);
+insert into feedback values(786, 5);
+insert into feedback values(903, 5);
 
 insert into support (support_id, customer_id, issue,issue_date) values(1, 269, 'Ihe colour of phone does not match with the one I ordered', '2021-10-10');
 insert into support (customer_id, issue, issue_date) values( 450, 'I am not able to add products to my cart', '2022-11-12');
@@ -215,23 +224,3 @@ insert into payments(customer_id, mode, amount) values (5, 'Debit-Card', 70);
 insert into payments(customer_id, mode, amount) values (15, 'Debit-Card', 1000);
 insert into payments(customer_id, mode, amount) values (5, 'Debit-Card', 500);
 insert into payments(customer_id, mode, amount) values (16, 'Debit-Card', 400);
-
-
-
-
-
-
-
-
-UPDATE carts SET items_id = '1-10,13-100' WHERE customer_id = 41;
-UPDATE carts SET items_id = '3-20,1-500' WHERE customer_id = 42;
-UPDATE carts SET items_id = '5-1,7-2' WHERE customer_id = 23;
-UPDATE carts SET items_id = '8-6,1-9' WHERE customer_id = 24;
-UPDATE carts SET items_id = '21-32,15-6' WHERE customer_id = 17;
-UPDATE carts SET items_id = '22-4,7-2' WHERE customer_id = 18;
-UPDATE carts SET items_id = '9-9,12-12' WHERE customer_id = 21;
-UPDATE carts SET items_id = '4-6,17-5' WHERE customer_id = 22;
-UPDATE carts SET items_id = '5-10,10-6' WHERE customer_id = 15;
-UPDATE carts SET items_id = '12-8,7-2' WHERE customer_id = 16;
-
-insert into orders values(50,65,169,25,'2021-12-12','2022-01-18');
