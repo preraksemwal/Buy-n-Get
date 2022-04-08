@@ -60,8 +60,9 @@ while customer_id <= 950:
     myDataBase.commit()
     myCursor.execute( "insert into carts values({}, {})".format(cart_id, customer_id))
     myDataBase.commit()
-    myCursor.execute( "insert into stores values({}, {}, {})".format(cart_id, random.randint(1,104), 10*random.randint(1,20)))
-    myDataBase.commit()
+    if customer_id % 3 == 0:
+        myCursor.execute( "insert into stores values({}, {}, {})".format(cart_id, random.randint(1,104), 10*random.randint(1,20)))
+        myDataBase.commit()
     customer_id += 1
     cart_id += 1
 
