@@ -216,6 +216,13 @@ insert into payments(customer_id, mode, amount) values (15, 'Debit-Card', 1000);
 insert into payments(customer_id, mode, amount) values (5, 'Debit-Card', 500);
 insert into payments(customer_id, mode, amount) values (16, 'Debit-Card', 400);
 
+
+
+
+
+
+
+
 UPDATE carts SET items_id = '1-10,13-100' WHERE customer_id = 41;
 UPDATE carts SET items_id = '3-20,1-500' WHERE customer_id = 42;
 UPDATE carts SET items_id = '5-1,7-2' WHERE customer_id = 23;
@@ -226,10 +233,5 @@ UPDATE carts SET items_id = '9-9,12-12' WHERE customer_id = 21;
 UPDATE carts SET items_id = '4-6,17-5' WHERE customer_id = 22;
 UPDATE carts SET items_id = '5-10,10-6' WHERE customer_id = 15;
 UPDATE carts SET items_id = '12-8,7-2' WHERE customer_id = 16;
-
-
-
-
-
 
 insert into orders values(50,65,169,25,'2021-12-12','2022-01-18');
