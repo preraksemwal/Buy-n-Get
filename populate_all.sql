@@ -40,10 +40,6 @@ insert into feedback values(666, 3);
 insert into feedback values(786, 5);
 insert into feedback values(903, 5);
 
-
-
-
-
 insert into items (item_id, item_name, cost_price, selling_price, quantity, item_type) values (1, 'apple', 0.37, 0.40, 500, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('banana',0.053, 0.066, 165, 'Grocery');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('pear', 0.28, 0.33, 260, 'Grocery');
@@ -149,8 +145,6 @@ insert into items (item_name, cost_price, selling_price, quantity, item_type) va
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('hair oil',7 ,8 ,90 ,'Daily Care');
 insert into items (item_name, cost_price, selling_price, quantity, item_type) values ('tooth picks',2 ,3 ,150 ,'Daily Care');
 
-
-
 insert into owners values(1, 'Vineet Kaul', 'vineet20153@iiitd.ac.in', 'sdfs$#etjdg1R', '9876543222');
 insert into owners values(2, 'Prerak Semwal', 'prerak20105@iiitd.ac.in', '@edve$%#Dgsgsd', '9234567899');
 insert into owners values(3, 'Janhavi Bayanwar', 'bayanwar20043@iiitd.ac.in', '^yrHa!643DFGsdf', '9231231235');
@@ -222,9 +216,6 @@ insert into payments(customer_id, mode, amount) values (15, 'Debit-Card', 1000);
 insert into payments(customer_id, mode, amount) values (5, 'Debit-Card', 500);
 insert into payments(customer_id, mode, amount) values (16, 'Debit-Card', 400);
 
-
-
-
 UPDATE carts SET items_id = '1-10,13-100' WHERE customer_id = 41;
 UPDATE carts SET items_id = '3-20,1-500' WHERE customer_id = 42;
 UPDATE carts SET items_id = '5-1,7-2' WHERE customer_id = 23;
@@ -235,5 +226,10 @@ UPDATE carts SET items_id = '9-9,12-12' WHERE customer_id = 21;
 UPDATE carts SET items_id = '4-6,17-5' WHERE customer_id = 22;
 UPDATE carts SET items_id = '5-10,10-6' WHERE customer_id = 15;
 UPDATE carts SET items_id = '12-8,7-2' WHERE customer_id = 16;
+
+
+
+
+
 
 insert into orders values(50,65,169,25,'2021-12-12','2022-01-18');
