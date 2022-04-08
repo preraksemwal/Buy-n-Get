@@ -25,27 +25,27 @@ CREATE TABLE customers (
 	street_name VARCHAR(50) NOT NULL,
 	street_no INT NOT NULL,
 	pincode VARCHAR(5) NOT NULL,
-	FOREIGN KEY(customer_id) REFERENCES accounts(customer_id)
+	FOREIGN KEY(customer_id) REFERENCES accounts(customer_id) ON DELETE CASCADE
 );
 
 
 
 CREATE TABLE buyers(
 	customer_id INT PRIMARY KEY,
-    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+    FOREIGN KEY(customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
 );
 
 CREATE TABLE carts(
 	cart_id INT PRIMARY KEY AUTO_INCREMENT, 
 	customer_id INT UNIQUE NOT NULL,
-	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id)        
+	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id) ON DELETE CASCADE    
 );
 
 CREATE TABLE stores(
 	cart_id INT NOT NULL, 
 	item_id INT NOT NULL,
 	quantity INT NOT NULL,
-	FOREIGN KEY(cart_id) REFERENCES carts(cart_id)        
+	FOREIGN KEY(cart_id) REFERENCES carts(cart_id) ON DELETE CASCADE        
 );
 
 
@@ -65,15 +65,15 @@ CREATE TABLE orders(
 	customer_id INT NOT NULL,
     order_date DATE NOT NULL,
     delivery_date DATE NOT NULL,
-    FOREIGN KEY(customer_id) REFERENCES buyers(customer_id)
+    FOREIGN KEY(customer_id) REFERENCES buyers(customer_id) ON DELETE CASCADE
 );
 
 CREATE TABLE ordered_items(
 	order_id INT NOT NULL,
 	item_id INT NOT NULL,
     quantity INT CHECK(quantity > 0),
-    FOREIGN KEY(order_id) REFERENCES orders(order_id),
-    FOREIGN KEY(item_id) REFERENCES items(item_id)
+    FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY(item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
 
 
@@ -81,14 +81,14 @@ CREATE TABLE ordered_items(
 
 CREATE TABLE sellers(
 	customer_id INT PRIMARY KEY,
-	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+	FOREIGN KEY(customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
 );
 
 CREATE TABLE sells(
 	customer_id INT NOT NULL,
 	item_id INT NOT NULL,
-	FOREIGN KEY(customer_id) REFERENCES sellers(customer_id),
-    FOREIGN KEY(item_id) REFERENCES items(item_id)
+	FOREIGN KEY(customer_id) REFERENCES sellers(customer_id) ON DELETE CASCADE,
+    FOREIGN KEY(item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
 
 
@@ -96,7 +96,7 @@ CREATE TABLE sells(
 CREATE TABLE feedback(
 	customer_id INT PRIMARY KEY,
 	rating INT CHECK(rating BETWEEN 1 AND 5),
-	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+	FOREIGN KEY(customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
 );
 
 CREATE TABLE support(
@@ -104,7 +104,7 @@ CREATE TABLE support(
 	customer_id INT,
 	issue VARCHAR(1000),
 	issue_date date,
-	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+	FOREIGN KEY(customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
 );
 
 CREATE TABLE payments(
@@ -112,7 +112,7 @@ CREATE TABLE payments(
 	customer_id INT NOT NULL,
 	mode VARCHAR(20) NOT NULL,
 	amount INT NOT NULL	,
-	FOREIGN KEY(customer_id) REFERENCES sellers(customer_id)
+	FOREIGN KEY(customer_id) REFERENCES sellers(customer_id) ON DELETE CASCADE
 );
 
 CREATE TABLE transactions(
@@ -120,6 +120,6 @@ CREATE TABLE transactions(
 	customer_id INT NOT NULL,
 	mode VARCHAR(20) NOT NULL,
 	amount INT NOT NULL,
-	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id),
-	FOREIGN KEY(order_id) REFERENCES orders(order_id)
+	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id) ON DELETE CASCADE,
+	FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE
 );
