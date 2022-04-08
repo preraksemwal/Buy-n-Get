@@ -1,5 +1,4 @@
 
-
 CREATE TABLE owners(
 	owner_id INT PRIMARY KEY,
 	owner_name VARCHAR(50) NOT NULL,
@@ -7,7 +6,6 @@ CREATE TABLE owners(
 	password VARCHAR(50) NOT NULL CHECK(LENGTH(password) >= 12),
 	phone_no VARCHAR(20) UNIQUE NOT NULL
 );
-
 
 CREATE TABLE accounts (
 	username VARCHAR(50) PRIMARY KEY,
@@ -29,14 +27,11 @@ CREATE TABLE customers (
 	pincode VARCHAR(5) NOT NULL
 );
 
-
-
 CREATE TABLE carts(
 	cart_id INT PRIMARY KEY AUTO_INCREMENT, 
 	customer_id INT UNIQUE NOT NULL,
 	items_id varchar(16000) DEFAULT NULL            
 );
-
 
 CREATE TABLE buyers(
 	customer_id INT PRIMARY KEY,
@@ -44,8 +39,6 @@ CREATE TABLE buyers(
 	FOREIGN KEY(cart_id) REFERENCES carts(cart_id),
     	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
-
-
 
 CREATE TABLE orders(
 	order_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -57,13 +50,11 @@ CREATE TABLE orders(
     	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id)
 );
 
-
 CREATE TABLE sellers(
 	customer_id INT PRIMARY KEY,
 	items_id VARCHAR(12000) NOT NULL,
     	FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
-
 
 CREATE TABLE items(
 	item_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -74,12 +65,10 @@ CREATE TABLE items(
 	selling_price FLOAT NOT NULL CHECK(selling_price > 0)
 );
 
-
 CREATE TABLE feedback(
 	customer_id INT PRIMARY KEY,
 	rating INT CHECK(rating BETWEEN 1 AND 5)
 );
-
 
 CREATE TABLE support(
 	support_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -87,8 +76,6 @@ CREATE TABLE support(
 	issue VARCHAR(1000),
 	issue_date date
 );
-
-
 
 CREATE TABLE payments(
 	payment_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -103,3 +90,4 @@ CREATE TABLE transactions(
 	mode VARCHAR(20) NOT NULL,
 	amount INT NOT NULL		
 );
+
