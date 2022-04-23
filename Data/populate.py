@@ -78,8 +78,8 @@ while order_id <= 49:
     myCursor.execute("select selling_price from items where item_id = {}".format(item_id))
     currPrice = myCursor.fetchone()
     currQuantity = random.randint(20, 50)
-    
-    myCursor.execute("insert into orders values({}, {}, current_date() + {}, current_date() + {})".format(order_id, customer_id, random.randint(0,10), random.randint(11,17)))
+
+    myCursor.execute("insert into orders values({}, {}, current_date(), current_date() + {})".format(order_id, customer_id, 1))
     myDataBase.commit()
 
     myCursor.execute("insert into ordered_items values({}, {}, {})".format(order_id, item_id, currQuantity))
