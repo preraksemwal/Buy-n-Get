@@ -43,3 +43,28 @@ CREATE TRIGGER low_rating AFTER INSERT ON feedback
 		END IF;
    END;//
 delimiter ;
+
+
+
+# if order exceeds, $100 => min(0.1 * amount, $15) )
+-- delimiter //
+-- CREATE TRIGGER provide_discount BEFORE INSERT ON transactions
+--    FOR EACH ROW
+--    BEGIN
+--    DECLARE total int;
+--    DECLARE O_id int;
+--    DECLARE discount int;
+--    SET total = NEW.amount;
+--    SET O_id = NEW.order_id;
+--    SET discount = total * 0.1;
+
+-- 		IF (total > 100) THEN
+
+-- 			IF (discount > 15) THEN
+-- 				SET discount = 15;
+-- 			END IF;
+			
+-- 			UPDATE transactions SET amount = amount - discount WHERE order_id = O_id;
+-- 		END IF;
+--    END;//
+-- delimiter ;
