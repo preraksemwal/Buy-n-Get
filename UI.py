@@ -1,6 +1,21 @@
 from tkinter import *
 import mysql.connector as myConnector
 
+
+def seller_page():
+    frame=Frame(window, width=450, height=600)
+    Title = Label(frame, text= "List Items to\nbe Sold",font=("Vrinda",25, "italic")).place(x=150,y=90)
+    item_id = Label(frame,text="Item ID").place(x=100,y=230)
+    item_input_area= Entry(frame,width = 20).place(x = 200,y = 230)
+    
+    quantity = Label(frame,text="Quantity").place(x=100,y=300)
+    quantity_input_area = Entry(frame,width = 20).place(x = 200,y = 300)
+    
+    add_button = Button(frame,text= "ADD",height=2,width=10,command=lambda:[frame.pack_forget(),seller_page()]).place(x=100,y=380)
+    finish_button = Button(frame,text= "FINISH",height=2,width=10).place(x=280,y=380)
+
+    
+    frame.pack()
 def category():
     frame=Frame(window, width=450, height=600)
     Title = Label(frame, text= "Join As...",font=("Vrinda",25, "italic")).place(x=160,y=120)
