@@ -1,6 +1,14 @@
 from tkinter import *
 import mysql.connector as myConnector
 
+def category():
+    frame=Frame(window, width=450, height=600)
+    Title = Label(frame, text= "Join As...",font=("Vrinda",25, "italic")).place(x=160,y=120)
+    back_button = Button(frame, text= "Back",height= 1, width=8,command=frame.pack_forget).place(x=10,y=30)
+    seller_button = Button(frame, text = "SELLER",height = 3, width= 30).place(x=120,y=250)
+    buyer_button = Button(frame,text= "BUYER",height=3,width=30).place(x=120,y=350)
+    frame.pack()
+    
 def details_page():
     
     frame=Frame(window, width=450, height=600)
@@ -29,6 +37,7 @@ def details_page():
     state_input_area = Entry(frame,width = 30).place(x = 200,y = 460)
     country = Label(frame, text = "Country").place(x=60,y=530)
     country_input_area = Entry(frame,width = 30).place(x = 200,y = 530)
+    back_button = Button(frame, text= "Back",height= 1, width=8,command=frame.pack_forget).place(x=10,y=30)
     
     frame.pack()
 
