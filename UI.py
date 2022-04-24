@@ -1,23 +1,7 @@
 from tkinter import *
-
-window = Tk()
-window.geometry("450x600")
-window.title("Buy-n-Get")
-Title = Label(window, text= "Buy-n-Get",font=("Freestyle Script",40, "bold")).place(x=155, y=60)
-
-login_button = Button(window, 
-                       text = "LOGIN",height= 3, width=30,command= login_page).place(x = 130,
-                                              y = 200)
-no_acc = Label(window, text= "Don't have an account?",font=("Arial",10)).place(x=165,y=300)
-
-signUP_button = Button(window, 
-                       text = "SIGN UP",height= 3, width=30,command= signup_page).place(x = 130,
-                                              y = 330)
-
-window.mainloop()
+import mysql.connector as myConnector
 
 
-    
 
 def signup_page():
      
@@ -83,4 +67,23 @@ def login_page():
     frame.pack()
     
 
+window = Tk()
+window.geometry("450x600")
+window.title("Buy-n-Get")
+Title = Label(window, text = "Buy-n-Get", font = ("Freestyle Script", 40, "bold")).place(x = 155, y = 60)
 
+login_button = Button(window, 
+                      text = "LOGIN",
+                      height = 3, width = 30,
+                      command = login_page).place(x = 130, y = 200)
+
+no_acc = Label(window,
+               text = "Don't have an account?", 
+               font = ("Arial", 10)).place(x = 165, y = 300)
+
+signUP_button = Button(window, 
+                       text = "SIGN UP",
+                       height = 3, width = 30,
+                       command = signup_page).place(x = 130, y = 330)
+
+window.mainloop()
