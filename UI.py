@@ -1,6 +1,39 @@
 from tkinter import *
 import mysql.connector as myConnector
 
+myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
+myCursor   = myDataBase.cursor()
+myCursor.execute("use buynget")
+
+#################################################################################################################################################
+
+
+
+def insert_into_accounts():
+    username_input = Entry(login_frame, width=30).place(x = 150,y = 250)  
+    password_input = Entry(login_frame, width=30).place(x=150, y=320) 
+    try:
+        print(username_input.get())
+        print(password_input.get())
+    except:
+        print("Enter something first")
+
+
+    # myCursor.execute("select count(*) from accounts where username = '{}'".format(username))
+    # count = myCursor.fetch()
+    # count = count[0]
+    # if count == 1:
+    #     print("if") # goto buyer/seller
+    #      # tkMessageBox.showinfo( "Hello Python", "Hello World")
+    # else:
+    #     login_frame.pack_forget
+    
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+def insert_into_customers(info):
+    pass
+    myCursor.execute("insert into accounts(username, email, password) values('{}', '{}', '{}')".format(username, email, password))
+
+#################################################################################################################################################
 
 def seller_page():
     frame               = Frame(window, width=450, height=600)
@@ -15,19 +48,15 @@ def seller_page():
     finish_button       = Button(frame, text="FINISH", height=2, width=10).place(x=280,y=380)
 
     frame.pack()
-
-#################################################################################################################################################
-
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def category():
     frame         = Frame(window, width = 450, height=600)
-    Title         = Label(frame, text = "Join As...", font=("Vrinda",25, "italic")).place(x=160,y=120)
+    Title         = Label(frame, text = "Sign in as...", font=("Vrinda",20, "italic")).place(x=160,y=120)
     back_button   = Button(frame, text = "Back", height=1, width=8, command=frame.pack_forget).place(x=10,y=30)
     seller_button = Button(frame, text = "SELLER", height=3, width=30).place(x=120,y=250)
     buyer_button  = Button(frame, text = "BUYER", height=3, width=30).place(x=120,y=350)
     frame.pack()
-    
-#################################################################################################################################################
-
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def details_page():
     
     frame                  = Frame(window, width=450, height=600)
@@ -54,10 +83,7 @@ def details_page():
     back_button            = Button(frame, text="Back",height= 1, width=8,command=frame.pack_forget).place(x=10,y=30)
     
     frame.pack()
-
-#################################################################################################################################################
-
-
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def signup_page():
      
     frame         = Frame(window, width = 450, height = 600)
@@ -70,50 +96,55 @@ def signup_page():
     user_password = Label(frame, text = " New Password").place(x=80, y=340)
     age           = Label(frame, text = "Age").place(x = 80,y = 410) 
     
-    next_button   = Button(frame, text = "Next", height= 1, width=8, command = lambda:[details_page(),frame.pack_forget()]).place(x = 200, y = 470)
-    back_button   = Button(frame, text ="Back", height=1, width=8, command = frame.pack_forget).place(x=10, y=10)
+    next_button   = Button(frame,
+                           text = "Next",
+                           height= 1,
+                           width=8, 
+                           command = lambda:[details_page(),frame.pack_forget()]).place(x = 200, y = 470)
+
+    back_button   = Button(frame, 
+                           text ="Back", 
+                           height=1, 
+                           width=8, 
+                           command = frame.pack_forget).place(x=10, y=10)
     
     user_name_input_area     = Entry(frame, width=30).place(x=200, y=200)  
     user_email_input_area    = Entry(frame, width=30).place(x=200, y=270) 
     user_password_input_area = Entry(frame, width=30).place(x=200, y=340)
     user_age                 = Entry(frame, width=30).place(x=200, y=410) 
     
-    frame.pack()
-    
-#################################################################################################################################################
-
-
+    frame.pack()    
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def login_page():
-     
-    frame         = Frame(window, width=450, height=600)
+    login_frame   = Frame(window, width=450, height=600)
 
-    Title         = Label(frame,
+    Title         = Label(login_frame,
                           text = "Buy-n-Get",
                           font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
     
-    acc           = Label(frame,
+    acc           = Label(login_frame,
                           text = "MY ACCOUNT",
                           font = ("Arial",15, "bold")).place(x=160, y=180)
     
-    user_name     = Label(frame, text = "Username").place(x=80, y=250)  
-    user_password = Label(frame, text = "Password").place(x=80, y=320)  
-    
-    submit_button = Button(frame, 
-                           text = "Submit",
-                           height= 1, width=8).place(x=200, y=380)
-    
-    back_button   = Button(frame,
-                           text = "Back",
-                           height= 1, width=8,
-                           command = frame.pack_forget).place(x=10, y=10) 
-    
-    user_name_input_area     = Entry(frame, width=30).place(x = 150,y = 250)  
-    user_password_entry_area = Entry(frame, width=30).place(x=150, y=320)  
+    username       = Label(login_frame, text = "Username").place(x=80, y=250)  
+    password       = Label(login_frame, text = "Password").place(x=80, y=320)  
+        
 
-    frame.pack()
+    submit_button  = Button(login_frame, 
+                            text = "Submit",
+                            height = 1, 
+                            width = 8,
+                            # command = lambda:[category(),login_frame.pack_forget()]).place(x=200, y=380)
+                            command = insert_into_accounts).place(x=200, y=380)
+    
+    back_button    = Button(login_frame,
+                            text = "Back",
+                            height= 1, width=8,
+                            command = login_frame.pack_forget).place(x=10, y=10) 
+    login_frame.pack()
     
 
-
+#################################################################################################################################################
 
 if __name__ == '__main__':
 
