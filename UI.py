@@ -87,11 +87,11 @@ def login_page():
 
     Title         = Label(frame,
                           text = "Buy-n-Get",
-                          font = ("Freestyle Script", 40, "bold")).place(x=155, y=50)
+                          font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
     
     acc           = Label(frame,
                           text = "MY ACCOUNT",
-                          font = ("Arial",15, "bold")).place(x=155, y=180)
+                          font = ("Arial",15, "bold")).place(x=160, y=180)
     
     user_name     = Label(frame, text = "Username").place(x=80, y=250)  
     user_password = Label(frame, text = "Password").place(x=80, y=320)  
@@ -118,20 +118,22 @@ if __name__ == '__main__':
     window = Tk()
     window.geometry("450x600")
     window.title("Buy-n-Get")
-    Title = Label(window, text = "Buy-n-Get", font = ("Freestyle Script", 40, "bold")).place(x = 155, y = 60)
+    Title         = Label(window,
+                          text = "Buy-n-Get     ",
+                          font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)
 
     login_button  = Button(window, 
                            text = "LOGIN",
                            height = 3, width = 30,
-                           command = login_page).place(x = 130, y = 200)
+                           command = login_page).place(x=118, y=200)
 
     no_acc        = Label(window,
                           text = "Don't have an account?", 
-                          font = ("Arial", 10)).place(x = 165, y = 300)
+                          font = ("Arial", 10)).place(x=157, y=300)
 
     signUP_button = Button(window, 
                            text = "SIGN UP",
                            height = 3, width = 30,
-                           command = signup_page).place(x = 130, y = 330)
+                           command = signup_page).place(x=118, y=330)
 
     window.mainloop()
