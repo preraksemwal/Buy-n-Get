@@ -1,9 +1,9 @@
 from tkinter import *
-#import mysql.connector as myConnector
+import mysql.connector as myConnector
 
-#myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
-#myCursor   = myDataBase.cursor()
-#myCursor.execute("use buynget")
+myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
+myCursor   = myDataBase.cursor()
+myCursor.execute("use buynget")
 
 #################################################################################################################################################
 
@@ -29,7 +29,7 @@ def insert_into_accounts():
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def insert_into_customers(info):
     pass
-    #myCursor.execute("insert into accounts(username, email, password) values('{}', '{}', '{}')".format(username, email, password))
+    myCursor.execute("insert into accounts(username, email, password) values('{}', '{}', '{}')".format(username, email, password))
 
 #################################################################################################################################################
 
