@@ -35,14 +35,18 @@ def insert_into_customers(info):
 
 def seller_page():
     frame               = Frame(window, width=450, height=600)
-    Title               = Label(frame, text= "List Items to\nbe Sold", font=("Vrinda",25, "italic")).place(x=150,y=90)
+    Title               = Label(frame, text="List Items to\nbe Sold", font=("Vrinda",25, "italic")).place(x=150,y=90)
     item_id             = Label(frame, text="Item ID").place(x=100,y=230)
     item_input_area     = Entry(frame, width = 20).place(x=200,y=230)
     
     quantity            = Label(frame, text="Quantity").place(x=100,y=300)
     quantity_input_area = Entry(frame, width = 20).place(x=200,y=300)
     
-    add_button          = Button(frame, text="ADD", height=2, width=10, command=lambda:[frame.pack_forget(),seller_page()]).place(x=100,y=380)
+    add_button          = Button(frame, 
+                                 text="ADD",
+                                 height=2,
+                                 width=10, 
+                                 command=lambda:[frame.pack_forget(),seller_page()]).place(x=100,y=380)
     finish_button       = Button(frame, text="FINISH", height=2, width=10).place(x=280,y=380)
 
     frame.pack()
@@ -62,7 +66,7 @@ def details_page():
                                           font=("Arial",15, "bold")).place(x=155, y=36)
 
     name              = Label(details_frame, text="Name").place(x=60, y=90)
-    age               = Label(details_frame, text = "Age").place(x=60, y=130) 
+    age               = Label(details_frame, text ="Age").place(x=60, y=130) 
     gender            = Label(details_frame, text="Gender").place(x=60, y=170)  
     phone             = Label(details_frame, text="Phone No.").place(x=60, y=210)  
     country           = Label(details_frame, text="Country").place(x=60, y=250)
@@ -73,7 +77,7 @@ def details_page():
     
 
 
-    name_input        = Entry(details_frame,width = 30).place(x=200, y=90)
+    name_input        = Entry(details_frame, width=30).place(x=200, y=90)
     user_age          = Entry(details_frame, width=30).place(x=200, y=130) 
     gender_input      = Entry(details_frame, width=30).place(x=200, y=170)
     phone_input       = Entry(details_frame, width=30).place(x=200, y=210)
@@ -105,7 +109,7 @@ def signup_page():
     
     user_name     = Label(signup_frame, text = "Name").place(x=80, y=200)  
     user_email    = Label(signup_frame, text = "Email ID").place(x=80, y=270)  
-    user_password = Label(signup_frame, text = " New Password").place(x=80, y=340)
+    user_password = Label(signup_frame, text = "New Password").place(x=80, y=340)
     
     user_name_input_area     = Entry(signup_frame, width=30).place(x=200, y=200)  
     user_email_input_area    = Entry(signup_frame, width=30).place(x=200, y=270) 
