@@ -61,7 +61,9 @@ def details_page():
 def signup_page():
      
     frame         = Frame(window, width = 450, height = 600)
-    Title         = Label(frame, text = "Buy-n-Get", font = ("Freestyle Script", 40, "bold")).place(x=155, y=60)
+    Title         = Label(frame,
+                          text = "Buy-n-Get",
+                          font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
     
     user_name     = Label(frame, text = "Name").place(x=80, y=200)  
     user_email    = Label(frame, text = "Email ID").place(x=80, y=270)  
@@ -125,15 +127,15 @@ if __name__ == '__main__':
     login_button  = Button(window, 
                            text = "LOGIN",
                            height = 3, width = 30,
-                           command = login_page).place(x=118, y=200)
+                           command = login_page).place(x=118, y=250)
 
     no_acc        = Label(window,
                           text = "Don't have an account?", 
-                          font = ("Arial", 10)).place(x=157, y=300)
+                          font = ("Arial", 10)).place(x=157, y=350)
 
     signUP_button = Button(window, 
                            text = "SIGN UP",
                            height = 3, width = 30,
-                           command = signup_page).place(x=118, y=330)
+                           command = signup_page).place(x=118, y=380)
 
     window.mainloop()
