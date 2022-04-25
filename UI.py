@@ -1,5 +1,5 @@
 from tkinter import *
-import mysql.connector as myConnector
+#import mysql.connector as myConnector
 
 #myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
 #myCursor   = myDataBase.cursor()
