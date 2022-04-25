@@ -4,7 +4,7 @@ import csv
 import random 
 
 
-myDataBase = myConnector.connect(host="localhost",user="prerak",passwd="prerak",database="buynget")
+myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
 myCursor = myDataBase.cursor()
 myCursor.execute("use buynget")
 
