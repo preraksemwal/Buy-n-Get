@@ -10,8 +10,6 @@ myCursor.execute("use buynget")
 
 
 def insert_into_accounts():
-    username_input = Entry(login_frame, width=30).place(x = 150,y = 250)  
-    password_input = Entry(login_frame, width=30).place(x=150, y=320) 
     try:
         print(username_input.get())
         print(password_input.get())
@@ -59,61 +57,74 @@ def category():
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def details_page():
     
-    frame                  = Frame(window, width=450, height=600)
-    Title                  = Label(frame, text= "Enter Details",
-                                          font=("Arial",15, "bold")).place(x=155, y=40)
+    details_frame          = Frame(window, width=450, height=600)
+    Title                  = Label(details_frame, text= "Enter Details",
+                                          font=("Arial",15, "bold")).place(x=155, y=36)
 
-
-    gender                 = Label(frame, text="Gender").place(x=60, y=110)  
-    Phone                  = Label(frame, text="Phone No.").place(x=60, y=180)  
-    Street_no              = Label(frame, text="Street No.").place(x=60, y=250)
-    Street_name            = Label(frame, text="Street Name").place(x=60, y=320)
-    Pincode                = Label(frame, text="Pincode").place(x=60, y=390)
-    country                = Label(frame, text="Country").place(x=60, y=530)
-    state                  = Label(frame, text="State").place(x=60, y=460)
-
-    gender_input_area      = Entry(frame, width=30).place(x=200, y=110)
-    phone_input_area       = Entry(frame, width=30).place(x=200, y=180)
-    Street_no_input_area   = Entry(frame, width=30).place(x=200, y=250)
-    Street_name_input_area = Entry(frame, width=30).place(x=200, y=320)
-    pincode_input_area     = Entry(frame, width=30).place(x=200, y=390)    
-    state_input_area       = Entry(frame, width=30).place(x=200, y=460)
-    country_input_area     = Entry(frame, width=30).place(x=200, y=530)
-
-    back_button            = Button(frame, text="Back",height= 1, width=8,command=frame.pack_forget).place(x=10,y=30)
+    name              = Label(details_frame, text="Name").place(x=60, y=90)
+    age               = Label(details_frame, text = "Age").place(x=60, y=130) 
+    gender            = Label(details_frame, text="Gender").place(x=60, y=170)  
+    phone             = Label(details_frame, text="Phone No.").place(x=60, y=210)  
+    country           = Label(details_frame, text="Country").place(x=60, y=250)
+    state             = Label(details_frame, text="State").place(x=60, y=290)
+    street_name       = Label(details_frame, text="Street Name").place(x=60, y=330)
+    street_no         = Label(details_frame, text="Street No.").place(x=60, y=370)
+    pincode           = Label(details_frame, text="Pincode").place(x=60, y=410)
     
-    frame.pack()
+
+
+    name_input        = Entry(details_frame,width = 30).place(x=200, y=90)
+    user_age          = Entry(details_frame, width=30).place(x=200, y=130) 
+    gender_input      = Entry(details_frame, width=30).place(x=200, y=170)
+    phone_input       = Entry(details_frame, width=30).place(x=200, y=210)
+    state_input       = Entry(details_frame, width=30).place(x=200, y=250)
+    country_input     = Entry(details_frame, width=30).place(x=200, y=290)
+    street_name_input = Entry(details_frame, width=30).place(x=200, y=330)
+    street_no_input   = Entry(details_frame, width=30).place(x=200, y=370)
+    pincode_input     = Entry(details_frame, width=30).place(x=200, y=410)    
+    
+
+    back_button       = Button(details_frame, 
+                               text="Back",
+                               height= 1, 
+                               width=8,
+                               command=details_frame.pack_forget).place(x=10,y=30)
+
+    submit            = Button(details_frame,
+                               text="Sign Up !",
+                               command=lambda:[login_page(),details_frame.pack_forget()]).place(x=200,y=540)
+    
+    details_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def signup_page():
      
-    frame         = Frame(window, width = 450, height = 600)
-    Title         = Label(frame,
+    signup_frame  = Frame(window, width = 450, height = 600)
+    Title         = Label(signup_frame,
                           text = "Buy-n-Get",
                           font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
     
-    user_name     = Label(frame, text = "Name").place(x=80, y=200)  
-    user_email    = Label(frame, text = "Email ID").place(x=80, y=270)  
-    user_password = Label(frame, text = " New Password").place(x=80, y=340)
-    age           = Label(frame, text = "Age").place(x = 80,y = 410) 
+    user_name     = Label(signup_frame, text = "Name").place(x=80, y=200)  
+    user_email    = Label(signup_frame, text = "Email ID").place(x=80, y=270)  
+    user_password = Label(signup_frame, text = " New Password").place(x=80, y=340)
     
-    next_button   = Button(frame,
+    user_name_input_area     = Entry(signup_frame, width=30).place(x=200, y=200)  
+    user_email_input_area    = Entry(signup_frame, width=30).place(x=200, y=270) 
+    user_password_input_area = Entry(signup_frame, width=30).place(x=200, y=340)
+    
+    next_button   = Button(signup_frame,
                            text = "Next",
                            height= 1,
                            width=8, 
-                           command = lambda:[details_page(),frame.pack_forget()]).place(x = 200, y = 470)
+                           command = lambda:[details_page(),signup_frame.pack_forget()]).place(x = 200, y = 470)
 
-    back_button   = Button(frame, 
+    back_button   = Button(signup_frame, 
                            text ="Back", 
                            height=1, 
                            width=8, 
-                           command = frame.pack_forget).place(x=10, y=10)
+                           command = signup_frame.pack_forget).place(x=10, y=10)
+
     
-    user_name_input_area     = Entry(frame, width=30).place(x=200, y=200)  
-    user_email_input_area    = Entry(frame, width=30).place(x=200, y=270) 
-    user_password_input_area = Entry(frame, width=30).place(x=200, y=340)
-    user_age                 = Entry(frame, width=30).place(x=200, y=410) 
-    
-    frame.pack()    
+    signup_frame.pack()    
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def login_page():
     login_frame   = Frame(window, width=450, height=600)
@@ -123,12 +134,13 @@ def login_page():
                           font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
     
     acc           = Label(login_frame,
-                          text = "MY ACCOUNT",
-                          font = ("Arial",15, "bold")).place(x=160, y=180)
+                          text = "Login",
+                          font = ("Arial",25, "bold")).place(x=170, y=150)
     
     username       = Label(login_frame, text = "Username").place(x=80, y=250)  
     password       = Label(login_frame, text = "Password").place(x=80, y=320)  
-        
+    username_input = Entry(login_frame, width=30).place(x = 150,y = 250)  
+    password_input = Entry(login_frame, width=30).place(x=150, y=320)     
 
     submit_button  = Button(login_frame, 
                             text = "Submit",
