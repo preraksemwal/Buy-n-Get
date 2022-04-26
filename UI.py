@@ -12,15 +12,14 @@ def login():
     username = variables[0].get()
     password = variables[1].get()
 
-    myCursor.execute("select * from accounts where username = '{}'".format(username))
+    myCursor.execute("select * from accounts where username = '{}' and password = '{}'".format(username, password))
     count = myCursor.fetchall()
 
     try:
-        count = count[0]
-        if count[0] == username and count[2] == (password):
-            MessageBox.showinfo( "Logged In", "Welcome " + username + " !")
-            variables[2].pack_forget()
-            category()
+        count = count[0]    
+        MessageBox.showinfo( "Logged In", "Welcome " + username + " !")
+        variables[2].pack_forget()
+        category()
     except:
         variables[0].set("")
         variables[1].set("")
@@ -103,12 +102,26 @@ def seller_page():
     frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def category():
-    frame         = Frame(window, width = 450, height=600)
-    Title         = Label(frame, text = "Sign in as...", font=("Vrinda",20, "italic")).place(x=160,y=120)
-    back_button   = Button(frame, text = "Back", height=1, width=8, command=frame.pack_forget).place(x=10,y=30)
-    seller_button = Button(frame, text = "SELLER", height=3, width=30).place(x=120,y=250)
-    buyer_button  = Button(frame, text = "BUYER", height=3, width=30).place(x=120,y=350)
-    frame.pack()
+    category_frame         = Frame(window, width = 450, height=600)
+    Title         = Label(category_frame, text = "Sign in as...", font=("Vrinda",20, "italic")).place(x=160,y=120)
+    back_button   = Button(category_frame,
+                           text = "Back", 
+                           height=1, 
+                           width=8, 
+                           command=category_frame.pack_forget).place(x=10,y=30)
+
+    buyer_button  = Button(category_frame,
+                           text = "BUYER",
+                           height=3, 
+                           width=30,
+                           command=lambda:[buyer_page(),category_frame.pack_forget()]).place(x=120, y=250)
+
+    seller_button = Button(category_frame, 
+                           text = "SELLER",
+                           height=3, 
+                           width=30,
+                           command=lambda:[seller_page(),category_frame.pack_forget()]).place(x=120, y=350)
+    category_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def details_page():
     
