@@ -2,12 +2,12 @@ from tkinter import *
 import mysql.connector as myConnector
 import tkinter.messagebox as MessageBox
 
-
 myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
 myCursor   = myDataBase.cursor()
 myCursor.execute("use buynget")
 
 #################################################################################################################################################
+
 def login():
     username = variables[0].get()
     password = variables[1].get()
@@ -50,10 +50,7 @@ def sign_up():
         Cid         = myCursor.fetchall()
         Cid         = Cid[0][0]
         myCursor.execute("insert into customers(customer_id, customer_name, age, gender, phone_no, country, state, street_name, street_no, pincode) values({}, '{}', {}, '{}', '{}', '{}', '{}', '{}', {}, '{}')".format(Cid, sign_up_data[3], sign_up_data[4], sign_up_data[5], sign_up_data[6], sign_up_data[7], sign_up_data[8], sign_up_data[9], sign_up_data[10], sign_up_data[11]))
-        myDataBase.commit() 
-
-        
-        
+        myDataBase.commit()     
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def store_account_credentials():
     username = variables[3].get()
@@ -62,9 +59,7 @@ def store_account_credentials():
 
     sign_up_data.append(username)
     sign_up_data.append(email)
-    sign_up_data.append(password)
-
-    
+    sign_up_data.append(password)  
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def store_customer_credentials():
     name        = variables[6].get()
@@ -86,7 +81,6 @@ def store_customer_credentials():
     sign_up_data.append(street_name)
     sign_up_data.append(street_no)
     sign_up_data.append(pincode)
-
     
 #################################################################################################################################################
 
