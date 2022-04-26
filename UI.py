@@ -14,7 +14,7 @@ def login():
 
     myCursor.execute("select * from accounts where username = '{}'".format(username))
     count = myCursor.fetchall()
-    count = count[0][0]
+    count = count[0]
 
     try:
         if count[0] == username and count[2] == (password):
@@ -205,7 +205,7 @@ def login_page():
     
     variables[2]   = login_frame
     submit_button  = Button(login_frame, 
-                            text = "Submit",
+                            text = "Done",
                             height = 1, 
                             width = 8,
                             # command = lambda:[insert_into_accounts(), login_frame.pack_forget(), category()]).place(x=200, y=380)
@@ -229,45 +229,37 @@ if __name__ == '__main__':
                           text = "Buy-n-Get     ",
                           font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)
 
+
+    variables = []
     # 0 : username input (login page)
     # 1 : password input (login page)
-    # 2 : login frame   (login page)
-
-    # 3 : name input    (signup page)
-    # 4 : email input   (signup page)
-    # 5 : password input  (signup page)
-
-    # 6  :  name input    (details page)
-    # 7  :  age input     (details page)
-    # 8  :  gender input    (details page)
-    # 9 :  phone input      (details page)
-    # 10 :  country input     (details page)
-    # 11 :  state input       (details page)
-    # 12 :  street name input   (details page)
-    # 13 :  street no input   (details page)
-    # 14 :  pincode input     (details page)
-    
-    # 15 : seller item id  (seller page)
-    # 16 : seller quantity input  (seller page)
-    variables = []
-
-    login_username_input = StringVar();  variables.append(login_username_input);
-    login_password_input = StringVar();  variables.append(login_password_input);
+    # 2 : login frame    (login page)
+    for i in range(0, 2):
+        variables.append(StringVar())
     variables.append(-1)
 
-    signup_name_input    = StringVar();  variables.append(signup_name_input);
-    signup_email_input   = StringVar();  variables.append(signup_email_input);
-    signup_password_input = StringVar();  variables.append(signup_password_input);
+    # 3 : name input      (signup page)
+    # 4 : email input     (signup page)
+    # 5 : password input  (signup page)
+    for i in range(3, 6):
+        variables.append(StringVar())
 
-    details_name_input           = StringVar();    variables.append(details_name_input);
-    details_age_input            = StringVar();       variables.append(details_age_input);
-    details_gender_input         = StringVar();    variables.append(details_gender_input);
-    details_phone_input          = StringVar();    variables.append(details_phone_input);
-    details_country_input        = StringVar();    variables.append(details_country_input);
-    details_state_input          = StringVar();    variables.append(details_state_input);
-    details_streetname_input     = StringVar();    variables.append(details_streetname_input);
-    details_streetno_input       = StringVar();       variables.append(details_streetno_input);
-    details_pincode_input        = StringVar();    variables.append(details_pincode_input);
+    # 6  :  name input        (details page)
+    # 7  :  age input         (details page)
+    # 8  :  gender input      (details page)
+    # 9  :  phone input       (details page)
+    # 10 :  country input     (details page)
+    # 11 :  state input       (details page)
+    # 12 :  street name input (details page)
+    # 13 :  street no input   (details page)
+    # 14 :  pincode input     (details page)
+    for i in range(6, 15):
+        variables.append(StringVar())
+
+    # 15 : seller item id         (seller page)
+    # 16 : seller quantity input  (seller page)
+    for i in range(15, 17):
+        variables.append(StringVar())
 
     sign_up_data = []
 
