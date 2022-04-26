@@ -7,24 +7,28 @@ myCursor.execute("use buynget")
 
 #################################################################################################################################################
 
+def login():
+    username = variables[0].get()
+    password = variables[1].get()
 
-
-def insert_into_accounts():
-    
-    # username, password
+    print(username)
+    print(password)
 
     myCursor.execute("select count(*) from accounts where username = '{}'".format(username))
-    count = myCursor.fetchone()
-    count = count[0]
-    if count == 1:
-        print("Welcome", username, "!")
-    else:
-        print("Invalid Credentials")
-    
+    # count = myCursor.fetchone()
+    # count = count[0]
+    # if count == 1:
+    #     print("Welcome", username, "!")
+    # else:
+    #     print("Invalid Credentials")
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+def insert_into_accounts():
+    pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def insert_into_customers(info):
     pass
-    myCursor.execute("insert into accounts(username, email, password) values('{}', '{}', '{}')".format(username, email, password))
+    # myCursor.execute("insert into accounts(username, email, password) values('{}', '{}', '{}')".format(username, email, password))
 
 #################################################################################################################################################
 
@@ -138,16 +142,17 @@ def login_page():
     
     username       = Label(login_frame, text = "Username").place(x=80, y=250)  
     password       = Label(login_frame, text = "Password").place(x=80, y=320)  
-    username_input = Entry(login_frame, width=30).place(x = 150,y = 250)  
-    password_input = Entry(login_frame, width=30).place(x=150, y=320)     
+    username_input = Entry(login_frame, textvariable = variables[0], width=30).place(x = 150,y = 250)  
+    password_input = Entry(login_frame, textvariable = variables[1], width=30).place(x=150, y=320)     
 
     submit_button  = Button(login_frame, 
                             text = "Submit",
                             height = 1, 
                             width = 8,
-                            command = lambda:[insert_into_accounts(), login_frame.pack_forget(), category()]).place(x=200, y=380)
+                            # command = lambda:[insert_into_accounts(), login_frame.pack_forget(), category()]).place(x=200, y=380)
+                            command = login).place(x=200, y=380)
     
-    back_button    = Button(login_frame,
+    back_button   = Button(login_frame,
                             text = "Back",
                             height= 1, width=8,
                             command = login_frame.pack_forget).place(x=10, y=10) 
@@ -164,6 +169,14 @@ if __name__ == '__main__':
     Title         = Label(window,
                           text = "Buy-n-Get     ",
                           font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)
+
+    # 0 : username input (login page)
+    # 1 : password input (login page)
+    variables = []
+
+    login_username_input = StringVar();  variables.append(login_username_input);
+    login_password_input = StringVar();  variables.append(login_password_input);
+
 
     login_button  = Button(window, 
                            text = "LOGIN",
