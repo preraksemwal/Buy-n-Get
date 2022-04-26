@@ -49,7 +49,7 @@ def sign_up():
         myCursor.execute("select count(*) from accounts")
         Cid         = myCursor.fetchall()
         Cid         = Cid[0][0]
-        myCursor.execute("insert into customers(customer_id, name, age, gender, phone_no, country, state, street_name, street_no, pincode) values('{}', {}, '{}', '{}', '{}', '{}', '{}', {}, '{}')".format(Cid, sign_up_data[3], sign_up_data[4], sign_up_data[5], sign_up_data[6], sign_up_data[7], sign_up_data[8], sign_up_data[9], sign_up_data[10], sign_up_data[11]))
+        myCursor.execute("insert into customers(customer_id, customer_name, age, gender, phone_no, country, state, street_name, street_no, pincode) values({}, '{}', {}, '{}', '{}', '{}', '{}', '{}', {}, '{}')".format(Cid, sign_up_data[3], sign_up_data[4], sign_up_data[5], sign_up_data[6], sign_up_data[7], sign_up_data[8], sign_up_data[9], sign_up_data[10], sign_up_data[11]))
         myDataBase.commit() 
 
         
