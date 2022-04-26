@@ -93,8 +93,21 @@ def add_for_sell():
     for x in allowed_items:
         temp.append(x[0])
     allowed_items = temp
+    if item_id not in allowed_items:
+        verdict = MessageBox.askquestion("Alert", "Trying to sell something new ! Want to add this item to your preference ?")
+        if(verdict == "yes"):
+            myCursor.execute("insert into sells values ({}, {})".format(USER_ID, item_id))
+            myDataBase.commit()
 
-    pass
+            add = []
+            add.append(item_id)
+            add.append(quantity)
+            variables[17].append(add)    
+    else:
+        add = []
+        add.append(item_id)
+        add.append(quantity)
+        variables[17].append(add)
 
     variables[15].set("")
     variables[16].set("")
