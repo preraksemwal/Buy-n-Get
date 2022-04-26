@@ -34,7 +34,7 @@ def insert_into_accounts():
 
     myCursor.execute("select count(*) from accounts where username = '{}'".format(username)) 
     count1 = myCursor.fetchone()
-    myCursor.execute("select count(*) from accounts where username = '{}'".format(email)) 
+    myCursor.execute("select count(*) from accounts where email = '{}'".format(email)) 
     count2 = myCursor.fetchone()
     if count1[0] == 1 or count2[0] == 1:
         if count1[0] == 1:
@@ -43,6 +43,7 @@ def insert_into_accounts():
         else:
             MessageBox.showinfo( "Alert", "Email already taken !")
             variables[4].set("")
+
     else:
         myCursor.execute("insert into accounts (username, email, password) values ('{}', '{}', '{}')".format(username, email, password))
         myDataBase.commit()
