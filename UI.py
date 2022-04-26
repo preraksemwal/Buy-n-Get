@@ -204,6 +204,20 @@ if __name__ == '__main__':
     # 4 : email input   (signup page)
     # 5 : password input  (signup page)
     # 6 : signup frame   (signup page)
+
+    # 7  :  name input    (details page)
+    # 8  :  age input     (details page)
+    # 9  :  gender input    (details page)
+    # 10 :  phone input      (details page)
+    # 11 :  country input     (details page)
+    # 12 :  state input       (details page)
+    # 13 :  street name input   (details page)
+    # 14 :  street no input   (details page)
+    # 15 :  pincode input     (details page)
+    # 16 : details frame   (details page)
+    
+    # 17 : seller item id  (seller page)
+    # 18 : seller quantity input  (seller page)
     variables = []
 
     login_username_input = StringVar();  variables.append(login_username_input);
