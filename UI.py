@@ -25,14 +25,10 @@ def login():
         variables[1].set("")
         MessageBox.showinfo( "Alert", "Invalid Credentials")
 #-------------------------------------------------------------------------------------------------------------------------------------------------
-def insert_into_accounts():
-    username = variables[3].get()
-    email    = variables[4].get()
-    password = variables[5].get()
-
-    myCursor.execute("select count(*) from accounts where username = '{}'".format(username)) 
+def sign_up():
+    myCursor.execute("select count(*) from accounts where username = '{}'".format(sign_up_data[0])) 
     count1 = myCursor.fetchone()
-    myCursor.execute("select count(*) from accounts where email = '{}'".format(email)) 
+    myCursor.execute("select count(*) from accounts where email = '{}'".format(sign_up_data[1])) 
     count2 = myCursor.fetchone()
     if count1[0] == 1 or count2[0] == 1:
         if count1[0] == 1:
@@ -43,30 +39,55 @@ def insert_into_accounts():
             variables[4].set("")
 
     else:
-        myCursor.execute("insert into accounts (username, email, password) values ('{}', '{}', '{}')".format(username, email, password))
+        myCursor.execute("insert into accounts (username, email, password) values ('{}', '{}', '{}')".format(sign_up_data[0], sign_up_data[1], sign_up_data[2]))
         myDataBase.commit()
-        variables[6].pack_forget()
-        details_page()
+
+        
+        myCursor.execute("select count(*) from accounts")
+        myDataBase.commit()
+        Cid         = myCursor.fetchone()
+        print(Cid)
+        Cid         = Cid[0]
+        print(Cid)
+        myCursor.execute("insert into customers(customer_id, name, age, gender, phone_no, country, state, street_name, street_no, pincode) values('{}', {}, '{}', '{}', '{}', '{}', '{}', {}, '{}')".format(Cid, sign_up_data[3], sign_up_data[4], sign_up_data[5], sign_up_data[6], sign_up_data[7], sign_up_data[8], sign_up_data[9], sign_up_data[10], sign_up_data[11]))
+        myDataBase.commit() 
+
+        
+        
 #-------------------------------------------------------------------------------------------------------------------------------------------------
-def insert_into_customers(info):
-    name        = variables[7]
-    age         = variables[8] 
-    gender      = variables[9] 
-    phone_no    = variables[10] 
-    country     = variables[11] 
-    state       = variables[12] 
-    street_name = variables[13] 
-    street_no   = variables[14] 
-    pincode     = variables[15] 
-    myCursor.execute("select count(*) from accounts")
-    myDataBase.commit()
-    Cid         = myCursor.fetchone()
-    Cid         = Cid[0]
-    print(Cid)
-    myCursor.execute("insert into customers(customer_id, name, age, gender, phone_no, country, state, street_name, street_no, pincode) values('{}', {}, '{}', '{}', '{}', '{}', '{}', {}, '{}')".format(Cid, name, age, gender, phone_no, country, state, street_name, street_no, pincode))
-    myDataBase.commit()
-    variables[16].pack_forget()
-    login_page()
+def store_account_credentials():
+    username = variables[3].get()
+    email    = variables[4].get()
+    password = variables[5].get()
+
+    sign_up_data.append(username)
+    sign_up_data.append(email)
+    sign_up_data.append(password)
+
+    
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+def store_customer_credentials():
+    name        = variables[6].get()
+    age         = int(variables[7].get())
+    gender      = variables[8].get()
+    phone_no    = variables[9].get()
+    country     = variables[10].get()
+    state       = variables[11].get()
+    street_name = variables[12].get()
+    street_no   = int(variables[13].get())
+    pincode     = variables[14].get()
+
+    sign_up_data.append(name)
+    sign_up_data.append(age)
+    sign_up_data.append(gender)
+    sign_up_data.append(phone_no)
+    sign_up_data.append(country)
+    sign_up_data.append(state)
+    sign_up_data.append(street_name)
+    sign_up_data.append(street_no)
+    sign_up_data.append(pincode)
+
+    
 #################################################################################################################################################
 
 def seller_page():
@@ -113,31 +134,30 @@ def details_page():
     
 
 
-    name_input        = Entry(details_frame, textvariable = variables[7], width=30).place(x=200, y=90)
-    age_input         = Entry(details_frame, textvariable = variables[8], width=30).place(x=200, y=130) 
-    gender_input      = Entry(details_frame, textvariable = variables[9], width=30).place(x=200, y=170)
-    phone_input       = Entry(details_frame, textvariable = variables[10], width=30).place(x=200, y=210)
-    state_input       = Entry(details_frame, textvariable = variables[11], width=30).place(x=200, y=250)
-    country_input     = Entry(details_frame, textvariable = variables[12], width=30).place(x=200, y=290)
-    street_name_input = Entry(details_frame, textvariable = variables[13], width=30).place(x=200, y=330)
-    street_no_input   = Entry(details_frame, textvariable = variables[14], width=30).place(x=200, y=370)
-    pincode_input     = Entry(details_frame, textvariable = variables[15], width=30).place(x=200, y=410)    
+    name_input        = Entry(details_frame, textvariable = variables[6], width=30).place(x=200, y=90)
+    age_input         = Entry(details_frame, textvariable = variables[7], width=30).place(x=200, y=130) 
+    gender_input      = Entry(details_frame, textvariable = variables[8], width=30).place(x=200, y=170)
+    phone_input       = Entry(details_frame, textvariable = variables[9], width=30).place(x=200, y=210)
+    state_input       = Entry(details_frame, textvariable = variables[10], width=30).place(x=200, y=250)
+    country_input     = Entry(details_frame, textvariable = variables[11], width=30).place(x=200, y=290)
+    street_name_input = Entry(details_frame, textvariable = variables[12], width=30).place(x=200, y=330)
+    street_no_input   = Entry(details_frame, textvariable = variables[13], width=30).place(x=200, y=370)
+    pincode_input     = Entry(details_frame, textvariable = variables[14], width=30).place(x=200, y=410)    
     
-    variables[16]     = details_frame
     back_button       = Button(details_frame, 
                                text="Back",
                                height= 1, 
                                width=8,
-                               command=insert_into_customers).place(x=10,y=30)
+                               command=lambda:[details_frame.pack_forget(), signup_page()]).place(x=10,y=30)
 
     submit            = Button(details_frame,
                                text="Sign Up !",
-                               command=lambda:[login_page(),details_frame.pack_forget()]).place(x=200,y=540)
+                               command=lambda:[store_customer_credentials(), sign_up(), details_frame.pack_forget(), login_page()]).place(x=200,y=540)
     
     details_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def signup_page():
-     
+    sign_up_data.clear()
     signup_frame  = Frame(window, width = 450, height = 600)
     Title         = Label(signup_frame,
                           text = "Buy-n-Get",
@@ -151,13 +171,12 @@ def signup_page():
     user_email_input_area    = Entry(signup_frame, textvariable = variables[4], width=30).place(x=200, y=270) 
     user_password_input_area = Entry(signup_frame, textvariable = variables[5], width=30).place(x=200, y=340)
     
-    variables[6] = signup_frame
     next_button   = Button(signup_frame,
                            text = "Next",
                            height= 1,
                            width=8, 
-                           # command = lambda:[details_page(),signup_frame.pack_forget()]).place(x = 200, y = 470)
-                           command = insert_into_accounts).place(x = 200, y = 470)
+                           command = lambda:[store_account_credentials(), signup_frame.pack_forget(), details_page()]).place(x = 200, y = 470)
+                    
 
     back_button   = Button(signup_frame, 
                            text ="Back", 
@@ -217,21 +236,19 @@ if __name__ == '__main__':
     # 3 : name input    (signup page)
     # 4 : email input   (signup page)
     # 5 : password input  (signup page)
-    # 6 : signup frame   (signup page)
 
-    # 7  :  name input    (details page)
-    # 8  :  age input     (details page)
-    # 9  :  gender input    (details page)
-    # 10 :  phone input      (details page)
-    # 11 :  country input     (details page)
-    # 12 :  state input       (details page)
-    # 13 :  street name input   (details page)
-    # 14 :  street no input   (details page)
-    # 15 :  pincode input     (details page)
-    # 16 : details frame   (details page)
+    # 6  :  name input    (details page)
+    # 7  :  age input     (details page)
+    # 8  :  gender input    (details page)
+    # 9 :  phone input      (details page)
+    # 10 :  country input     (details page)
+    # 11 :  state input       (details page)
+    # 12 :  street name input   (details page)
+    # 13 :  street no input   (details page)
+    # 14 :  pincode input     (details page)
     
-    # 17 : seller item id  (seller page)
-    # 18 : seller quantity input  (seller page)
+    # 15 : seller item id  (seller page)
+    # 16 : seller quantity input  (seller page)
     variables = []
 
     login_username_input = StringVar();  variables.append(login_username_input);
@@ -241,18 +258,18 @@ if __name__ == '__main__':
     signup_name_input    = StringVar();  variables.append(signup_name_input);
     signup_email_input   = StringVar();  variables.append(signup_email_input);
     signup_password_input = StringVar();  variables.append(signup_password_input);
-    variables.append(-1)
 
     details_name_input           = StringVar();    variables.append(details_name_input);
-    details_age_input            = IntVar();       variables.append(details_age_input);
+    details_age_input            = StringVar();       variables.append(details_age_input);
     details_gender_input         = StringVar();    variables.append(details_gender_input);
     details_phone_input          = StringVar();    variables.append(details_phone_input);
     details_country_input        = StringVar();    variables.append(details_country_input);
     details_state_input          = StringVar();    variables.append(details_state_input);
     details_streetname_input     = StringVar();    variables.append(details_streetname_input);
-    details_streetno_input       = IntVar();       variables.append(details_streetno_input);
+    details_streetno_input       = StringVar();       variables.append(details_streetno_input);
     details_pincode_input        = StringVar();    variables.append(details_pincode_input);
-    variables.append(-1);
+
+    sign_up_data = []
 
     login_button  = Button(window, 
                            text = "LOGIN",
