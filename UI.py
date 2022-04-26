@@ -8,8 +8,6 @@ myCursor   = myDataBase.cursor()
 myCursor.execute("use buynget")
 
 #################################################################################################################################################
-
-
 def login():
     username = variables[0].get()
     password = variables[1].get()
@@ -51,9 +49,24 @@ def insert_into_accounts():
         details_page()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def insert_into_customers(info):
-    pass
-    # myCursor.execute("insert into accounts(username, email, password) values('{}', '{}', '{}')".format(username, email, password))
-
+    name        = variables[7]
+    age         = variables[8] 
+    gender      = variables[9] 
+    phone_no    = variables[10] 
+    country     = variables[11] 
+    state       = variables[12] 
+    street_name = variables[13] 
+    street_no   = variables[14] 
+    pincode     = variables[15] 
+    myCursor.execute("select count(*) from accounts")
+    myDataBase.commit()
+    Cid         = myCursor.fetchone()
+    Cid         = Cid[0]
+    print(Cid)
+    myCursor.execute("insert into customers(customer_id, name, age, gender, phone_no, country, state, street_name, street_no, pincode) values('{}', {}, '{}', '{}', '{}', '{}', '{}', {}, '{}')".format(Cid, name, age, gender, phone_no, country, state, street_name, street_no, pincode))
+    myDataBase.commit()
+    variables[16].pack_forget()
+    login_page()
 #################################################################################################################################################
 
 def seller_page():
@@ -100,22 +113,22 @@ def details_page():
     
 
 
-    name_input        = Entry(details_frame, width=30).place(x=200, y=90)
-    user_age          = Entry(details_frame, width=30).place(x=200, y=130) 
-    gender_input      = Entry(details_frame, width=30).place(x=200, y=170)
-    phone_input       = Entry(details_frame, width=30).place(x=200, y=210)
-    state_input       = Entry(details_frame, width=30).place(x=200, y=250)
-    country_input     = Entry(details_frame, width=30).place(x=200, y=290)
-    street_name_input = Entry(details_frame, width=30).place(x=200, y=330)
-    street_no_input   = Entry(details_frame, width=30).place(x=200, y=370)
-    pincode_input     = Entry(details_frame, width=30).place(x=200, y=410)    
+    name_input        = Entry(details_frame, textvariable = variables[7], width=30).place(x=200, y=90)
+    age_input         = Entry(details_frame, textvariable = variables[8], width=30).place(x=200, y=130) 
+    gender_input      = Entry(details_frame, textvariable = variables[9], width=30).place(x=200, y=170)
+    phone_input       = Entry(details_frame, textvariable = variables[10], width=30).place(x=200, y=210)
+    state_input       = Entry(details_frame, textvariable = variables[11], width=30).place(x=200, y=250)
+    country_input     = Entry(details_frame, textvariable = variables[12], width=30).place(x=200, y=290)
+    street_name_input = Entry(details_frame, textvariable = variables[13], width=30).place(x=200, y=330)
+    street_no_input   = Entry(details_frame, textvariable = variables[14], width=30).place(x=200, y=370)
+    pincode_input     = Entry(details_frame, textvariable = variables[15], width=30).place(x=200, y=410)    
     
-
+    variables[16]     = details_frame
     back_button       = Button(details_frame, 
                                text="Back",
                                height= 1, 
                                width=8,
-                               command=details_frame.pack_forget).place(x=10,y=30)
+                               command=insert_into_customers).place(x=10,y=30)
 
     submit            = Button(details_frame,
                                text="Sign Up !",
@@ -138,7 +151,7 @@ def signup_page():
     user_email_input_area    = Entry(signup_frame, textvariable = variables[4], width=30).place(x=200, y=270) 
     user_password_input_area = Entry(signup_frame, textvariable = variables[5], width=30).place(x=200, y=340)
     
-    variables.append(signup_frame)
+    variables[6] = signup_frame
     next_button   = Button(signup_frame,
                            text = "Next",
                            height= 1,
@@ -223,12 +236,23 @@ if __name__ == '__main__':
 
     login_username_input = StringVar();  variables.append(login_username_input);
     login_password_input = StringVar();  variables.append(login_password_input);
-    login_frame          = 0          ;  variables.append(login_frame);
+    variables.append(-1)
 
     signup_name_input    = StringVar();  variables.append(signup_name_input);
     signup_email_input   = StringVar();  variables.append(signup_email_input);
     signup_password_input = StringVar();  variables.append(signup_password_input);
+    variables.append(-1)
 
+    details_name_input           = StringVar();    variables.append(details_name_input);
+    details_age_input            = IntVar();       variables.append(details_age_input);
+    details_gender_input         = StringVar();    variables.append(details_gender_input);
+    details_phone_input          = StringVar();    variables.append(details_phone_input);
+    details_country_input        = StringVar();    variables.append(details_country_input);
+    details_state_input          = StringVar();    variables.append(details_state_input);
+    details_streetname_input     = StringVar();    variables.append(details_streetname_input);
+    details_streetno_input       = IntVar();       variables.append(details_streetno_input);
+    details_pincode_input        = StringVar();    variables.append(details_pincode_input);
+    variables.append(-1);
 
     login_button  = Button(window, 
                            text = "LOGIN",
@@ -239,7 +263,7 @@ if __name__ == '__main__':
                           text = "Don't have an account?", 
                           font = ("Arial", 10)).place(x=157, y=350)
 
-    signUP_button = Button(window, 
+    signup_button = Button(window, 
                            text = "SIGN UP",
                            height = 3, width = 30,
                            command = signup_page).place(x=118, y=380)
