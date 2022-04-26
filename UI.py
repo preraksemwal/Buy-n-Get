@@ -18,7 +18,8 @@ def login():
     try:
         count = count[0]
         if count[0] == username and count[2] == (password):
-            print("Welcome", username, "!")
+            MessageBox.showinfo( "Logged In", "Welcome " + username + " !")
+            # print("Welcome", username, "!")
             variables[2].pack_forget()
             category()
     except:
