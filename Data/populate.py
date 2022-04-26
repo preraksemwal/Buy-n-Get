@@ -1,195 +1,95 @@
-from tkinter import *
+
 import mysql.connector as myConnector
+import csv
+import random 
+
 
 myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
-myCursor   = myDataBase.cursor()
+myCursor = myDataBase.cursor()
 myCursor.execute("use buynget")
 
-#################################################################################################################################################
 
-def login():
-    username = variables[0].get()
-    password = variables[1].get()
+# populate accounts
+customer_id = 1
+with open('accounts.csv','r') as csv_file:        
+    csv_reader = csv.reader(csv_file)
 
-    print(username)
-    print(password)
+    next(csv_reader)
 
-    myCursor.execute("select count(*) from accounts where username = '{}'".format(username))
-    # count = myCursor.fetchone()
-    # count = count[0]
-    # if count == 1:
-    #     print("Welcome", username, "!")
-    # else:
-    #     print("Invalid Credentials")
+    for row in csv_reader:
+        query = "insert into accounts values('{}', '{}', '{}', {})".format(row[0], row[1], row[2], customer_id)
+        myCursor.execute(query)
+        myDataBase.commit()
+        customer_id += 1
+        
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-def insert_into_accounts():
-    pass
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-def insert_into_customers(info):
-    pass
-    # myCursor.execute("insert into accounts(username, email, password) values('{}', '{}', '{}')".format(username, email, password))
+# populate customers
+customer_id = 1
+with open('customers.csv','r') as csv_file:      
+    csv_reader = csv.reader(csv_file)
 
-#################################################################################################################################################
+    next(csv_reader)
 
-def seller_page():
-    frame               = Frame(window, width=450, height=600)
-    Title               = Label(frame, text="List Items to\nbe Sold", font=("Vrinda",25, "italic")).place(x=150,y=90)
-    item_id             = Label(frame, text="Item ID").place(x=100,y=230)
-    item_input_area     = Entry(frame, width = 20).place(x=200,y=230)
+    for row in csv_reader:
+        query = "insert into customers values({}, '{}' , {}, '{}', '{}', '{}', '{}', '{}', {}, {})".format(customer_id, row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9])
+        myCursor.execute(query)
+        myDataBase.commit()
+        customer_id += 1
+
+
+# populate sellers
+customer_id = 1
+while customer_id <= 20:
+    myCursor.execute( "insert into sellers values({})".format(customer_id) )
+    myDataBase.commit()
+    temp = random.randint(1,104)
+    myCursor.execute( "insert into sells values({}, {})".format(customer_id, temp) )
+    myDataBase.commit()
+    temp += 1;
+    myCursor.execute( "insert into sells values({}, {})".format(customer_id, 1 + (temp%104) ) )
+    myDataBase.commit()
+    customer_id += 1
+
+
+
+# populate carts first then buyers
+customer_id = 15
+cart_id = 1
+while customer_id <= 950:
+    myCursor.execute( "insert into buyers values({})".format(customer_id))
+    myDataBase.commit()
+    myCursor.execute( "insert into carts values({}, {})".format(cart_id, customer_id))
+    myDataBase.commit()
+    if customer_id % 3 == 0:
+        myCursor.execute( "insert into stores values({}, {}, {})".format(cart_id, random.randint(1,104), 10*random.randint(1,20)))
+        myDataBase.commit()
+    customer_id += 1
+    cart_id += 1
+
+
+
+# populate orders first and then transaction
+order_id = 1
+customer_id = 23
+item_id = 3
+modes = ['NetBanking', 'UPI', 'Credit-Card', 'Debit-Card']
+while order_id <= 49:
     
-    quantity            = Label(frame, text="Quantity").place(x=100,y=300)
-    quantity_input_area = Entry(frame, width = 20).place(x=200,y=300)
-    
-    add_button          = Button(frame, 
-                                 text="ADD",
-                                 height=2,
-                                 width=10, 
-                                 command=lambda:[frame.pack_forget(),seller_page()]).place(x=100,y=380)
-    finish_button       = Button(frame, text="FINISH", height=2, width=10).place(x=280,y=380)
+    myCursor.execute("select selling_price from items where item_id = {}".format(item_id))
+    currPrice = myCursor.fetchone()
+    currQuantity = random.randint(2, 10)
 
-    frame.pack()
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-def category():
-    frame         = Frame(window, width = 450, height=600)
-    Title         = Label(frame, text = "Sign in as...", font=("Vrinda",20, "italic")).place(x=160,y=120)
-    back_button   = Button(frame, text = "Back", height=1, width=8, command=frame.pack_forget).place(x=10,y=30)
-    seller_button = Button(frame, text = "SELLER", height=3, width=30).place(x=120,y=250)
-    buyer_button  = Button(frame, text = "BUYER", height=3, width=30).place(x=120,y=350)
-    frame.pack()
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-def details_page():
-    
-    details_frame          = Frame(window, width=450, height=600)
-    Title                  = Label(details_frame, text= "Enter Details",
-                                          font=("Arial",15, "bold")).place(x=155, y=36)
+    myCursor.execute("insert into orders values({}, {}, current_date(), current_date() + {})".format(order_id, customer_id, 1))
+    myDataBase.commit()
 
-    name              = Label(details_frame, text="Name").place(x=60, y=90)
-    age               = Label(details_frame, text ="Age").place(x=60, y=130) 
-    gender            = Label(details_frame, text="Gender").place(x=60, y=170)  
-    phone             = Label(details_frame, text="Phone No.").place(x=60, y=210)  
-    country           = Label(details_frame, text="Country").place(x=60, y=250)
-    state             = Label(details_frame, text="State").place(x=60, y=290)
-    street_name       = Label(details_frame, text="Street Name").place(x=60, y=330)
-    street_no         = Label(details_frame, text="Street No.").place(x=60, y=370)
-    pincode           = Label(details_frame, text="Pincode").place(x=60, y=410)
-    
+    myCursor.execute("insert into ordered_items values({}, {}, {})".format(order_id, item_id, currQuantity))
+    myDataBase.commit()
+    item_id += 1
+    myCursor.execute("insert into ordered_items values({}, {}, {})".format(order_id, item_id + 1, currQuantity + 5))
+    myDataBase.commit()
 
-
-    name_input        = Entry(details_frame, width=30).place(x=200, y=90)
-    user_age          = Entry(details_frame, width=30).place(x=200, y=130) 
-    gender_input      = Entry(details_frame, width=30).place(x=200, y=170)
-    phone_input       = Entry(details_frame, width=30).place(x=200, y=210)
-    state_input       = Entry(details_frame, width=30).place(x=200, y=250)
-    country_input     = Entry(details_frame, width=30).place(x=200, y=290)
-    street_name_input = Entry(details_frame, width=30).place(x=200, y=330)
-    street_no_input   = Entry(details_frame, width=30).place(x=200, y=370)
-    pincode_input     = Entry(details_frame, width=30).place(x=200, y=410)    
-    
-
-    back_button       = Button(details_frame, 
-                               text="Back",
-                               height= 1, 
-                               width=8,
-                               command=details_frame.pack_forget).place(x=10,y=30)
-
-    submit            = Button(details_frame,
-                               text="Sign Up !",
-                               command=lambda:[login_page(),details_frame.pack_forget()]).place(x=200,y=540)
-    
-    details_frame.pack()
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-def signup_page():
-     
-    signup_frame  = Frame(window, width = 450, height = 600)
-    Title         = Label(signup_frame,
-                          text = "Buy-n-Get",
-                          font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
-    
-    user_name     = Label(signup_frame, text = "Name").place(x=80, y=200)  
-    user_email    = Label(signup_frame, text = "Email ID").place(x=80, y=270)  
-    user_password = Label(signup_frame, text = "New Password").place(x=80, y=340)
-    
-    user_name_input_area     = Entry(signup_frame, width=30).place(x=200, y=200)  
-    user_email_input_area    = Entry(signup_frame, width=30).place(x=200, y=270) 
-    user_password_input_area = Entry(signup_frame, width=30).place(x=200, y=340)
-    
-    next_button   = Button(signup_frame,
-                           text = "Next",
-                           height= 1,
-                           width=8, 
-                           command = lambda:[details_page(),signup_frame.pack_forget()]).place(x = 200, y = 470)
-
-    back_button   = Button(signup_frame, 
-                           text ="Back", 
-                           height=1, 
-                           width=8, 
-                           command = signup_frame.pack_forget).place(x=10, y=10)
-
-    
-    signup_frame.pack()    
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-def login_page():
-    login_frame   = Frame(window, width=450, height=600)
-
-    Title         = Label(login_frame,
-                          text = "Buy-n-Get",
-                          font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
-    
-    acc           = Label(login_frame,
-                          text = "Login",
-                          font = ("Arial",25, "bold")).place(x=170, y=150)
-    
-    username       = Label(login_frame, text = "Username").place(x=80, y=250)  
-    password       = Label(login_frame, text = "Password").place(x=80, y=320)  
-    username_input = Entry(login_frame, textvariable = variables[0], width=30).place(x = 150,y = 250)  
-    password_input = Entry(login_frame, textvariable = variables[1], width=30).place(x=150, y=320)     
-
-    submit_button  = Button(login_frame, 
-                            text = "Submit",
-                            height = 1, 
-                            width = 8,
-                            # command = lambda:[insert_into_accounts(), login_frame.pack_forget(), category()]).place(x=200, y=380)
-                            command = login).place(x=200, y=380)
-    
-    back_button   = Button(login_frame,
-                            text = "Back",
-                            height= 1, width=8,
-                            command = login_frame.pack_forget).place(x=10, y=10) 
-    login_frame.pack()
-    
-
-#################################################################################################################################################
-
-if __name__ == '__main__':
-
-    window = Tk()
-    window.geometry("450x600")
-    window.title("Buy-n-Get")
-    Title         = Label(window,
-                          text = "Buy-n-Get     ",
-                          font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)
-
-    # 0 : username input (login page)
-    # 1 : password input (login page)
-    variables = []
-
-    login_username_input = StringVar();  variables.append(login_username_input);
-    login_password_input = StringVar();  variables.append(login_password_input);
-
-
-    login_button  = Button(window, 
-                           text = "LOGIN",
-                           height = 3, width = 30,
-                           command = login_page).place(x=118, y=250)
-
-    no_acc        = Label(window,
-                          text = "Don't have an account?", 
-                          font = ("Arial", 10)).place(x=157, y=350)
-
-    signUP_button = Button(window, 
-                           text = "SIGN UP",
-                           height = 3, width = 30,
-                           command = signup_page).place(x=118, y=380)
-
-    window.mainloop()
+    myCursor.execute("insert into transactions values({}, {}, '{}', {})".format(order_id, customer_id, modes[random.randint(0,len(modes)-1)], currQuantity * currPrice[0]))
+    myDataBase.commit()
+    customer_id += 3
+    item_id += 1
+    order_id += 1
