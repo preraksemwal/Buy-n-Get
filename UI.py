@@ -13,7 +13,8 @@ def login():
     password = variables[1].get()
 
     myCursor.execute("select * from accounts where username = '{}'".format(username))
-    count = myCursor.fetchone()
+    count = myCursor.fetchall()
+    count = count[0][0]
 
     try:
         if count[0] == username and count[2] == (password):
@@ -27,11 +28,13 @@ def login():
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def sign_up():
     myCursor.execute("select count(*) from accounts where username = '{}'".format(sign_up_data[0])) 
-    count1 = myCursor.fetchone()
+    count1 = myCursor.fetchall()
+    count1 = count1[0][0]
     myCursor.execute("select count(*) from accounts where email = '{}'".format(sign_up_data[1])) 
-    count2 = myCursor.fetchone()
-    if count1[0] == 1 or count2[0] == 1:
-        if count1[0] == 1:
+    count2 = myCursor.fetchall()
+    count2 = count2[0][0]
+    if count1 == 1 or count2 == 1:
+        if count1 == 1:
             MessageBox.showinfo( "Alert", "Username already taken !")
             variables[3].set("")
         else:
@@ -44,11 +47,8 @@ def sign_up():
 
         
         myCursor.execute("select count(*) from accounts")
-        myDataBase.commit()
-        Cid         = myCursor.fetchone()
-        print(Cid)
-        Cid         = Cid[0]
-        print(Cid)
+        Cid         = myCursor.fetchall()
+        Cid         = Cid[0][0]
         myCursor.execute("insert into customers(customer_id, name, age, gender, phone_no, country, state, street_name, street_no, pincode) values('{}', {}, '{}', '{}', '{}', '{}', '{}', {}, '{}')".format(Cid, sign_up_data[3], sign_up_data[4], sign_up_data[5], sign_up_data[6], sign_up_data[7], sign_up_data[8], sign_up_data[9], sign_up_data[10], sign_up_data[11]))
         myDataBase.commit() 
 
