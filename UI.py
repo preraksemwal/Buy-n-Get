@@ -28,7 +28,26 @@ def login():
         MessageBox.showinfo( "Alert", "Invalid Credentials")
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def insert_into_accounts():
-    pass
+    username = variables[3].get()
+    email    = variables[4].get()
+    password = variables[5].get()
+
+    myCursor.execute("select count(*) from accounts where username = '{}'".format(username)) 
+    count1 = myCursor.fetchone()
+    myCursor.execute("select count(*) from accounts where username = '{}'".format(email)) 
+    count2 = myCursor.fetchone()
+    if count1[0] == 1 or count2[0] == 1:
+        if count1[0] == 1:
+            MessageBox.showinfo( "Alert", "Username already taken !")
+            variables[3].set("")
+        else:
+            MessageBox.showinfo( "Alert", "Email already taken !")
+            variables[4].set("")
+    else:
+        myCursor.execute("insert into accounts (username, email, password) values ('{}', '{}', '{}')".format(username, email, password))
+        myDataBase.commit()
+        variables[6].pack_forget()
+        details_page()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def insert_into_customers(info):
     pass
@@ -110,19 +129,21 @@ def signup_page():
                           text = "Buy-n-Get",
                           font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
     
-    user_name     = Label(signup_frame, text = "Name").place(x=80, y=200)  
+    user_name     = Label(signup_frame, text = "Username").place(x=80, y=200)  
     user_email    = Label(signup_frame, text = "Email ID").place(x=80, y=270)  
-    user_password = Label(signup_frame, text = "New Password").place(x=80, y=340)
+    user_password = Label(signup_frame, text = "Password").place(x=80, y=340)
     
-    user_name_input_area     = Entry(signup_frame, width=30).place(x=200, y=200)  
-    user_email_input_area    = Entry(signup_frame, width=30).place(x=200, y=270) 
-    user_password_input_area = Entry(signup_frame, width=30).place(x=200, y=340)
+    user_name_input_area     = Entry(signup_frame, textvariable = variables[3], width=30).place(x=200, y=200)  
+    user_email_input_area    = Entry(signup_frame, textvariable = variables[4], width=30).place(x=200, y=270) 
+    user_password_input_area = Entry(signup_frame, textvariable = variables[5], width=30).place(x=200, y=340)
     
+    variables.append(signup_frame)
     next_button   = Button(signup_frame,
                            text = "Next",
                            height= 1,
                            width=8, 
-                           command = lambda:[details_page(),signup_frame.pack_forget()]).place(x = 200, y = 470)
+                           # command = lambda:[details_page(),signup_frame.pack_forget()]).place(x = 200, y = 470)
+                           command = insert_into_accounts).place(x = 200, y = 470)
 
     back_button   = Button(signup_frame, 
                            text ="Back", 
@@ -177,12 +198,22 @@ if __name__ == '__main__':
 
     # 0 : username input (login page)
     # 1 : password input (login page)
-    # 2 : loging frame   (login page)
+    # 2 : login frame   (login page)
+
+    # 3 : name input    (signup page)
+    # 4 : email input   (signup page)
+    # 5 : password input  (signup page)
+    # 6 : signup frame   (signup page)
     variables = []
 
     login_username_input = StringVar();  variables.append(login_username_input);
     login_password_input = StringVar();  variables.append(login_password_input);
     login_frame          = 0          ;  variables.append(login_frame);
+
+    signup_name_input    = StringVar();  variables.append(signup_name_input);
+    signup_email_input   = StringVar();  variables.append(signup_email_input);
+    signup_password_input = StringVar();  variables.append(signup_password_input);
+
 
     login_button  = Button(window, 
                            text = "LOGIN",
