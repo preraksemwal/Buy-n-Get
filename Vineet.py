@@ -18,3 +18,12 @@ details_state_input          = StringVar();    variable.append(details_state_inp
 details_streetname_input     = StringVar();    variable.append(details_streetname_input);
 details_streetno_input       = IntVar();       variable.append(details_streetno_input);
 details_pincode_input        = StringVar();    variable.append(details_pincode_input);
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+#16 : seller item id input   (seller page)
+#17 : seller quantity input  (seller page)
+     
+seller_itemid_input       = IntVar();  variables.append(seller_itemid_input);
+seller_quantity_input     = IntVar();  variables.append(seller_quantity_input);
