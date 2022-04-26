@@ -9,6 +9,7 @@ myCursor.execute("use buynget")
 
 #################################################################################################################################################
 
+
 def login():
     username = variables[0].get()
     password = variables[1].get()
@@ -19,12 +20,12 @@ def login():
     try:
         if count[0] == username and count[2] == (password):
             print("Welcome", username, "!")
+            variables[2].pack_forget()
+            category()
     except:
         variables[0].set("")
         variables[1].set("")
         MessageBox.showinfo( "Alert", "Invalid Credentials")
-        
-
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def insert_into_accounts():
     pass
@@ -147,7 +148,8 @@ def login_page():
     password       = Label(login_frame, text = "Password").place(x=80, y=320)  
     username_input = Entry(login_frame, textvariable = variables[0], width=30).place(x = 150,y = 250)  
     password_input = Entry(login_frame, textvariable = variables[1], width=30).place(x=150, y=320)     
-
+    
+    variables[2]   = login_frame
     submit_button  = Button(login_frame, 
                             text = "Submit",
                             height = 1, 
@@ -175,11 +177,12 @@ if __name__ == '__main__':
 
     # 0 : username input (login page)
     # 1 : password input (login page)
+    # 2 : loging frame   (login page)
     variables = []
 
     login_username_input = StringVar();  variables.append(login_username_input);
     login_password_input = StringVar();  variables.append(login_password_input);
-
+    login_frame          = 0          ;  variables.append(login_frame);
 
     login_button  = Button(window, 
                            text = "LOGIN",
