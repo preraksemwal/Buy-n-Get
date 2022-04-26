@@ -1,5 +1,7 @@
 from tkinter import *
 import mysql.connector as myConnector
+import tkinter.messagebox as MessageBox
+
 
 myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
 myCursor   = myDataBase.cursor()
@@ -11,16 +13,17 @@ def login():
     username = variables[0].get()
     password = variables[1].get()
 
-    print(username)
-    print(password)
+    myCursor.execute("select * from accounts where username = '{}'".format(username))
+    count = myCursor.fetchone()
 
-    myCursor.execute("select count(*) from accounts where username = '{}'".format(username))
-    # count = myCursor.fetchone()
-    # count = count[0]
-    # if count == 1:
-    #     print("Welcome", username, "!")
-    # else:
-    #     print("Invalid Credentials")
+    try:
+        if count[0] == username and count[2] == (password):
+            print("Welcome", username, "!")
+    except:
+        variables[0].set("")
+        variables[1].set("")
+        MessageBox.showinfo( "Alert", "Invalid Credentials")
+        
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def insert_into_accounts():
