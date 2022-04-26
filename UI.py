@@ -9,6 +9,7 @@ myCursor.execute("use buynget")
 #################################################################################################################################################
 
 def login():
+    global USER_ID
     username = variables[0].get()
     password = variables[1].get()
 
@@ -16,7 +17,8 @@ def login():
     count = myCursor.fetchall()
 
     try:
-        count = count[0]    
+        count   = count[0]
+        USER_ID = count[3]
         MessageBox.showinfo( "Logged In", "Welcome " + username + " !")
         variables[2].pack_forget()
         category()
@@ -82,7 +84,17 @@ def store_customer_credentials():
     sign_up_data.append(pincode)
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def add_for_sell():
+    item_id  = int(variables[15].get())
+    quantity = int(variables[16].get())
 
+    myCursor.execute("select item_id from sells where customer_id = {}".format(USER_ID))
+    allowed_items = myCursor.fetchall()
+    temp = []
+    for x in allowed_items:
+        temp.append(x[0])
+    allowed_items = temp
+
+    pass
 
     variables[15].set("")
     variables[16].set("")
@@ -274,7 +286,7 @@ if __name__ == '__main__':
                           text = "Buy-n-Get     ",
                           font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)
 
-
+    USER_ID = -1
     variables = []
     # 0 : username input (login page)
     # 1 : password input (login page)
