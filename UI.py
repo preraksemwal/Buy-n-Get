@@ -80,6 +80,12 @@ def store_customer_credentials():
     sign_up_data.append(street_name)
     sign_up_data.append(street_no)
     sign_up_data.append(pincode)
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+def add_for_sell():
+
+
+    variables[15].set("")
+    variables[16].set("")
     
 #################################################################################################################################################
 
@@ -110,19 +116,26 @@ def buyer_page():
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
     frame               = Frame(window, width=450, height=600)
-    Title               = Label(frame, text="List Items to\nbe Sold", font=("Vrinda",25, "italic")).place(x=150,y=90)
+    Title               = Label(frame, 
+                                text="List Items to\nbe Sold", 
+                                font=("Vrinda",25, "italic")).place(x=150,y=90)
+
     item_id             = Label(frame, text="Item ID").place(x=100,y=230)
-    item_input_area     = Entry(frame, width = 20).place(x=200,y=230)
-    
     quantity            = Label(frame, text="Quantity").place(x=100,y=300)
-    quantity_input_area = Entry(frame, width = 20).place(x=200,y=300)
+
+    item_input          = Entry(frame, textvariable = variables[15], width = 20).place(x=200,y=230)
+    quantity_input      = Entry(frame, textvariable = variables[16], width = 20).place(x=200,y=300)
     
     add_button          = Button(frame, 
                                  text="ADD",
                                  height=2,
                                  width=10, 
-                                 command=lambda:[frame.pack_forget(),seller_page()]).place(x=100,y=380)
-    finish_button       = Button(frame, text="FINISH", height=2, width=10).place(x=280,y=380)
+                                 command=lambda:[add_for_sell(), frame.pack_forget(), seller_page()]).place(x=100,y=380)
+
+    finish_button       = Button(frame,
+                                 text="FINISH", 
+                                 height=2, 
+                                 width=10).place(x=280,y=380)
 
     frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -288,10 +301,12 @@ if __name__ == '__main__':
     for i in range(6, 15):
         variables.append(StringVar())
 
-    # 15 : seller item id         (seller page)
-    # 16 : seller quantity input  (seller page)
+    # 15 : seller item id             (seller page)
+    # 16 : seller quantity input      (seller page)
+    # 17 : list of "list of id-quantity" which will be added in stock; the seller sells that item id
     for i in range(15, 17):
         variables.append(StringVar())
+    variables.append([])
 
     sign_up_data = []
 
