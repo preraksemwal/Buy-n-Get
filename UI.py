@@ -83,6 +83,31 @@ def store_customer_credentials():
     
 #################################################################################################################################################
 
+def buyer_page():
+    buyer_page_frame    = Frame(window, width=450, height=600)
+    Title               = Label(buyer_page_frame, 
+                                text = "Select Category",
+                                font=("Vrinda",25, "bold")).place(x=100, y=90)
+
+    grocery_button      = Button(buyer_page_frame,
+                                 text = "GROCERY",
+                                 height= 2,
+                                 width = 30,
+                                 command=lambda:[buyer_table(), buyer_page_frame.pack_forget()]).place(x=120, y=190)
+
+    electronics_button  = Button(buyer_page_frame,
+                                 text = "ELECTRONICS",
+                                 height= 2,
+                                 width = 30,
+                                 command=lambda:[buyer_table(), buyer_page_frame.pack_forget()]).place(x=120, y=250)
+
+    daily_care_button   = Button(buyer_page_frame,
+                                 text = "DAILY CARE",
+                                 height= 2,
+                                 width = 30,
+                                 command=lambda:[buyer_table(), buyer_page_frame.pack_forget()]).place(x=120, y=310)
+    buyer_page_frame.pack()
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
     frame               = Frame(window, width=450, height=600)
     Title               = Label(frame, text="List Items to\nbe Sold", font=("Vrinda",25, "italic")).place(x=150,y=90)
