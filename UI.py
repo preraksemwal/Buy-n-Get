@@ -111,9 +111,11 @@ def add_for_sell():
 
     variables[15].set("")
     variables[16].set("")
-    
 #################################################################################################################################################
 
+def payments_page():
+    pass
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
     buyer_page_frame    = Frame(window, width=450, height=600)
     Title               = Label(buyer_page_frame, 
@@ -124,19 +126,19 @@ def buyer_page():
                                  text = "GROCERY",
                                  height= 2,
                                  width = 30,
-                                 command=lambda:[buyer_table(), buyer_page_frame.pack_forget()]).place(x=120, y=190)
+                                 command=lambda:[buyer_table("grocery"), buyer_page_frame.pack_forget()]).place(x=120, y=190)
 
     electronics_button  = Button(buyer_page_frame,
                                  text = "ELECTRONICS",
                                  height= 2,
                                  width = 30,
-                                 command=lambda:[buyer_table(), buyer_page_frame.pack_forget()]).place(x=120, y=250)
+                                 command=lambda:[buyer_table("electronics"), buyer_page_frame.pack_forget()]).place(x=120, y=250)
 
     daily_care_button   = Button(buyer_page_frame,
                                  text = "DAILY CARE",
                                  height= 2,
                                  width = 30,
-                                 command=lambda:[buyer_table(), buyer_page_frame.pack_forget()]).place(x=120, y=310)
+                                 command=lambda:[buyer_table("daily_care"), buyer_page_frame.pack_forget()]).place(x=120, y=310)
     buyer_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
@@ -160,7 +162,8 @@ def seller_page():
     finish_button       = Button(frame,
                                  text="FINISH", 
                                  height=2, 
-                                 width=10).place(x=280,y=380)
+                                 width=10,
+                                 command = payments_page()).place(x=280,y=380)
 
     frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
