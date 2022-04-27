@@ -116,29 +116,61 @@ def add_for_sell():
 
 def payments_page():
     pass
-
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_sells():
-    frame1               = Frame(window, width=450, height=600)
+    seller_sells_frame  = Frame(window, width=450, height=600)
 
-    table = ttk.Treeview(frame1, column=('item_id', 'quantity', 'price'),height=50)
+    table               = ttk.Treeview(seller_sells_frame, column=('item_name', 'quantity', 'price'),height=50)
 
     table.column("#0", width=0)
-    table.column("item_id",anchor=CENTER, width=150)
+    table.column("item_name",anchor=CENTER, width=150)
     table.column("quantity",anchor=CENTER,width=150)
     table.column("price",anchor=CENTER,width=150)
 
 
     table.heading("#0",text="",anchor=CENTER)
-    table.heading("item_id",text="ITEM ID",anchor=CENTER)
+    table.heading("item_name",text="ITEM",anchor=CENTER)
     table.heading("quantity",text="QUANTITY",anchor=CENTER)
     table.heading("price",text="PRICE",anchor=CENTER)
 
-    #table.insert(parent='',index='end',iid=0,text='',values=('1','apple','101'))
-    next_button  = Button(frame1,text= 'NEXT',height= 1,width=10,command=lambda:[payment(),frame1.pack_forget()]).place(x=350,y=550)
-    back_button  = Button(frame1,text= 'BACK',height= 1,width=10,command=lambda:[seller_page(),frame1.pack_forget()]).place(x=20,y=550)
+    list_of_items = {} # item_id :-  name, quantity, overall price
+    TOTAL_PRICE = 0
+    for pair in variables[17]:
+        item_id = pair[0]
+        quantity = pair[1]
+        myCursor.execute("select item_name, selling_price from items where item_id = {}".format(item_id))
+        item       = myCursor.fetchall()
+        item_name  = item[0][0]
+        item_price = item[0][1]
+        res = []
+        res.append(item_name)
+        res.append(quantity)
+        res.append(item_price * quantity)
+        TOTAL_PRICE += item_price * quantity
+        list_of_items[item_id] = res
+
+    for entry in list_of_items.keys():
+        tup = []
+        tup.append(list_of_items[entry][0])
+        tup.append(list_of_items[entry][1])
+        tup.append(list_of_items[entry][2])
+        table.insert(parent='', index='end' , iid=0, text='' , values = tuple(tup))
+
+
+    next_button  = Button(seller_sells_frame, 
+                          text= 'NEXT',
+                          height= 1, 
+                          width=10,
+                          command = lambda:[payment(),seller_sells_frame.pack_forget()]).place(x=350, y=550)
+
+    back_button  = Button(seller_sells_frame,
+                          text= 'BACK', 
+                          height= 1, 
+                          width=10, 
+                          command = lambda:[seller_page(),seller_sells_frame.pack_forget()]).place(x=20, y=550)
     
     table.pack()
-    frame1.pack()
+    seller_sells_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
     buyer_page_frame    = Frame(window, width=450, height=600)
@@ -166,30 +198,30 @@ def buyer_page():
     buyer_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
-    frame               = Frame(window, width=450, height=600)
-    Title               = Label(frame, 
+    seller_page_frame   = Frame(window, width=450, height=600)
+    Title               = Label(seller_page_frame, 
                                 text="List Items to\nbe Sold", 
                                 font=("Vrinda",25, "italic")).place(x=150,y=90)
 
-    item_id             = Label(frame, text="Item ID").place(x=100,y=230)
-    quantity            = Label(frame, text="Quantity").place(x=100,y=300)
+    item_id             = Label(seller_page_frame, text="Item ID").place(x=100,y=230)
+    quantity            = Label(seller_page_frame, text="Quantity").place(x=100,y=300)
 
-    item_input          = Entry(frame, textvariable = variables[15], width = 20).place(x=200,y=230)
-    quantity_input      = Entry(frame, textvariable = variables[16], width = 20).place(x=200,y=300)
+    item_input          = Entry(seller_page_frame, textvariable = variables[15], width = 20).place(x=200,y=230)
+    quantity_input      = Entry(seller_page_frame, textvariable = variables[16], width = 20).place(x=200,y=300)
     
-    add_button          = Button(frame, 
+    add_button          = Button(seller_page_frame, 
                                  text="ADD",
                                  height=2,
                                  width=10, 
-                                 command=lambda:[add_for_sell(), frame.pack_forget(), seller_page()]).place(x=100,y=380)
+                                 command=lambda:[add_for_sell(), seller_page_frame.pack_forget(), seller_page()]).place(x=100,y=380)
 
-    finish_button       = Button(frame,
+    finish_button       = Button(seller_page_frame,
                                  text="FINISH", 
                                  height=2, 
                                  width=10,
-                                 command = seller_sells()).place(x=280,y=380)
+                                 command = lambda:[seller_sells(), seller_page_frame.pack_forget()]).place(x=280,y=380)
 
-    frame.pack()
+    seller_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def category():
     category_frame         = Frame(window, width = 450, height=600)
