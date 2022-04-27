@@ -411,7 +411,6 @@ def login_page():
                             height= 1, width=8,
                             command = login_frame.pack_forget).place(x=10, y=10) 
     login_frame.pack()
-    
 
 #################################################################################################################################################
 
@@ -458,8 +457,8 @@ def initialize_variables():
     for i in range(15, 17):
         variables.append(StringVar())
     variables.append([])
-    variables[18] = -1
-    variables[19] = -1
+    variables.append(-1)
+    variables.append(-1)
 
 if __name__ == '__main__':
 
