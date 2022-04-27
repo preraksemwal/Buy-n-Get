@@ -114,8 +114,30 @@ def add_for_sell():
     variables[16].set("")
 #################################################################################################################################################
 
-def payments_page():
-    pass
+def payments_page(amount):
+    payments_page_frame  = Frame(window, width=450, height=600)
+    Title                = Label(payments_page_frame, 
+                                 text="Payment Portal", 
+                                 font=("Vrinda",15, "bold")).place(x=150, y=20)
+    payments_page_frame.pack()
+    
+    total        = Label(payments_page_frame,
+                         text = "Amount to be credited in your Account:  " + str(amount),
+                         font=("Vrinda",15, "italic")).place(x=39, y=200)
+
+    next_button  = Button(payments_page_frame,
+                          text= 'Proceed',
+                          height=1,
+                          width=10,
+                          command=lambda:[mode(),payments_page_frame.pack_forget()]).place(x=300, y=320)
+
+    back_button  = Button(payments_page_frame,
+                          text= 'BACK',
+                          height= 1,
+                          width=10,
+                          command = lambda:[buyer_table(),payments_page_frame.pack_forget()]).place(x=70, y=320)
+    
+    payments_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_sells():
     seller_sells_frame  = Frame(window, width=450, height=600)
@@ -134,11 +156,11 @@ def seller_sells():
     table.heading("price",text="PRICE",anchor=CENTER)
 
     list_of_items = {} # item_id :-  name, quantity, overall price
-    TOTAL_PRICE = 0
+    TOTAL_AMOUNT = 0
     for pair in variables[17]:
         item_id = pair[0]
         quantity = pair[1]
-        myCursor.execute("select item_name, selling_price from items where item_id = {}".format(item_id))
+        myCursor.execute("select item_name, cost_price from items where item_id = {}".format(item_id))
         item       = myCursor.fetchall()
         item_name  = item[0][0]
         item_price = item[0][1]
@@ -146,22 +168,26 @@ def seller_sells():
         res.append(item_name)
         res.append(quantity)
         res.append(item_price * quantity)
-        TOTAL_PRICE += item_price * quantity
+        TOTAL_AMOUNT += item_price * quantity
         list_of_items[item_id] = res
 
+    iid_ = 0
     for entry in list_of_items.keys():
-        tup = []
+        tup = ()
+        tup = list(tup)
         tup.append(str(list_of_items[entry][0]))
         tup.append(str(list_of_items[entry][1]))
         tup.append(str(list_of_items[entry][2]))
-        table.insert(parent='', index='end' , iid=0, text='' , values = tuple(tup))
+        tup = tuple(tup)
+        table.insert(parent='', index='end' , iid=iid_, text='' , values = tup)
+        iid_ += 1
 
 
     next_button  = Button(seller_sells_frame, 
                           text= 'NEXT',
                           height= 1, 
                           width=10,
-                          command = lambda:[payment(),seller_sells_frame.pack_forget()]).place(x=350, y=550)
+                          command = lambda:[payments_page(TOTAL_AMOUNT),seller_sells_frame.pack_forget()]).place(x=350, y=550)
 
     back_button  = Button(seller_sells_frame,
                           text= 'BACK', 
