@@ -151,9 +151,9 @@ def seller_sells():
 
     for entry in list_of_items.keys():
         tup = []
-        tup.append(list_of_items[entry][0])
-        tup.append(list_of_items[entry][1])
-        tup.append(list_of_items[entry][2])
+        tup.append(str(list_of_items[entry][0]))
+        tup.append(str(list_of_items[entry][1]))
+        tup.append(str(list_of_items[entry][2]))
         table.insert(parent='', index='end' , iid=0, text='' , values = tuple(tup))
 
 
