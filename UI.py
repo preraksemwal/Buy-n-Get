@@ -112,10 +112,12 @@ def add_for_sell():
 
     variables[15].set("")
     variables[16].set("")
+
 #################################################################################################################################################
+
 def successful_payment(mode):
-    if mode == "UPI":
-        asdddddddddddddddddddddddddddddddddddddd
+    variables[19] = mode
+    myCursor.execute("insert into payments (customer_id, mode, amount) values({}, '{}', {})".format(USER_ID, variables[19], variables[18]))
     successful_payment_frame    = Frame(window, width = 450, height = 600)    
     Title                       = Label(successful_payment_frame, 
                                         text="Payment has been successfully\ncredited to your Account via: " + mode, 
@@ -127,7 +129,7 @@ def successful_payment(mode):
                                          command=lambda:[login_page(),successful_payment_frame.pack_forget()]).place(x=200,y=350)
     successful_payment_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
-def payments_page(amount):
+def payments_page():
     payments_page_frame  = Frame(window, width=450, height=600)
     Title                = Label(payments_page_frame, 
                                  text="Payment Portal", 
@@ -135,7 +137,7 @@ def payments_page(amount):
     payments_page_frame.pack()
     
     total        = Label(payments_page_frame,
-                         text = "Amount to be credited in your Account:  " + str(amount),
+                         text = "Amount to be credited in your Account:  " + str(variables[18]),
                          font=("Vrinda",15, "italic")).place(x=32, y=120)
 
     message      = Label(payments_page_frame,
@@ -457,7 +459,6 @@ def initialize_variables():
     variables.append([])
     variables[18] = -1
     variables[19] = -1
-
 
 if __name__ == '__main__':
 
