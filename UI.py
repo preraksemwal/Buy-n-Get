@@ -113,7 +113,18 @@ def add_for_sell():
     variables[15].set("")
     variables[16].set("")
 #################################################################################################################################################
-
+def successful_payment(mode):
+    successful_payment_frame    = Frame(window, width = 450, height = 600)    
+    Title                       = Label(successful_payment_frame, 
+                                        text="Payment has been successfully\ncredited to your Account via: " + mode, 
+                                        font=("Vrinda",15, "bold")).place(x=100,y=80)
+    exit_button                 = Button(successful_payment_frame,
+                                         text= 'Exit',
+                                         height= 1,
+                                         width=10,
+                                         command=lambda:[login_page(),successful_payment_frame.pack_forget()]).place(x=200,y=200)
+    successful_payment_frame.pack()
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def payments_page(amount):
     payments_page_frame  = Frame(window, width=450, height=600)
     Title                = Label(payments_page_frame, 
@@ -123,19 +134,42 @@ def payments_page(amount):
     
     total        = Label(payments_page_frame,
                          text = "Amount to be credited in your Account:  " + str(amount),
-                         font=("Vrinda",15, "italic")).place(x=39, y=200)
+                         font=("Vrinda",15, "italic")).place(x=32, y=120)
 
-    next_button  = Button(payments_page_frame,
-                          text= 'Proceed',
-                          height=1,
-                          width=10,
-                          command=lambda:[mode(),payments_page_frame.pack_forget()]).place(x=300, y=320)
+    message      = Label(payments_page_frame,
+                         text = "Select Mode for Transfer: ",
+                         font=("Vrinda", 12, "italic")).place(x=32, y=160)
+
+
+    UPI          = Button(payments_page_frame, 
+                          text ="UPI",
+                          height= 1,
+                          width=20,
+                          command= lambda:[successful_payment("UPI"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=240)
+
+    net_banking  = Button(payments_page_frame, 
+                          text ="NET BANKING",
+                          height= 1,
+                          width=20,
+                          command= lambda:[successful_payment("Net-Banking"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=290)
+
+    credit_card  = Button(payments_page_frame,
+                          text ="CREDIT CARD",
+                          height= 1,
+                          width=20,
+                          command= lambda:[successful_payment("Credit-Card"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=340)
+
+    debit_card   = Button(payments_page_frame,
+                          text ="DEBIT CARD",
+                          height= 1,
+                          width=20,
+                          command= lambda:[successful_payment("Debit-Card"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=390)
 
     back_button  = Button(payments_page_frame,
                           text= 'BACK',
                           height= 1,
                           width=10,
-                          command = lambda:[buyer_table(),payments_page_frame.pack_forget()]).place(x=70, y=320)
+                          command = lambda:[buyer_table(),payments_page_frame.pack_forget()]).place(x=70, y=500)
     
     payments_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
