@@ -120,6 +120,6 @@ CREATE TABLE transactions(
 	customer_id INT NOT NULL,
 	mode VARCHAR(20) NOT NULL,
 	amount INT NOT NULL,
-	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id) ON DELETE CASCADE,
+	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id) ON DELETE CASCADE
 	#FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE
 );
