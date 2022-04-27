@@ -117,12 +117,12 @@ def successful_payment(mode):
     successful_payment_frame    = Frame(window, width = 450, height = 600)    
     Title                       = Label(successful_payment_frame, 
                                         text="Payment has been successfully\ncredited to your Account via: " + mode, 
-                                        font=("Vrinda",15, "bold")).place(x=100,y=80)
+                                        font=("Vrinda",15, "bold")).place(x=40,y=80)
     exit_button                 = Button(successful_payment_frame,
-                                         text= 'Exit',
+                                         text= 'Logout',
                                          height= 1,
                                          width=10,
-                                         command=lambda:[login_page(),successful_payment_frame.pack_forget()]).place(x=200,y=200)
+                                         command=lambda:[login_page(),successful_payment_frame.pack_forget()]).place(x=200,y=350)
     successful_payment_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def payments_page(amount):
@@ -145,25 +145,25 @@ def payments_page(amount):
                           text ="UPI",
                           height= 1,
                           width=20,
-                          command= lambda:[successful_payment("UPI"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=240)
+                          command= lambda:[successful_payment("UPI"), payments_page_frame.pack_forget()]).place(x=150,y=240)
 
     net_banking  = Button(payments_page_frame, 
                           text ="NET BANKING",
                           height= 1,
                           width=20,
-                          command= lambda:[successful_payment("Net-Banking"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=290)
+                          command= lambda:[successful_payment("Net-Banking"), payments_page_frame.pack_forget()]).place(x=150,y=290)
 
     credit_card  = Button(payments_page_frame,
                           text ="CREDIT CARD",
                           height= 1,
                           width=20,
-                          command= lambda:[successful_payment("Credit-Card"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=340)
+                          command= lambda:[successful_payment("Credit-Card"), payments_page_frame.pack_forget()]).place(x=150,y=340)
 
     debit_card   = Button(payments_page_frame,
                           text ="DEBIT CARD",
                           height= 1,
                           width=20,
-                          command= lambda:[successful_payment("Debit-Card"), payments_page_frame.after(3000,payments_page_frame.pack_forget()),exit()]).place(x=150,y=390)
+                          command= lambda:[successful_payment("Debit-Card"), payments_page_frame.pack_forget()]).place(x=150,y=390)
 
     back_button  = Button(payments_page_frame,
                           text= 'BACK',
@@ -392,6 +392,8 @@ def login_page():
     username_input = Entry(login_frame, textvariable = variables[0], width=30).place(x = 150,y = 250)  
     password_input = Entry(login_frame, textvariable = variables[1], width=30).place(x=150, y=320)     
     
+    variables[0].set("")
+    variables[1].set("")
     variables[2]   = login_frame
     submit_button  = Button(login_frame, 
                             text = "Done",
