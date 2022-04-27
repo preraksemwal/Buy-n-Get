@@ -118,6 +118,7 @@ def add_for_sell():
 def successful_payment(mode):
     variables[19] = mode
     myCursor.execute("insert into payments (customer_id, mode, amount) values({}, '{}', {})".format(USER_ID, variables[19], variables[18]))
+    myDataBase.commit()
     successful_payment_frame    = Frame(window, width = 450, height = 600)    
     Title                       = Label(successful_payment_frame, 
                                         text="Payment has been successfully\ncredited to your Account via: " + mode, 
