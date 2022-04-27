@@ -174,7 +174,7 @@ def payments_page():
                           text= 'BACK',
                           height= 1,
                           width=10,
-                          command = lambda:[buyer_table(),payments_page_frame.pack_forget()]).place(x=70, y=500)
+                          command = lambda:[login_page(),payments_page_frame.pack_forget()]).place(x=70, y=500)
     
     payments_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
