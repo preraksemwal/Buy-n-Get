@@ -114,6 +114,8 @@ def add_for_sell():
     variables[16].set("")
 #################################################################################################################################################
 def successful_payment(mode):
+    if mode == "UPI":
+        asdddddddddddddddddddddddddddddddddddddd
     successful_payment_frame    = Frame(window, width = 450, height = 600)    
     Title                       = Label(successful_payment_frame, 
                                         text="Payment has been successfully\ncredited to your Account via: " + mode, 
@@ -190,7 +192,7 @@ def seller_sells():
     table.heading("price",text="PRICE",anchor=CENTER)
 
     list_of_items = {} # item_id :-  name, quantity, overall price
-    TOTAL_AMOUNT = 0
+    variables[18] = 0
     for pair in variables[17]:
         item_id = pair[0]
         quantity = pair[1]
@@ -202,7 +204,7 @@ def seller_sells():
         res.append(item_name)
         res.append(quantity)
         res.append(item_price * quantity)
-        TOTAL_AMOUNT += item_price * quantity
+        variables[18] += item_price * quantity
         list_of_items[item_id] = res
 
     iid_ = 0
@@ -216,12 +218,11 @@ def seller_sells():
         table.insert(parent='', index='end' , iid=iid_, text='' , values = tup)
         iid_ += 1
 
-
     next_button  = Button(seller_sells_frame, 
                           text= 'NEXT',
                           height= 1, 
                           width=10,
-                          command = lambda:[payments_page(TOTAL_AMOUNT),seller_sells_frame.pack_forget()]).place(x=350, y=550)
+                          command = lambda:[payments_page(),seller_sells_frame.pack_forget()]).place(x=350, y=550)
 
     back_button  = Button(seller_sells_frame,
                           text= 'BACK', 
@@ -377,6 +378,8 @@ def signup_page():
     signup_frame.pack()    
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def login_page():
+    initialize_variables()
+
     login_frame   = Frame(window, width=450, height=600)
 
     Title         = Label(login_frame,
@@ -392,8 +395,6 @@ def login_page():
     username_input = Entry(login_frame, textvariable = variables[0], width=30).place(x = 150,y = 250)  
     password_input = Entry(login_frame, textvariable = variables[1], width=30).place(x=150, y=320)     
     
-    variables[0].set("")
-    variables[1].set("")
     variables[2]   = login_frame
     submit_button  = Button(login_frame, 
                             text = "Done",
@@ -411,17 +412,16 @@ def login_page():
 
 #################################################################################################################################################
 
-if __name__ == '__main__':
-
-    window = Tk()
-    window.geometry("450x600")
-    window.title("Buy-n-Get")
-    Title         = Label(window,
-                          text = "Buy-n-Get     ",
-                          font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)
-
+def initialize_variables():
+    global variables
+    global USER_ID
+    global sign_up_data
     USER_ID = -1
     variables = []
+
+    sign_up_data = []
+    sign_up_data.clear()
+
     # 0 : username input (login page)
     # 1 : password input (login page)
     # 2 : login frame    (login page)
@@ -450,11 +450,29 @@ if __name__ == '__main__':
     # 15 : seller item id             (seller page)
     # 16 : seller quantity input      (seller page)
     # 17 : list of "list of id-quantity" which will be added in stock; the seller sells that item id
+    # 18 : total amount we pay to seller
+    # 19 : mode of payment
     for i in range(15, 17):
         variables.append(StringVar())
     variables.append([])
+    variables[18] = -1
+    variables[19] = -1
 
+
+if __name__ == '__main__':
+
+    window = Tk()
+    window.geometry("450x600")
+    window.title("Buy-n-Get")
+    Title         = Label(window,
+                          text = "Buy-n-Get     ",
+                          font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)    
+
+    USER_ID = -1
+    variables = []
     sign_up_data = []
+
+    initialize_variables()
 
     login_button  = Button(window, 
                            text = "LOGIN",
