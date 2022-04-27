@@ -1,6 +1,7 @@
 from tkinter import *
 import mysql.connector as myConnector
 import tkinter.messagebox as MessageBox
+from tkinter import ttk
 
 myDataBase = myConnector.connect(host="localhost", user="prerak", passwd="prerak", database="buynget")
 myCursor   = myDataBase.cursor()
@@ -115,6 +116,29 @@ def add_for_sell():
 
 def payments_page():
     pass
+
+def seller_sells():
+    frame1               = Frame(window, width=450, height=600)
+
+    table = ttk.Treeview(frame1, column=('item_id', 'quantity', 'price'),height=50)
+
+    table.column("#0", width=0)
+    table.column("item_id",anchor=CENTER, width=150)
+    table.column("quantity",anchor=CENTER,width=150)
+    table.column("price",anchor=CENTER,width=150)
+
+
+    table.heading("#0",text="",anchor=CENTER)
+    table.heading("item_id",text="ITEM ID",anchor=CENTER)
+    table.heading("quantity",text="QUANTITY",anchor=CENTER)
+    table.heading("price",text="PRICE",anchor=CENTER)
+
+    #table.insert(parent='',index='end',iid=0,text='',values=('1','apple','101'))
+    next_button  = Button(frame1,text= 'NEXT',height= 1,width=10,command=lambda:[payment(),frame1.pack_forget()]).place(x=350,y=550)
+    back_button  = Button(frame1,text= 'BACK',height= 1,width=10,command=lambda:[seller_page(),frame1.pack_forget()]).place(x=20,y=550)
+    
+    table.pack()
+    frame1.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
     buyer_page_frame    = Frame(window, width=450, height=600)
@@ -163,7 +187,7 @@ def seller_page():
                                  text="FINISH", 
                                  height=2, 
                                  width=10,
-                                 command = payments_page()).place(x=280,y=380)
+                                 command = seller_sells()).place(x=280,y=380)
 
     frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
