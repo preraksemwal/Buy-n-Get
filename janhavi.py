@@ -421,22 +421,28 @@ def buyer_page():
     frame.pack()
    
 
+def payment():
+    frame2  = Frame(window, width=450, height=600)
+    Title = Label(frame2, text="Total", font=("Vrinda",15, "bold")).place(x=190,y=20)
+    Title = Label(frame2, text="Print total here", font=("Vrinda",15, "bold")).place(x=150,y=80)
 
+    frame2.pack()
+    
+    Title = Label(frame2, text="Select Mode", font=("Vrinda",15, "bold")).place(x=170,y=150)
+    upi = Button(frame2, text ="UPI",height= 1,width=20,command= lambda:[Label(frame2,text= "Payment in process...").place(x=150,y=300),frame2.after(3000,frame2.pack_forget()),exit()]).place(x=150,y=200)
+    net_banking = Button(frame2, text ="NET BANKING",height= 1,width=20,command= lambda:[Label(frame2,text= "Payment in process...").place(x=150,y=300),frame2.after(3000,frame2.pack_forget()),exit()]).place(x=150,y=250)
+    credit_card = Button(frame2, text ="CREDIT CARD",height= 1,width=20,command= lambda:[Label(frame2,text= "Payment in process...").place(x=150,y=300),frame2.after(3000,frame2.pack_forget()),exit()]).place(x=150,y=300)
+    debit_card = Button(frame2, text ="DEBIT CARD",height= 1,width=20,command= lambda:[Label(frame2,text= "Payment in process...").place(x=150,y=300),frame2.after(3000,frame2.pack_forget()),exit()]).place(x=150,y=350)
+       
+        
+    
+    frame2.pack() 
+        
     
 def seller_page():
     frame               = Frame(window, width=450, height=600)
     
-    def payment():
-        frame2  = Frame(window, width=450, height=600)
-        Title = Label(frame2, text="Order Details", font=("Vrinda",15, "bold")).place(x=150,y=20)
-        frame2.pack()
-        
-        
-        total = Label(frame2,text = "Total",font=("Vrinda",15, "italic")).place(x=100,y=120)
-        next_button  = Button(frame2,text= 'Select Mode',height= 1,width=10,command=lambda:[mode(),frame2.pack_forget()]).place(x=300,y=190)
-        back_button  = Button(frame2,text= 'BACK',height= 1,width=10,command = lambda:[buyer_table(),frame2.pack_forget()]).place(x=70,y=190)
-        
-        frame2.pack()
+   
         
     def seller_sells():
         frame1               = Frame(window, width=450, height=600)
