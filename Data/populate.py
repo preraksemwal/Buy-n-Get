@@ -88,8 +88,9 @@ while order_id <= 49:
     myCursor.execute("insert into ordered_items values({}, {}, {})".format(order_id, item_id + 1, currQuantity + 5))
     myDataBase.commit()
 
-    myCursor.execute("insert into transactions values({}, {}, '{}', {})".format(order_id, customer_id, modes[random.randint(0,len(modes)-1)], currQuantity * currPrice[0]))
-    myDataBase.commit()
+    if order_id % 2 == 0:
+        myCursor.execute("insert into transactions values({}, {}, '{}', {})".format(order_id, customer_id, modes[random.randint(0,len(modes)-1)], currQuantity * currPrice[0]))
+        myDataBase.commit()
     customer_id += 3
     item_id += 1
     order_id += 1
