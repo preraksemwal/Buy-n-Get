@@ -28,8 +28,6 @@ CREATE TABLE customers (
 	FOREIGN KEY(customer_id) REFERENCES accounts(customer_id) ON DELETE CASCADE
 );
 
-
-
 CREATE TABLE buyers(
 	customer_id INT PRIMARY KEY,
     FOREIGN KEY(customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
@@ -48,8 +46,6 @@ CREATE TABLE stores(
 	FOREIGN KEY(cart_id) REFERENCES carts(cart_id) ON DELETE CASCADE        
 );
 
-
-
 CREATE TABLE items(
 	item_id INT PRIMARY KEY AUTO_INCREMENT,
 	item_name VARCHAR(50) NOT NULL,
@@ -58,7 +54,6 @@ CREATE TABLE items(
 	cost_price FLOAT NOT NULL CHECK(cost_price > 0),
 	selling_price FLOAT NOT NULL CHECK(selling_price > 0)
 );
-
 
 CREATE TABLE orders(
 	order_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -76,9 +71,6 @@ CREATE TABLE ordered_items(
     FOREIGN KEY(item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
 
-
-
-
 CREATE TABLE sellers(
 	customer_id INT PRIMARY KEY,
 	FOREIGN KEY(customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
@@ -90,8 +82,6 @@ CREATE TABLE sells(
 	FOREIGN KEY(customer_id) REFERENCES sellers(customer_id) ON DELETE CASCADE,
     FOREIGN KEY(item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
-
-
 
 CREATE TABLE feedback(
 	customer_id INT PRIMARY KEY,
@@ -123,3 +113,135 @@ CREATE TABLE transactions(
 	FOREIGN KEY(customer_id) REFERENCES buyers(customer_id) ON DELETE CASCADE
 	#FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE
 );
+
+
+
+
+
+
+CREATE VIEW owners_info AS
+SELECT owner_name AS Name, email 
+FROM owners;
+
+CREATE VIEW accounts_info AS
+SELECT username, email 
+FROM accounts;
+
+CREATE VIEW customers_info AS 
+SELECT customer_name, gender, phone_no, country, state, street_name, street_no, pincode
+FROM customers;
+
+
+
+
+
+CREATE USER owner@localhost IDENTIFIED by 'owner';
+GRANT SELECT ON owners_info to owner@localhost;
+GRANT SELECT ON customers to owner@localhost;
+GRANT DELETE ON accounts to owner@localhost;
+GRANT SELECT ON accounts_info to owner@localhost;
+GRANT SELECT ON sellers to owner@localhost;
+GRANT SELECT ON buyers to owner@localhost;
+GRANT ALL ON items to owner@localhost;
+GRANT SELECT ON orders to owner@localhost;
+GRANT SELECT ON ordered_items to owner@localhost;
+GRANT SELECT ON support to owner@localhost;
+GRANT SELECT, DELETE ON feedback to owner@localhost;
+GRANT SELECT ON payments to owner@localhost;
+GRANT SELECT ON transactions to owner@localhost;
+GRANT SELECT ON sells to owner@localhost;
+# allow to change PERSONAL details
+
+CREATE USER seller@localhost IDENTIFIED by 'seller';
+GRANT SELECT ON owners_info to seller@localhost;
+# allow to change PERSONAL details
+# allow to see what he/she sells
+# allow to see maximum selling product for his items only
+
+CREATE USER buyer@localhost IDENTIFIED by 'buyer';
+GRANT SELECT ON owners_info to buyer@localhost;
+# allow to change/see PERSONAL details
+# names of sellers who sell particular item
+# allow to see what's inside the cart
+# allow to Empty cart (not sure)
+
+
+
+
+
+# if age is NULL replace with 18
+delimiter //
+CREATE TRIGGER insertion BEFORE INSERT ON customers
+   FOR EACH ROW
+   BEGIN
+	   IF NEW.age IS NULL THEN
+		   SET NEW.age = 18;
+	   END IF;
+   END;//
+delimiter ;
+
+# after each order, update the stock
+delimiter //
+CREATE TRIGGER stock_updation AFTER INSERT ON ordered_items
+   FOR EACH ROW
+   BEGIN
+   DECLARE id int;
+   DECLARE q int;
+   SET id = NEW.item_id;	
+   SET q = NEW.quantity;
+   
+   UPDATE items SET items.quantity = items.quantity - q where item_id = id;
+   
+   END;//
+delimiter ;
+
+# if new rating entry inserted is less than the average, automatically issue a support entry
+delimiter //
+CREATE TRIGGER low_rating AFTER INSERT ON feedback
+   FOR EACH ROW
+   BEGIN
+   DECLARE new_rating int;
+   DECLARE Cid int;
+   SET new_rating = NEW.rating;
+   SET Cid = NEW.customer_id;
+   
+		IF new_rating < (SELECT AVG(rating) FROM feedback) THEN
+			INSERT INTO support (customer_id, issue, issue_date) values (Cid, 'Not Happy with Buynget Services', current_date());
+		END IF;
+   END;//
+delimiter ;
+
+# if transaction is completed then corresponding entry in orders is dropped
+delimiter //
+CREATE TRIGGER transaction_completed AFTER INSERT ON transactions
+   FOR EACH ROW
+   BEGIN
+   DECLARE Oid int;
+   SET Oid = NEW.order_id;
+		DELETE FROM orders where order_id = Oid;
+   END;//
+delimiter ;
+
+
+# if order exceeds, $100 => min(0.1 * amount, $15) )
+-- delimiter //
+-- CREATE TRIGGER provide_discount BEFORE INSERT ON transactions
+--    FOR EACH ROW
+--    BEGIN
+--    DECLARE total int;
+--    DECLARE O_id int;
+--    DECLARE discount int;
+--    SET total = NEW.amount;
+--    SET O_id = NEW.order_id;
+--    SET discount = total * 0.1;
+
+-- 		IF (total > 100) THEN
+
+-- 			IF (discount > 15) THEN
+-- 				SET discount = 15;
+-- 			END IF;
+			
+-- 			UPDATE transactions SET amount = amount - discount WHERE order_id = O_id;
+-- 		END IF;
+--    END;//
+-- delimiter ;
