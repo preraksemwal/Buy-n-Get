@@ -133,32 +133,32 @@ FROM customers;
 
 
 
-CREATE role owns;
+CREATE role ownerselect;
 
-GRANT SELECT ON ownsinfo to owns;
-GRANT SELECT ON customers to owns;
-GRANT DELETE ON accounts to owns;
-GRANT SELECT ON accounts_info to owns;
-GRANT SELECT ON sellers to owns;
-GRANT SELECT ON buyers to owns;
-GRANT ALL ON items to owns;
-GRANT SELECT ON orders to owns;
-GRANT SELECT ON ordered_items to owns;
-GRANT SELECT ON support to owns;
-GRANT SELECT, DELETE ON feedback to owns;
-GRANT SELECT ON payments to owns;
-GRANT SELECT ON transactions to owns;
-GRANT SELECT ON sells to owns;
+GRANT SELECT ON owners_info to ownerselect;
+GRANT SELECT ON customers to ownerselect;
+GRANT DELETE ON accounts to ownerselect;
+GRANT SELECT ON accounts_info to ownerselect;
+GRANT SELECT ON sellers to ownerselect;
+GRANT SELECT ON buyers to ownerselect;
+GRANT ALL ON items to ownerselect;
+GRANT SELECT ON orders to ownerselect;
+GRANT SELECT ON ordered_items to ownerselect;
+GRANT SELECT ON support to ownerselect;
+GRANT SELECT, DELETE ON feedback to ownerselect;
+GRANT SELECT ON payments to ownerselect;
+GRANT SELECT ON transactions to ownerselect;
+GRANT SELECT ON sells to ownerselect;
 
 CREATE USER owner1@localhost identified by 'prerak';
 CREATE USER owner2@localhost identified by 'vineet';
 CREATE USER owner3@localhost identified by 'janhavi';
 CREATE USER owner4@localhost identified by 'abhinav';
 
-GRANT owns TO owner1@localhost;
-GRANT owns TO owner2@localhost;
-GRANT owns TO owner3@localhost;
-GRANT owns TO owner4@localhost;
+GRANT ownerselect TO owner1@localhost;
+GRANT ownerselect TO owner2@localhost;
+GRANT ownerselect TO owner3@localhost;
+GRANT ownerselect TO owner4@localhost;
 
 
 
