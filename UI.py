@@ -236,6 +236,76 @@ def seller_sells():
     table.pack()
     seller_sells_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
+def empty_cart():
+    myCursor.execute("select cart_id from carts where customer_id = {}".format(USER_ID))
+    cart_id = myCursor.fetchall()
+    try:
+        cart_id = cart_id[0][0]
+        myCursor.execute("delete from stores where cart_id = {}".format(cart_id))
+        myDataBase.commit()
+    except:
+        pass
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+def make_transactions():
+    pass
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+def buyer_table(item_type):
+
+    selected_items = []
+    def select():
+
+        for i in table.selection():
+            print(str(table.item(i)['values'][1]))
+            selected_items.append(str(table.item(i)['values'][1]))
+            
+        frame.pack_forget()    
+        frame1       = Frame(window, width=450, height=600)
+        Title        = Label(frame1, text="Enter Quantity", font=("Vrinda", 10, "bold")).place(x=200, y=20)
+        next_button  = Button(frame1, text="NEXT", height= 1, width=10).place(x=350, y=550)
+        back_button  = Button(frame1, text="BACK", height= 1, width=10, command = buyer_table).place(x=20, y=550)
+
+        frame1.pack()
+        for i in range (len(selected_items)):
+            item_quantity = Label(frame1, text=selected_items[i]).place(x=100, y = 30 * i+90)
+            Entry(frame1, textvariable = StringVar(), width = 20).place(x=200, y = 30 * i+90)
+            
+        
+        
+    frame            = Frame(window, width=450, height=600)
+
+    table            = ttk.Treeview(frame, column = ('item_id', 'item_name', 'price'), height=50)
+
+    table.column("#0", width=0)
+    table.column("item_id", anchor=CENTER, width=150)
+    table.column("item_name", anchor=CENTER,width=150)
+    table.column("price", anchor=CENTER, width=150)
+
+
+    table.heading("#0", text="", anchor=CENTER)
+    table.heading("item_id", text="ITEM ID", anchor=CENTER)
+    table.heading("item_name", text="ITEM", anchor=CENTER)
+    table.heading("price", text="PRICE", anchor=CENTER)
+
+    myCursor.execute("select item_id, item_name, selling_price from items where item_type = '{}'".format(item_type))
+    data = myCursor.fetchall()
+    iid_ = 0
+    for tup in data:
+        tup = list(tup)
+        tup[0] = str(tup[0])
+        tup[2] = str(tup[2])
+        table.insert(parent='', index='end', iid=iid_, text='', values=tup)
+        iid_ += 1
+    
+
+    table.pack()
+
+    next_button  = Button(frame, text = 'NEXT', height= 1, width=10, command = select).place(x=350, y=550)
+    back_button  = Button(frame,text = 'BACK', height= 1, width=10).place(x=20,y=550)
+    frame.pack()
+  
+    
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
     buyer_page_frame    = Frame(window, width=450, height=600)
     Title               = Label(buyer_page_frame, 
@@ -259,6 +329,18 @@ def buyer_page():
                                  height= 2,
                                  width = 30,
                                  command=lambda:[buyer_table("daily_care"), buyer_page_frame.pack_forget()]).place(x=120, y=310)
+
+    empty_cart_button   = Button(buyer_page_frame,
+                                 text = "Empty Cart",
+                                 height= 1, 
+                                 width=10, 
+                                 command = empty_cart()).place(x=100, y=550)
+
+    finish_button       = Button(buyer_page_frame, 
+                                text = "Done", 
+                                height= 1, 
+                                width=10, 
+                                command = make_transactions()).place(x=280, y=550)
     buyer_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
@@ -459,6 +541,9 @@ def initialize_variables():
     variables.append([])
     variables.append(-1)
     variables.append(-1)
+
+    # 20 : items selected by buyers
+    variables.append([])
 
 if __name__ == '__main__':
 
