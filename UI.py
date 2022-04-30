@@ -120,9 +120,9 @@ def successful_payment(mode):
     myCursor.execute("insert into payments (customer_id, mode, amount) values({}, '{}', {})".format(USER_ID, variables[19], variables[18]))
     myDataBase.commit()
     successful_payment_frame    = Frame(window, width = 450, height = 600)    
-    Title                       = Label(successful_payment_frame, 
-                                        text="Payment has been successfully\ncredited to your Account via: " + mode, 
-                                        font=("Vrinda",15, "bold")).place(x=40,y=80)
+    Title                       = Label(successful_payment_frame,
+                                        text="Payment has been successfully\ncredited to your Account via: " + mode,
+                                        font=("Vrinda", 15, "bold")).place(x=40,y=80)
     exit_button                 = Button(successful_payment_frame,
                                          text= 'Logout',
                                          height= 1,
@@ -250,14 +250,18 @@ def empty_cart():
 def make_transactions():
     make_transactions_frame   = Frame(window, width=450, height=600)
     Title                     = Label(make_transactions_frame, 
-                                      text = "Successful Payment of Rs. " + str(variables[21]),
-                                      font=("Vrinda",25, "bold")).place(x=100, y=90)
+                                      text = "Successful Payment of $" + str(variables[21]),
+                                      font=("Vrinda", 18, "bold")).place(x=49, y=90)
 
+    message                   = Label(make_transactions_frame, 
+                                      text = "Happy Shopping !",
+                                      font=("Vrinda", 12, "bold")).place(x=160, y=190)
+    
     electronics_button        = Button(make_transactions_frame,
                                        text = "logout",
                                        height= 2,
                                        width = 30,
-                                       command=login_page).place(x=120, y=190)
+                                       command=lambda:[login_page(), make_transactions_frame.pack_forget()]).place(x=120, y=490)
     make_transactions_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def place_order():
@@ -273,11 +277,10 @@ def place_order():
         item_name          = item[1]
         item_selling_price = float(item[2])
         item_quantity      = item[3]
-        variables[21] += quantity * item_selling_price
+        variables[21] += item_quantity * item_selling_price
         # we don't allow quantity = 0, SQL constraint will catch it
         myCursor.execute("insert into ordered_items values ({}, {}, {})".format(order_id, item_id, item_quantity))
         myDataBase.commit()
-    make_transactions()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_table(item_type):
     selected_items = []
@@ -303,7 +306,7 @@ def buyer_table(item_type):
             l = []
             for i in table.selection():
                 temp = table.item(i)['values']
-                temp.append(quantities[0].get())
+                temp.append(int(quantities[0].get()))
                 quantities.pop(0)
                 l.append(temp)
             variables[20].append(l)
@@ -397,7 +400,7 @@ def buyer_page():
                                 text = "Pay", 
                                 height= 1, 
                                 width=10, 
-                                command = place_order).place(x=280, y=550)
+                                command = lambda:[place_order(), make_transactions(), buyer_page_frame.pack_forget()]).place(x=280, y=550)
     buyer_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
