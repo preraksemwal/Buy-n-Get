@@ -248,17 +248,43 @@ def empty_cart():
         pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def make_transactions():
-    pass
+    make_transactions_frame   = Frame(window, width=450, height=600)
+    Title                     = Label(make_transactions_frame, 
+                                      text = "Successful Payment of Rs. " + str(variables[21]),
+                                      font=("Vrinda",25, "bold")).place(x=100, y=90)
+
+    electronics_button        = Button(make_transactions_frame,
+                                       text = "logout",
+                                       height= 2,
+                                       width = 30,
+                                       command=login_page).place(x=120, y=190)
+    make_transactions_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def place_order():
-    pass
+    myCursor.execute("insert into orders (customer_id, order_date, delivery_date) values ({}, current_date(), current_date())".format(USER_ID))
+    myDataBase.commit()
+    
+    myCursor.execute("select count(*) from orders")
+    order_id = myCursor.fetchall()
+    order_id = order_id[0][0]
+    for item_ in variables[20]:
+        item               = item_[0]
+        item_id            = item[0]
+        item_name          = item[1]
+        item_selling_price = float(item[2])
+        item_quantity      = item[3]
+        variables[21] += quantity * item_selling_price
+        # we don't allow quantity = 0, SQL constraint will catch it
+        myCursor.execute("insert into ordered_items values ({}, {}, {})".format(order_id, item_id, item_quantity))
+        myDataBase.commit()
+    make_transactions()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_table(item_type):
     selected_items = []
     quantity = StringVar()
     def select():
         for i in table.selection():
-            print(table.item(i)['values'])
+            # print(table.item(i)['values'])
             selected_items.append(str(table.item(i)['values'][1]))
             
         buyer_table_frame.pack_forget()    
@@ -269,7 +295,7 @@ def buyer_table(item_type):
         quantities = []
         for i in range (len(selected_items)):
             item_quantity = Label(selected_items_frame, text=selected_items[i]).place(x=100, y = 30 * i+90)
-            quantity = StringVar()
+            quantity      = StringVar()
             Entry(selected_items_frame, textvariable = quantity, width = 20).place(x=200, y = 30 * i+90)
             quantities.append(quantity)
 
@@ -368,7 +394,7 @@ def buyer_page():
                                  command = empty_cart).place(x=100, y=550)
 
     finish_button       = Button(buyer_page_frame, 
-                                text = "Done", 
+                                text = "Pay", 
                                 height= 1, 
                                 width=10, 
                                 command = place_order).place(x=280, y=550)
@@ -580,7 +606,9 @@ def initialize_variables():
     variables.append(-1)
 
     # 20 : items selected by buyers
+    # 21 : total cost for the purchase
     variables.append([])
+    variables.append(0)
 
 if __name__ == '__main__':
 
