@@ -242,17 +242,17 @@ def buyer_page():
                                 text = "Select Category",
                                 font=("Vrinda",25, "bold")).place(x=100, y=90)
 
-    grocery_button      = Button(buyer_page_frame,
-                                 text = "GROCERY",
-                                 height= 2,
-                                 width = 30,
-                                 command=lambda:[buyer_table("grocery"), buyer_page_frame.pack_forget()]).place(x=120, y=190)
-
     electronics_button  = Button(buyer_page_frame,
                                  text = "ELECTRONICS",
                                  height= 2,
                                  width = 30,
-                                 command=lambda:[buyer_table("electronics"), buyer_page_frame.pack_forget()]).place(x=120, y=250)
+                                 command=lambda:[buyer_table("electronics"), buyer_page_frame.pack_forget()]).place(x=120, y=190)
+
+    grocery_button      = Button(buyer_page_frame,
+                                 text = "GROCERY",
+                                 height= 2,
+                                 width = 30,
+                                 command=lambda:[buyer_table("grocery"), buyer_page_frame.pack_forget()]).place(x=120, y=250)
 
     daily_care_button   = Button(buyer_page_frame,
                                  text = "DAILY CARE",
