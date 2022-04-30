@@ -281,15 +281,13 @@ def buyer_table(item_type):
                 quantities.pop(0)
                 l.append(temp)
             variables[20].append(l)
+
             for entry in l:
                 myCursor.execute("select cart_id from carts where customer_id = {}".format(USER_ID))
                 cart_id = myCursor.fetchall()
-                try:
-                    cart_id = cart_id[0][0]
-                    myCursor.execute("insert into stores values({}, {}, {})".format(cart_id, l[0], int(l[3])))
-                    myDataBase.commit()
-                except:
-                    pass
+                cart_id = cart_id[0][0]
+                myCursor.execute("insert into stores values({}, {}, {})".format(cart_id, entry[0], int(entry[3])))
+                myDataBase.commit()
     
 
         next_button                = Button(selected_items_frame,
