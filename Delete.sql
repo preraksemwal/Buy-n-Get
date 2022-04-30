@@ -11,7 +11,7 @@ drop user owner4@localhost;
 drop user seller@localhost;
 drop user buyer@localhost;
 
-drop role ownerselect;
+drop role team;
 
 drop trigger insertion;
 drop trigger stock_updation;
