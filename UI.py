@@ -249,31 +249,38 @@ def empty_cart():
 def make_transactions():
     pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
+def add_to_cart():
+    pass
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_table(item_type):
-
+    item = StringVar()
     selected_items = []
     def select():
-
         for i in table.selection():
-            print(str(table.item(i)['values'][1]))
+            print(table.item(i)['values'])
             selected_items.append(str(table.item(i)['values'][1]))
             
-        frame.pack_forget()    
-        frame1       = Frame(window, width=450, height=600)
-        Title        = Label(frame1, text="Enter Quantity", font=("Vrinda", 10, "bold")).place(x=200, y=20)
-        next_button  = Button(frame1, text="NEXT", height= 1, width=10).place(x=350, y=550)
-        back_button  = Button(frame1, text="BACK", height= 1, width=10, command = buyer_table).place(x=20, y=550)
+        buyer_table_frame.pack_forget()    
+        selected_items_frame       = Frame(window, width=450, height=600)
+        Title                      = Label(selected_items_frame, text="Enter Quantity", font=("Vrinda", 10, "bold")).place(x=200, y=20)
 
-        frame1.pack()
+        selected_items_frame.pack()
         for i in range (len(selected_items)):
-            item_quantity = Label(frame1, text=selected_items[i]).place(x=100, y = 30 * i+90)
-            Entry(frame1, textvariable = StringVar(), width = 20).place(x=200, y = 30 * i+90)
+            item_quantity = Label(selected_items_frame, text=selected_items[i]).place(x=100, y = 30 * i+90)
+            Entry(selected_items_frame, textvariable = item, width = 20).place(x=200, y = 30 * i+90)
+            
+
+        next_button                = Button(selected_items_frame,
+                                            text="Proceed",
+                                            height= 1, 
+                                            width=10, 
+                                            command = lambda:[buyer_page(), buyer_table_frame.pack_forget()]).place(x=350, y=550)
             
         
         
-    frame            = Frame(window, width=450, height=600)
+    buyer_table_frame  = Frame(window, width=450, height=600)
 
-    table            = ttk.Treeview(frame, column = ('item_id', 'item_name', 'price'), height=50)
+    table              = ttk.Treeview(buyer_table_frame, column = ('item_id', 'item_name', 'price'), height=50)
 
     table.column("#0", width=0)
     table.column("item_id", anchor=CENTER, width=150)
@@ -293,18 +300,17 @@ def buyer_table(item_type):
         tup = list(tup)
         tup[0] = str(tup[0])
         tup[2] = str(tup[2])
-        table.insert(parent='', index='end', iid=iid_, text='', values=tup)
+        table.insert(parent='', index='end', iid = iid_, text='', values=tup)
         iid_ += 1
     
 
     table.pack()
 
-    next_button  = Button(frame, text = 'NEXT', height= 1, width=10, command = select).place(x=350, y=550)
-    back_button  = Button(frame,text = 'BACK', height= 1, width=10).place(x=20,y=550)
-    frame.pack()
+    next_button  = Button(buyer_table_frame, text = 'NEXT', height= 1, width=10, command = select).place(x=350, y=550)
+    back_button  = Button(buyer_table_frame, text = 'BACK', height= 1, width=10, command = buyer_table).place(x=20,y=550)
+    buyer_table_frame.pack()
   
     
-
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
     buyer_page_frame    = Frame(window, width=450, height=600)
