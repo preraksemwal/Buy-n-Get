@@ -133,33 +133,32 @@ FROM customers;
 
 
 
-CREATE role ownerselect;
+CREATE role team;
 
-GRANT SELECT ON owners_info to ownerselect;
-GRANT SELECT ON customers to ownerselect;
-GRANT DELETE ON accounts to ownerselect;
-GRANT SELECT ON accounts_info to ownerselect;
-GRANT SELECT ON sellers to ownerselect;
-GRANT SELECT ON buyers to ownerselect;
-GRANT ALL ON items to ownerselect;
-GRANT SELECT ON orders to ownerselect;
-GRANT SELECT ON ordered_items to ownerselect;
-GRANT SELECT ON support to ownerselect;
-GRANT SELECT, DELETE ON feedback to ownerselect;
-GRANT SELECT ON payments to ownerselect;
-GRANT SELECT ON transactions to ownerselect;
-GRANT SELECT ON sells to ownerselect;
+GRANT SELECT ON owners_info to team;
+GRANT SELECT ON customers to team;
+GRANT DELETE ON accounts to team;
+GRANT SELECT ON accounts_info to team;
+GRANT SELECT ON sellers to team;
+GRANT SELECT ON buyers to team;
+GRANT ALL ON items to team;
+GRANT SELECT ON orders to team;
+GRANT SELECT ON ordered_items to team;
+GRANT SELECT ON support to team;
+GRANT SELECT, DELETE ON feedback to team;
+GRANT SELECT ON payments to team;
+GRANT SELECT ON transactions to team;
+GRANT SELECT ON sells to team;
 
 CREATE USER owner1@localhost identified by 'prerak';
 CREATE USER owner2@localhost identified by 'vineet';
 CREATE USER owner3@localhost identified by 'janhavi';
 CREATE USER owner4@localhost identified by 'abhinav';
 
-GRANT ownerselect TO owner1@localhost;
-GRANT ownerselect TO owner2@localhost;
-GRANT ownerselect TO owner3@localhost;
-GRANT ownerselect TO owner4@localhost;
-
+GRANT team TO owner1@localhost;
+GRANT team TO owner2@localhost;
+GRANT team TO owner3@localhost;
+GRANT team TO owner4@localhost;
 
 
 
