@@ -2,8 +2,6 @@
 
 [ER Diagram (Miro)](https://miro.com/app/board/uXjVON4nzeE=/)
 
-[Project Presentation](https://docs.google.com/presentation/d/1pRWtFRLvhtd1XY5RPFaxWagov7zkDvExoJv_Vq9Jhyc/edit#slide=id.g1146fdac2ef_0_1495)
-
 ----------------------------------------------------------------------------------------------------
 
 [Rubric](https://classroom.google.com/u/0/c/NDU1ODc0NjYxNDg3/m/NDg0MjA4NzgzNTUy/details)
