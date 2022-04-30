@@ -1,3 +1,5 @@
+use buynget;
+
 drop view owners_info;
 drop view accounts_info;
 drop view customers_info;
