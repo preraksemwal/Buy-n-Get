@@ -1,6 +1,6 @@
 drop view owners_info;
 drop view accounts_info;
-drop view customers_view;
+drop view customers_info;
 
 drop user owner1@localhost;
 drop user owner2@localhost;
