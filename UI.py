@@ -237,13 +237,13 @@ def seller_sells():
     seller_sells_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def empty_cart():
+    variables[20].clear()
     myCursor.execute("select cart_id from carts where customer_id = {}".format(USER_ID))
     cart_id = myCursor.fetchall()
     try:
         cart_id = cart_id[0][0]
         myCursor.execute("delete from stores where cart_id = {}".format(cart_id))
         myDataBase.commit()
-        variables[20] = []
     except:
         pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
