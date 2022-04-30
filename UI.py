@@ -461,8 +461,8 @@ def seller_page():
     item_id             = Label(seller_page_frame, text="Item ID").place(x=100,y=230)
     quantity            = Label(seller_page_frame, text="Quantity").place(x=100,y=300)
 
-    item_input          = Entry(seller_page_frame, textvariable = variables[15], width = 20).place(x=200,y=230)
-    quantity_input      = Entry(seller_page_frame, textvariable = variables[16], width = 20).place(x=200,y=300)
+    item_input          = Entry(seller_page_frame, textvariable = variables[15], width = 20, borderwidth=1, relief="solid").place(x=200,y=230)
+    quantity_input      = Entry(seller_page_frame, textvariable = variables[16], width = 20, borderwidth=1, relief="solid").place(x=200,y=300)
     
     add_button          = Button(seller_page_frame, 
                                  text="ADD",
@@ -530,15 +530,15 @@ def details_page():
     
 
 
-    name_input        = Entry(details_frame, textvariable = variables[6], width=30).place(x=200, y=90)
-    age_input         = Entry(details_frame, textvariable = variables[7], width=30).place(x=200, y=130) 
-    gender_input      = Entry(details_frame, textvariable = variables[8], width=30).place(x=200, y=170)
-    phone_input       = Entry(details_frame, textvariable = variables[9], width=30).place(x=200, y=210)
-    state_input       = Entry(details_frame, textvariable = variables[10], width=30).place(x=200, y=250)
-    country_input     = Entry(details_frame, textvariable = variables[11], width=30).place(x=200, y=290)
-    street_name_input = Entry(details_frame, textvariable = variables[12], width=30).place(x=200, y=330)
-    street_no_input   = Entry(details_frame, textvariable = variables[13], width=30).place(x=200, y=370)
-    pincode_input     = Entry(details_frame, textvariable = variables[14], width=30).place(x=200, y=410)    
+    name_input        = Entry(details_frame, textvariable = variables[6], width=30, borderwidth=1, relief="solid").place(x=200, y=90)
+    age_input         = Entry(details_frame, textvariable = variables[7], width=30, borderwidth=1, relief="solid").place(x=200, y=130) 
+    gender_input      = Entry(details_frame, textvariable = variables[8], width=30, borderwidth=1, relief="solid").place(x=200, y=170)
+    phone_input       = Entry(details_frame, textvariable = variables[9], width=30, borderwidth=1, relief="solid").place(x=200, y=210)
+    state_input       = Entry(details_frame, textvariable = variables[10], width=30, borderwidth=1, relief="solid").place(x=200, y=250)
+    country_input     = Entry(details_frame, textvariable = variables[11], width=30, borderwidth=1, relief="solid").place(x=200, y=290)
+    street_name_input = Entry(details_frame, textvariable = variables[12], width=30, borderwidth=1, relief="solid").place(x=200, y=330)
+    street_no_input   = Entry(details_frame, textvariable = variables[13], width=30, borderwidth=1, relief="solid").place(x=200, y=370)
+    pincode_input     = Entry(details_frame, textvariable = variables[14], width=30, borderwidth=1, relief="solid").place(x=200, y=410)    
     
     back_button       = Button(details_frame, 
                                text="Back",
@@ -569,9 +569,9 @@ def signup_page():
     user_email    = Label(signup_frame, text = "Email ID").place(x=80, y=270)  
     user_password = Label(signup_frame, text = "Password").place(x=80, y=340)
     
-    user_name_input_area     = Entry(signup_frame, textvariable = variables[3], width=30).place(x=200, y=200)  
-    user_email_input_area    = Entry(signup_frame, textvariable = variables[4], width=30).place(x=200, y=270) 
-    user_password_input_area = Entry(signup_frame, textvariable = variables[5], width=30).place(x=200, y=340)
+    user_name_input_area     = Entry(signup_frame, textvariable = variables[3], width=30, borderwidth=1, relief="solid").place(x=200, y=200)  
+    user_email_input_area    = Entry(signup_frame, textvariable = variables[4], width=30, borderwidth=1, relief="solid").place(x=200, y=270) 
+    user_password_input_area = Entry(signup_frame, textvariable = variables[5], width=30, borderwidth=1, relief="solid").place(x=200, y=340)
     
     next_button   = Button(signup_frame,
                            text = "Next",
@@ -610,8 +610,8 @@ def login_page():
     
     username       = Label(login_frame, text = "Username").place(x=80, y=250)  
     password       = Label(login_frame, text = "Password").place(x=80, y=320)  
-    username_input = Entry(login_frame, textvariable = variables[0], width=30).place(x = 150,y = 250)  
-    password_input = Entry(login_frame, textvariable = variables[1], width=30).place(x=150, y=320)     
+    username_input = Entry(login_frame, textvariable = variables[0], width=30, borderwidth=1, relief="solid").place(x = 150,y = 250)  
+    password_input = Entry(login_frame, textvariable = variables[1], width=30, borderwidth=1, relief="solid").place(x=150, y=320)     
     
     variables[2]   = login_frame
     submit_button  = Button(login_frame, 
