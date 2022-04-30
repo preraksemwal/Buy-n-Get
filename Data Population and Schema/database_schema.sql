@@ -119,6 +119,7 @@ CREATE TABLE transactions(
 
 
 
+
 CREATE VIEW owners_info AS
 SELECT owner_name AS Name, email 
 FROM owners;
@@ -130,6 +131,11 @@ FROM accounts;
 CREATE VIEW customers_info AS 
 SELECT customer_name, gender, phone_no, country, state, street_name, street_no, pincode
 FROM customers;
+
+CREATE VIEW items_info AS
+SELECT item_id, item_name, item_type, quantity, selling_price
+FROM items;
+
 
 
 
@@ -163,18 +169,39 @@ GRANT team TO owner4@localhost;
 
 
 
-CREATE USER seller@localhost IDENTIFIED by 'seller';
-GRANT SELECT ON owners_info to seller@localhost;
-# allow to change PERSONAL details
-# allow to see what he/she sells
-# allow to see maximum selling product for his items only
+CREATE role buy;
+ 
+GRANT SELECT ON owner_info to buy;
+GRANT UPDATE ON customers_info to buy;
+GRANT SELECT ON transactions to buy;
+GRANT ALL ON support to buy;
+GRANT SELECT ON items to buy;
 
-CREATE USER buyer@localhost IDENTIFIED by 'buyer';
-GRANT SELECT ON owners_info to buyer@localhost;
-# allow to change/see PERSONAL details
-# names of sellers who sell particular item
-# allow to see what's inside the cart
-# allow to Empty cart (not sure)
+CREATE user buyer1@localhost identified by 'buyer1';
+CREATE user buyer2@localhost identified by 'buyer2';
+
+GRANT buy TO buyer1@localhost;
+GRANT buy TO buyer2@localhost;
+
+
+
+
+CREATE role sell;
+ 
+GRANT SELECT ON owner_info to sell;
+GRANT UPDATE ON customers to sell;
+GRANT SELECT ON payments to sell;
+GRANT ALL ON support to sell;
+GRANT SELECT ON items to sell;
+
+CREATE user seller1@localhost identified by 'seller1';
+CREATE user seller2@localhost identified by 'seller2';
+
+GRANT buys TO seller1@localhost;
+GRANT buys TO seller2@localhost;
+
+
+
 
 
 
