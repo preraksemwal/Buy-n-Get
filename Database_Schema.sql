@@ -133,24 +133,36 @@ FROM customers;
 
 
 
+CREATE role owner_;
+
+GRANT SELECT ON owner_info to owner_;
+GRANT SELECT ON customers to owner_;
+GRANT DELETE ON accounts to owner_;
+GRANT SELECT ON accounts_info to owner_;
+GRANT SELECT ON sellers to owner_;
+GRANT SELECT ON buyers to owner_;
+GRANT ALL ON items to owner_;
+GRANT SELECT ON orders to owner_;
+GRANT SELECT ON ordered_items to owner_;
+GRANT SELECT ON support to owner_;
+GRANT SELECT, DELETE ON feedback to owner_;
+GRANT SELECT ON payments to owner_;
+GRANT SELECT ON transactions to owner_;
+GRANT SELECT ON sells to owner_;
+
+CREATE USER owner1@localhost identified by 'prerak';
+CREATE USER owner2@localhost identified by 'vineet';
+CREATE USER owner3@localhost identified by 'janhavi';
+CREATE USER owner4@localhost identified by 'abhinav';
+
+GRANT owner_ TO owner1@localhost;
+GRANT owner_ TO owner2@localhost;
+GRANT owner_ TO owner3@localhost;
+GRANT owner_ TO owner4@localhost;
 
 
-CREATE USER owner@localhost IDENTIFIED by 'owner';
-GRANT SELECT ON owners_info to owner@localhost;
-GRANT SELECT ON customers to owner@localhost;
-GRANT DELETE ON accounts to owner@localhost;
-GRANT SELECT ON accounts_info to owner@localhost;
-GRANT SELECT ON sellers to owner@localhost;
-GRANT SELECT ON buyers to owner@localhost;
-GRANT ALL ON items to owner@localhost;
-GRANT SELECT ON orders to owner@localhost;
-GRANT SELECT ON ordered_items to owner@localhost;
-GRANT SELECT ON support to owner@localhost;
-GRANT SELECT, DELETE ON feedback to owner@localhost;
-GRANT SELECT ON payments to owner@localhost;
-GRANT SELECT ON transactions to owner@localhost;
-GRANT SELECT ON sells to owner@localhost;
-# allow to change PERSONAL details
+
+
 
 CREATE USER seller@localhost IDENTIFIED by 'seller';
 GRANT SELECT ON owners_info to seller@localhost;
