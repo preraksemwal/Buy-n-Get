@@ -1,4 +1,4 @@
-=== How to Run the Project ===
+=== How to Run the Project ===<br />
 Step1: Install MySql on you system. Here is a useful [YouTube video](https://www.youtube.com/watch?v=WuBcTJnIuzo&t=1204s).
 Step1: Install the Github Repo as .zip file at your local system
 
