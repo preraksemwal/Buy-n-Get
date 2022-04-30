@@ -349,13 +349,13 @@ def buyer_page():
                                  text = "Empty Cart",
                                  height= 1, 
                                  width=10, 
-                                 command = empty_cart()).place(x=100, y=550)
+                                 command = empty_cart).place(x=100, y=550)
 
     finish_button       = Button(buyer_page_frame, 
                                 text = "Done", 
                                 height= 1, 
                                 width=10, 
-                                command = make_transactions()).place(x=280, y=550)
+                                command = make_transactions).place(x=280, y=550)
     buyer_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
