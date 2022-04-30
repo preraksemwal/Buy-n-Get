@@ -222,9 +222,9 @@ CREATE TRIGGER low_rating AFTER INSERT ON feedback
    END;//
 delimiter ;
 
-# delete all those order-entries from 'oreders' table which are completed
+# delete all those order-entries from 'orders' table which are completed
 delimiter //
-CREATE TRIGGER order_completed BEFORE INSERT ON orders
+CREATE TRIGGER order_completed BEFORE INSERT ON carts
    FOR EACH ROW
    BEGIN
 		DELETE FROM orders where delivery_date < current_date();
