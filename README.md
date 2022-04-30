@@ -4,8 +4,6 @@
 
 [Project Presentation](https://docs.google.com/presentation/d/1pRWtFRLvhtd1XY5RPFaxWagov7zkDvExoJv_Vq9Jhyc/edit#slide=id.g1146fdac2ef_0_1495)
 
-[Schema Report](https://docs.google.com/document/d/1J7qLlZhjmhO7qa-kyzgmiUftTxFdxo3CJsT4UeG7Ii0/edit)
-
 [SQL Queries](https://docs.google.com/document/d/1kCsNpRLPhs_i74fmH_ey2lMbN1teQphSfU1-OaP_i7k/edit)
 
 ----------------------------------------------------------------------------------------------------
