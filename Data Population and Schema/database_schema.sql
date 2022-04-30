@@ -139,65 +139,65 @@ FROM items;
 
 
 
-CREATE role teams;
+CREATE ROLE ownit;
 
-GRANT SELECT ON owners_info to teams;
-GRANT SELECT ON customers to teams;
-GRANT DELETE ON accounts to teams;
-GRANT SELECT ON accounts_info to teams;
-GRANT SELECT ON sellers to teams;
-GRANT SELECT ON buyers to teams;
-GRANT ALL ON items to teams;
-GRANT SELECT ON orders to teams;
-GRANT SELECT ON ordered_items to teams;
-GRANT SELECT ON support to teams;
-GRANT SELECT, DELETE ON feedback to teams;
-GRANT SELECT ON payments to teams;
-GRANT SELECT ON transactions to teams;
-GRANT SELECT ON sells to teams;
+GRANT SELECT ON owners_info TO ownit;
+GRANT SELECT ON customers TO ownit;
+GRANT DELETE ON accounts TO ownit;
+GRANT SELECT ON accounts_info TO ownit;
+GRANT SELECT ON sellers TO ownit;
+GRANT SELECT ON buyers TO ownit;
+GRANT ALL ON items TO ownit;
+GRANT SELECT ON orders TO ownit;
+GRANT SELECT ON ordered_items TO ownit;
+GRANT SELECT ON support TO ownit;
+GRANT SELECT, DELETE ON feedback TO ownit;
+GRANT SELECT ON payments TO ownit;
+GRANT SELECT ON transactions TO ownit;
+GRANT SELECT ON sells TO ownit;
 
-CREATE USER owner1@localhost identified by 'prerak';
-CREATE USER owner2@localhost identified by 'vineet';
-CREATE USER owner3@localhost identified by 'janhavi';
-CREATE USER owner4@localhost identified by 'abhinav';
+CREATE USER owner1@localhost IDENTIFIED BY 'prerak';
+CREATE USER owner2@localhost IDENTIFIED BY 'vineet';
+CREATE USER owner3@localhost IDENTIFIED BY 'janhavi';
+CREATE USER owner4@localhost IDENTIFIED BY 'abhinav';
 
-GRANT teams TO owner1@localhost;
-GRANT teams TO owner2@localhost;
-GRANT teams TO owner3@localhost;
-GRANT teams TO owner4@localhost;
+GRANT ownit TO owner1@localhost;
+GRANT ownit TO owner2@localhost;
+GRANT ownit TO owner3@localhost;
+GRANT ownit TO owner4@localhost;
 
 
 
-CREATE role buy;
+CREATE ROLE buyit;
  
-GRANT SELECT ON owner_info to buy;
-GRANT UPDATE ON customers_info to buy;
-GRANT SELECT ON transactions to buy;
-GRANT ALL ON support to buy;
-GRANT SELECT ON items to buy;
+GRANT SELECT ON owners_info TO buyit;
+GRANT UPDATE ON customers_info TO buyit;
+GRANT SELECT ON transactions TO buyit;
+GRANT ALL ON support TO buyit;
+GRANT SELECT ON items TO buyit;
 
-CREATE user buyer1@localhost identified by 'buyer1';
-CREATE user buyer2@localhost identified by 'buyer2';
+CREATE USER buyer1@localhost IDENTIFIED BY 'buyer1';
+CREATE USER buyer2@localhost IDENTIFIED BY 'buyer2';
 
-GRANT buy TO buyer1@localhost;
-GRANT buy TO buyer2@localhost;
-
-
+GRANT buyit TO buyer1@localhost;
+GRANT buyit TO buyer2@localhost;
 
 
-CREATE role sell;
+
+
+CREATE ROLE sellit;
  
-GRANT SELECT ON owner_info to sell;
-GRANT UPDATE ON customers to sell;
-GRANT SELECT ON payments to sell;
-GRANT ALL ON support to sell;
-GRANT SELECT ON items to sell;
+GRANT SELECT ON owners_info TO sellit;
+GRANT UPDATE ON customers_info TO sellit;
+GRANT SELECT ON payments TO sellit;
+GRANT ALL ON support TO sellit;
+GRANT SELECT ON items TO sellit;
 
-CREATE user seller1@localhost identified by 'seller1';
-CREATE user seller2@localhost identified by 'seller2';
+CREATE USER seller1@localhost IDENTIFIED BY 'seller1';
+CREATE USER seller2@localhost IDENTIFIED BY 'seller2';
 
-GRANT buys TO seller1@localhost;
-GRANT buys TO seller2@localhost;
+GRANT sellit TO seller1@localhost;
+GRANT sellit TO seller2@localhost;
 
 
 
