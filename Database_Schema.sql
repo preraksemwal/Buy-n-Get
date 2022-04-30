@@ -211,17 +211,14 @@ CREATE TRIGGER low_rating AFTER INSERT ON feedback
    END;//
 delimiter ;
 
-# if transaction is completed then corresponding entry in orders is dropped
+# delete all those order-entries from 'oreders' table which are completed
 delimiter //
-CREATE TRIGGER transaction_completed AFTER INSERT ON transactions
+CREATE TRIGGER order_completed BEFORE INSERT ON orders
    FOR EACH ROW
    BEGIN
-   DECLARE Oid int;
-   SET Oid = NEW.order_id;
-		DELETE FROM orders where order_id = Oid;
+		DELETE FROM orders where delivery_date < current_date();
    END;//
 delimiter ;
-
 
 # if order exceeds, $100 => min(0.1 * amount, $15) )
 -- delimiter //
