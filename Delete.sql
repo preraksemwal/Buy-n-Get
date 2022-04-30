@@ -9,7 +9,7 @@ drop user owner4@localhost;
 drop user seller@localhost;
 drop user buyer@localhost;
 
-drop role owner_;
+drop role ownerselect;
 
 drop trigger insertion;
 drop trigger stock_updation;
