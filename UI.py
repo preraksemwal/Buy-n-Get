@@ -119,7 +119,7 @@ def successful_payment(mode):
     variables[19] = mode
     myCursor.execute("insert into payments (customer_id, mode, amount) values({}, '{}', {})".format(USER_ID, variables[19], variables[18]))
     myDataBase.commit()
-    successful_payment_frame    = Frame(window, width = 450, height = 600)    
+    successful_payment_frame    = Frame(window, width = 450, height = 600, bg = "#ffffff")    
     Title                       = Label(successful_payment_frame,
                                         text="Payment has been successfully\ncredited to your Account via: " + mode,
                                         font=("Vrinda", 15, "bold")).place(x=40,y=80)
@@ -127,11 +127,14 @@ def successful_payment(mode):
                                          text= 'Logout',
                                          height= 1,
                                          width=10,
+                                         bg = "#5d00a8",
+                                         fg = "#ffffff",
+                                         font = ("Vrinda", 8, "bold"),
                                          command=lambda:[login_page(),successful_payment_frame.pack_forget()]).place(x=200,y=350)
     successful_payment_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def payments_page():
-    payments_page_frame  = Frame(window, width=450, height=600)
+    payments_page_frame  = Frame(window, width=450, height=600, bg = "#ffffff")
     Title                = Label(payments_page_frame, 
                                  text="Payment Portal", 
                                  font=("Vrinda",15, "bold")).place(x=150, y=20)
@@ -174,12 +177,15 @@ def payments_page():
                           text= 'BACK',
                           height= 1,
                           width=10,
+                          bg = "#8d31d4",
+                          fg = "#ffffff",
+                          font = ("Vrinda", 8, "bold"),
                           command = lambda:[login_page(),payments_page_frame.pack_forget()]).place(x=70, y=500)
     
     payments_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_sells():
-    seller_sells_frame  = Frame(window, width=450, height=600)
+    seller_sells_frame  = Frame(window, width=450, height=600, bg = "#ffffff")
 
     table               = ttk.Treeview(seller_sells_frame, column=('item_name', 'quantity', 'price'),height=50)
 
@@ -225,12 +231,18 @@ def seller_sells():
                           text= 'NEXT',
                           height= 1, 
                           width=10,
+                          bg = "#5d00a8",
+                          fg = "#ffffff",
+                          font = ("Vrinda", 8, "bold"),
                           command = lambda:[payments_page(),seller_sells_frame.pack_forget()]).place(x=350, y=550)
 
     back_button  = Button(seller_sells_frame,
                           text= 'BACK', 
                           height= 1, 
                           width=10, 
+                          bg = "#8d31d4",
+                          fg = "#ffffff",
+                          font = ("Vrinda", 8, "bold"),
                           command = lambda:[seller_page(),seller_sells_frame.pack_forget()]).place(x=20, y=550)
     
     table.pack()
@@ -248,7 +260,7 @@ def empty_cart():
         pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def make_transactions():
-    make_transactions_frame   = Frame(window, width=450, height=600)
+    make_transactions_frame   = Frame(window, width=450, height=600, bg = "#ffffff")
     Title                     = Label(make_transactions_frame, 
                                       text = "Successful Payment of $" + str(variables[21]),
                                       font=("Vrinda", 18, "bold")).place(x=49, y=90)
@@ -261,6 +273,9 @@ def make_transactions():
                                        text = "logout",
                                        height= 2,
                                        width = 30,
+                                       bg = "#5d00a8",
+                                       fg = "#ffffff",
+                                       font = ("Vrinda", 8, "bold"),
                                        command=lambda:[login_page(), make_transactions_frame.pack_forget()]).place(x=120, y=490)
     make_transactions_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -291,7 +306,7 @@ def buyer_table(item_type):
             selected_items.append(str(table.item(i)['values'][1]))
             
         buyer_table_frame.pack_forget()    
-        selected_items_frame       = Frame(window, width=450, height=600)
+        selected_items_frame       = Frame(window, width=450, height=600, bg = "#ffffff")
         Title                      = Label(selected_items_frame, text="Enter Quantity", font=("Vrinda", 10, "bold")).place(x=200, y=20)
 
         selected_items_frame.pack()
@@ -322,12 +337,15 @@ def buyer_table(item_type):
         next_button                = Button(selected_items_frame,
                                             text="Proceed",
                                             height= 1, 
-                                            width=10, 
+                                            width=10,
+                                            bg = "#5d00a8",
+                                            fg = "#ffffff",
+                                            font = ("Vrinda", 8, "bold"),
                                             command = lambda:[add_selections(), buyer_page(), selected_items_frame.pack_forget()]).place(x=350, y=550)
             
         
         
-    buyer_table_frame  = Frame(window, width=450, height=600)
+    buyer_table_frame  = Frame(window, width=450, height=600, bg = "#ffffff")
 
     table              = ttk.Treeview(buyer_table_frame, column = ('item_id', 'item_name', 'price'), height=50)
 
@@ -355,8 +373,24 @@ def buyer_table(item_type):
 
     table.pack()
 
-    next_button  = Button(buyer_table_frame, text = 'NEXT', height= 1, width=10, command = select).place(x=350, y=550)
-    back_button  = Button(buyer_table_frame, text = 'BACK', height= 1, width=10, command = buyer_table).place(x=20,y=550)
+    next_button  = Button(buyer_table_frame,
+                          text = 'NEXT', 
+                          height= 1, 
+                          width=10,
+                          bg = "#5d00a8",
+                          fg = "#ffffff",
+                          font = ("Vrinda", 8, "bold"),
+                          command = select).place(x=350, y=550)
+
+    back_button  = Button(buyer_table_frame, 
+                          text = 'BACK',
+                          height= 1, 
+                          width=10,
+                          bg = "#8d31d4",
+                          fg = "#ffffff",
+                          font = ("Vrinda", 8, "bold"),
+                          command = buyer_table).place(x=20,y=550)
+
     buyer_table_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
@@ -367,7 +401,7 @@ def buyer_page():
         myDataBase.commit()
     except:
         pass
-    buyer_page_frame    = Frame(window, width=450, height=600)
+    buyer_page_frame    = Frame(window, width=450, height=600, bg = "#ffffff")
     Title               = Label(buyer_page_frame, 
                                 text = "Select Category",
                                 font=("Vrinda",25, "bold")).place(x=100, y=90)
@@ -376,18 +410,27 @@ def buyer_page():
                                  text = "ELECTRONICS",
                                  height= 2,
                                  width = 30,
+                                 bg = "#5d00a8",
+                                 fg = "#ffffff",
+                                 font = ("Vrinda", 8, "bold"),
                                  command=lambda:[buyer_table("electronics"), buyer_page_frame.pack_forget()]).place(x=120, y=190)
 
     grocery_button      = Button(buyer_page_frame,
                                  text = "GROCERY",
                                  height= 2,
                                  width = 30,
+                                 bg = "#8d31d4",
+                                 fg = "#ffffff",
+                                 font = ("Vrinda", 8, "bold"),
                                  command=lambda:[buyer_table("grocery"), buyer_page_frame.pack_forget()]).place(x=120, y=250)
 
     daily_care_button   = Button(buyer_page_frame,
                                  text = "DAILY CARE",
                                  height= 2,
                                  width = 30,
+                                 bg = "#5d00a8",
+                                 fg = "#ffffff",
+                                 font = ("Vrinda", 8, "bold"),
                                  command=lambda:[buyer_table("daily care"), buyer_page_frame.pack_forget()]).place(x=120, y=310)
 
     empty_cart_button   = Button(buyer_page_frame,
@@ -410,7 +453,7 @@ def seller_page():
     except:
         pass
 
-    seller_page_frame   = Frame(window, width=450, height=600)
+    seller_page_frame   = Frame(window, width=450, height=600, bg = "#ffffff")
     Title               = Label(seller_page_frame, 
                                 text="List Items to\nbe Sold", 
                                 font=("Vrinda",25, "italic")).place(x=150,y=90)
@@ -424,42 +467,54 @@ def seller_page():
     add_button          = Button(seller_page_frame, 
                                  text="ADD",
                                  height=2,
-                                 width=10, 
+                                 width=10,
+                                 bg = "#8d31d4",
+                                 fg = "#ffffff",
+                                 font = ("Vrinda", 8, "bold"),   
                                  command=lambda:[add_for_sell(), seller_page_frame.pack_forget(), seller_page()]).place(x=100,y=380)
 
     finish_button       = Button(seller_page_frame,
                                  text="FINISH", 
                                  height=2, 
                                  width=10,
+                                 bg = "#5d00a8",
+                                 fg = "#ffffff",
+                                 font = ("Vrinda", 8, "bold"),
                                  command = lambda:[seller_sells(), seller_page_frame.pack_forget()]).place(x=280,y=380)
 
     seller_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def category():
-    category_frame         = Frame(window, width = 450, height=600)
-    Title         = Label(category_frame, text = "Sign in as...", font=("Vrinda",20, "italic")).place(x=160,y=120)
-    back_button   = Button(category_frame,
-                           text = "Back", 
-                           height=1, 
-                           width=8, 
-                           command=category_frame.pack_forget).place(x=10,y=30)
+    category_frame = Frame(window, width = 450, height=600, bg = "#ffffff")
+    Title          = Label(category_frame, text = "Sign in as...", font=("Vrinda",20, "italic")).place(x=160,y=120)
+    back_button    = Button(category_frame,
+                            text = "Back", 
+                            height=1, 
+                            width=8, 
+                            command=category_frame.pack_forget).place(x=10,y=30)
 
-    buyer_button  = Button(category_frame,
-                           text = "BUYER",
-                           height=3, 
-                           width=30,
-                           command=lambda:[buyer_page(),category_frame.pack_forget()]).place(x=120, y=250)
+    buyer_button   = Button(category_frame,
+                            text = "BUYER",
+                            height=3, 
+                            width=30,
+                            bg = "#5d00a8",
+                            fg = "#ffffff",
+                            font = ("Vrinda", 8, "bold"),
+                            command=lambda:[buyer_page(),category_frame.pack_forget()]).place(x=120, y=250)
 
-    seller_button = Button(category_frame, 
-                           text = "SELLER",
-                           height=3, 
-                           width=30,
-                           command=lambda:[seller_page(),category_frame.pack_forget()]).place(x=120, y=350)
+    seller_button  = Button(category_frame, 
+                            text = "SELLER",
+                            height=3, 
+                            width=30,
+                            bg = "#8d31d4",
+                            fg = "#ffffff",
+                            font = ("Vrinda", 8, "bold"),
+                            command=lambda:[seller_page(),category_frame.pack_forget()]).place(x=120, y=350)
     category_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def details_page():
     
-    details_frame          = Frame(window, width=450, height=600)
+    details_frame          = Frame(window, width=450, height=600, bg = "#ffffff")
     Title                  = Label(details_frame, text= "Enter Details",
                                           font=("Arial",15, "bold")).place(x=155, y=36)
 
@@ -489,17 +544,23 @@ def details_page():
                                text="Back",
                                height= 1, 
                                width=8,
+                               bg = "#5d00a8",
+                               fg = "#ffffff",
+                               font = ("Vrinda", 8, "bold"),
                                command=lambda:[details_frame.pack_forget(), signup_page()]).place(x=10,y=30)
 
     submit            = Button(details_frame,
                                text="Sign Up !",
+                               bg = "#5d00a8",
+                               fg = "#ffffff",
+                               font = ("Vrinda", 8, "bold"),
                                command=lambda:[store_customer_credentials(), sign_up(), details_frame.pack_forget(), login_page()]).place(x=200,y=540)
     
     details_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def signup_page():
     sign_up_data.clear()
-    signup_frame  = Frame(window, width = 450, height = 600)
+    signup_frame  = Frame(window, width = 450, height = 600, bg = "#ffffff")
     Title         = Label(signup_frame,
                           text = "Buy-n-Get",
                           font = ("Freestyle Script", 15, "bold")).place(x=340, y=12)
@@ -515,7 +576,10 @@ def signup_page():
     next_button   = Button(signup_frame,
                            text = "Next",
                            height= 1,
-                           width=8, 
+                           width=8,
+                           bg = "#5d00a8",
+                           fg = "#ffffff",
+                           font = ("Vrinda", 8, "bold"),
                            command = lambda:[store_account_credentials(), signup_frame.pack_forget(), details_page()]).place(x = 200, y = 470)
                     
 
@@ -523,6 +587,9 @@ def signup_page():
                            text ="Back",
                            height=1,
                            width=8,
+                           bg = "#5d00a8",
+                           fg = "#ffffff",
+                           font = ("Vrinda", 8, "bold"),
                            command = signup_frame.pack_forget).place(x=10, y=10)
 
     
@@ -531,7 +598,7 @@ def signup_page():
 def login_page():
     initialize_variables()
 
-    login_frame   = Frame(window, width=450, height=600)
+    login_frame   = Frame(window, width=450, height=600, bg = "#ffffff")
 
     Title         = Label(login_frame,
                           text = "Buy-n-Get",
@@ -551,12 +618,18 @@ def login_page():
                             text = "Done",
                             height = 1, 
                             width = 8,
-                            # command = lambda:[insert_into_accounts(), login_frame.pack_forget(), category()]).place(x=200, y=380)
+                            bg = "#5d00a8",
+                            fg = "#ffffff",
+                            font = ("Vrinda", 8, "bold"),
                             command = login).place(x=200, y=380)
     
     back_button   = Button(login_frame,
                             text = "Back",
-                            height= 1, width=8,
+                            height= 1, 
+                            width=8,
+                            bg = "#5d00a8",
+                            fg = "#ffffff",
+                            font = ("Vrinda", 8, "bold"),
                             command = login_frame.pack_forget).place(x=10, y=10) 
     login_frame.pack()
 
@@ -617,9 +690,10 @@ if __name__ == '__main__':
 
     window = Tk()
     window.geometry("450x600")
+    window.configure(bg = "#ffffff")
     window.title("Buy-n-Get")
     Title         = Label(window,
-                          text = "Buy-n-Get     ",
+                          text = "Buy-n-Get",
                           font = ("Freestyle Script", 40, "bold")).place(x=100, y=40)    
 
     USER_ID = -1
@@ -630,7 +704,11 @@ if __name__ == '__main__':
 
     login_button  = Button(window, 
                            text = "LOGIN",
-                           height = 3, width = 30,
+                           height = 3,
+                           width = 30,
+                           bg = "#5d00a8",
+                           fg = "#ffffff",
+                           font = ("Vrinda", 8, "bold"),
                            command = login_page).place(x=118, y=250)
 
     no_acc        = Label(window,
@@ -639,7 +717,11 @@ if __name__ == '__main__':
 
     signup_button = Button(window, 
                            text = "SIGN UP",
-                           height = 3, width = 30,
+                           height = 3,
+                           width = 30,
+                           bg = "#8d31d4",
+                           fg = "#ffffff",
+                           font = ("Vrinda", 8, "bold"),
                            command = signup_page).place(x=118, y=380)
 
     window.mainloop()
