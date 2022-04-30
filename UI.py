@@ -250,7 +250,7 @@ def empty_cart():
 def make_transactions():
     pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
-def add_to_cart():
+def place_order():
     pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_table(item_type):
@@ -274,12 +274,23 @@ def buyer_table(item_type):
             quantities.append(quantity)
 
         def add_selections():
+            l = []
             for i in table.selection():
                 temp = table.item(i)['values']
                 temp.append(quantities[0].get())
                 quantities.pop(0)
-                variables[20].append(temp)
-            print(variables[20])
+                l.append(temp)
+            variables[20].append(l)
+            for entry in l:
+                myCursor.execute("select cart_id from carts where customer_id = {}".format(USER_ID))
+                cart_id = myCursor.fetchall()
+                try:
+                    cart_id = cart_id[0][0]
+                    myCursor.execute("insert into stores values({}, {}, {})".format(cart_id, l[0], int(l[3])))
+                    myDataBase.commit()
+                except:
+                    pass
+    
 
         next_button                = Button(selected_items_frame,
                                             text="Proceed",
@@ -322,6 +333,13 @@ def buyer_table(item_type):
     buyer_table_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
+    try:
+        myCursor.execute("insert into buyers values({})".format(USER_ID))
+        myDataBase.commit()
+        myCursor.execute("insert into carts (customer_id) values({})".format(USER_ID))
+        myDataBase.commit()
+    except:
+        pass
     buyer_page_frame    = Frame(window, width=450, height=600)
     Title               = Label(buyer_page_frame, 
                                 text = "Select Category",
@@ -355,10 +373,16 @@ def buyer_page():
                                 text = "Done", 
                                 height= 1, 
                                 width=10, 
-                                command = make_transactions).place(x=280, y=550)
+                                command = place_order).place(x=280, y=550)
     buyer_page_frame.pack()
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def seller_page():
+    try:
+        myCursor.execute("insert into sellers values({})".format(USER_ID))
+        myDataBase.commit()
+    except:
+        pass
+
     seller_page_frame   = Frame(window, width=450, height=600)
     Title               = Label(seller_page_frame, 
                                 text="List Items to\nbe Sold", 
@@ -469,9 +493,9 @@ def signup_page():
                     
 
     back_button   = Button(signup_frame, 
-                           text ="Back", 
-                           height=1, 
-                           width=8, 
+                           text ="Back",
+                           height=1,
+                           width=8,
                            command = signup_frame.pack_forget).place(x=10, y=10)
 
     
