@@ -139,33 +139,32 @@ FROM items;
 
 
 
-CREATE role team;
+CREATE role teams;
 
-GRANT SELECT ON owners_info to team;
-GRANT SELECT ON customers to team;
-GRANT DELETE ON accounts to team;
-GRANT SELECT ON accounts_info to team;
-GRANT SELECT ON sellers to team;
-GRANT SELECT ON buyers to team;
-GRANT ALL ON items to team;
-GRANT SELECT ON orders to team;
-GRANT SELECT ON ordered_items to team;
-GRANT SELECT ON support to team;
-GRANT SELECT, DELETE ON feedback to team;
-GRANT SELECT ON payments to team;
-GRANT SELECT ON transactions to team;
-GRANT SELECT ON sells to team;
+GRANT SELECT ON owners_info to teams;
+GRANT SELECT ON customers to teams;
+GRANT DELETE ON accounts to teams;
+GRANT SELECT ON accounts_info to teams;
+GRANT SELECT ON sellers to teams;
+GRANT SELECT ON buyers to teams;
+GRANT ALL ON items to teams;
+GRANT SELECT ON orders to teams;
+GRANT SELECT ON ordered_items to teams;
+GRANT SELECT ON support to teams;
+GRANT SELECT, DELETE ON feedback to teams;
+GRANT SELECT ON payments to teams;
+GRANT SELECT ON transactions to teams;
+GRANT SELECT ON sells to teams;
 
 CREATE USER owner1@localhost identified by 'prerak';
 CREATE USER owner2@localhost identified by 'vineet';
 CREATE USER owner3@localhost identified by 'janhavi';
 CREATE USER owner4@localhost identified by 'abhinav';
 
-GRANT team TO owner1@localhost;
-GRANT team TO owner2@localhost;
-GRANT team TO owner3@localhost;
-GRANT team TO owner4@localhost;
-
+GRANT teams TO owner1@localhost;
+GRANT teams TO owner2@localhost;
+GRANT teams TO owner3@localhost;
+GRANT teams TO owner4@localhost;
 
 
 
