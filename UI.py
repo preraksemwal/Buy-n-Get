@@ -243,6 +243,7 @@ def empty_cart():
         cart_id = cart_id[0][0]
         myCursor.execute("delete from stores where cart_id = {}".format(cart_id))
         myDataBase.commit()
+        variables[20] = []
     except:
         pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -253,8 +254,8 @@ def add_to_cart():
     pass
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_table(item_type):
-    item = StringVar()
     selected_items = []
+    quantity = StringVar()
     def select():
         for i in table.selection():
             print(table.item(i)['values'])
@@ -265,16 +266,26 @@ def buyer_table(item_type):
         Title                      = Label(selected_items_frame, text="Enter Quantity", font=("Vrinda", 10, "bold")).place(x=200, y=20)
 
         selected_items_frame.pack()
+        quantities = []
         for i in range (len(selected_items)):
             item_quantity = Label(selected_items_frame, text=selected_items[i]).place(x=100, y = 30 * i+90)
-            Entry(selected_items_frame, textvariable = item, width = 20).place(x=200, y = 30 * i+90)
-            
+            quantity = StringVar()
+            Entry(selected_items_frame, textvariable = quantity, width = 20).place(x=200, y = 30 * i+90)
+            quantities.append(quantity)
+
+        def add_selections():
+            for i in table.selection():
+                temp = table.item(i)['values']
+                temp.append(quantities[0].get())
+                quantities.pop(0)
+                variables[20].append(temp)
+            print(variables[20])
 
         next_button                = Button(selected_items_frame,
                                             text="Proceed",
                                             height= 1, 
                                             width=10, 
-                                            command = lambda:[buyer_page(), buyer_table_frame.pack_forget()]).place(x=350, y=550)
+                                            command = lambda:[add_selections(), buyer_page(), selected_items_frame.pack_forget()]).place(x=350, y=550)
             
         
         
@@ -309,8 +320,6 @@ def buyer_table(item_type):
     next_button  = Button(buyer_table_frame, text = 'NEXT', height= 1, width=10, command = select).place(x=350, y=550)
     back_button  = Button(buyer_table_frame, text = 'BACK', height= 1, width=10, command = buyer_table).place(x=20,y=550)
     buyer_table_frame.pack()
-  
-    
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 def buyer_page():
     buyer_page_frame    = Frame(window, width=450, height=600)
@@ -334,7 +343,7 @@ def buyer_page():
                                  text = "DAILY CARE",
                                  height= 2,
                                  width = 30,
-                                 command=lambda:[buyer_table("daily_care"), buyer_page_frame.pack_forget()]).place(x=120, y=310)
+                                 command=lambda:[buyer_table("daily care"), buyer_page_frame.pack_forget()]).place(x=120, y=310)
 
     empty_cart_button   = Button(buyer_page_frame,
                                  text = "Empty Cart",
