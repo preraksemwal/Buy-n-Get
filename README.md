@@ -1,6 +1,6 @@
 === How to Run the Project === <br/><br/>
 **Step 1** : Install MySql on your local system. Here is a useful [YouTube video](https://www.youtube.com/watch?v=WuBcTJnIuzo&t=1204s).<br/>
-**Step 2** : Run command 'create database buynget' on WorkBench.
+**Step 2** : Run command 'create database buynget' on WorkBench.<br/>
 **Step 3** : Install the Github Repo as .zip file at your local system and extract the files.<br/>
 **Step 4** : On WorkBench run database_schema.sql to create the relational schema and required tables.<br/>
 **Step 5** : Copy the 'insert' commands from populate_SQL.sql before 'insert' commands of "support" table starts and run on workbench.<br/>
