@@ -287,12 +287,17 @@ def make_transactions():
 def place_order():
     myCursor.execute("insert into orders (customer_id, order_date, delivery_date) values ({}, current_date(), current_date())".format(USER_ID))
     myDataBase.commit()
-    
     myCursor.execute("select count(*) from orders")
     order_id = myCursor.fetchall()
     order_id = order_id[0][0]
-    for item_ in variables[20]:
-        item               = item_[0]
+
+    l = []
+    for list_ in variables[20]:    
+        for l_ in list_:
+            l.append(l_)
+    variables[20] = l
+
+    for item in variables[20]:
         item_id            = item[0]
         item_name          = item[1]
         item_selling_price = float(item[2])
