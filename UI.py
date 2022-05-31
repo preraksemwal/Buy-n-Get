@@ -203,18 +203,23 @@ def seller_sells():
     list_of_items = {} # item_id :-  name, quantity, overall price
     variables[18] = 0
     for pair in variables[17]:
-        item_id = pair[0]
+        item_id  = pair[0]
         quantity = pair[1]
         myCursor.execute("select item_name, cost_price from items where item_id = {}".format(item_id))
-        item       = myCursor.fetchall()
-        item_name  = item[0][0]
-        item_price = item[0][1]
-        res = []
-        res.append(item_name)
-        res.append(quantity)
-        res.append(item_price * quantity)
+        item           = myCursor.fetchall()
+        item_name      = item[0][0]
+        item_price     = item[0][1]
         variables[18] += item_price * quantity
-        list_of_items[item_id] = res
+
+        if item_id not in list_of_items.keys():
+            res = []
+            res.append(item_name)
+            res.append(quantity)
+            res.append(item_price * quantity)
+            list_of_items[item_id] = res
+        else:
+            list_of_items[item_id][1] += quantity
+            list_of_items[item_id][2] += item_price * quantity
 
     iid_ = 0
     for entry in list_of_items.keys():
