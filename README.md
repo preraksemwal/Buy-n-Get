@@ -1,4 +1,4 @@
-Real-time Online Retail Store System with MySQL database integration and TKinter User Interface.
+<h4>Real-time Online Retail Store System with MySQL database integration and TKinter User Interface.</h4>
 
 ![ER-Model](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/a1153f47-3020-4069-b2b6-2847c45228ba)
 
