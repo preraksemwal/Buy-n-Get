@@ -1,14 +1,5 @@
 Real-time Online Retail Store System with MySQL database integration and TKinter User Interface.
 
-<h2> Tech Stack </h2>
-
-- Python (**TKinter** Module)
-- **MySQL** Database
-- MySQL **Workbench**
-
-[YouTube Video Link](https://youtu.be/zmUMPOABBw4) <br/><br/>
-
-
 ![ER-Model](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/a1153f47-3020-4069-b2b6-2847c45228ba)
 
 ![one](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/0c20acf5-a4a4-4ffd-be8d-b215f91d9ce2)
@@ -20,6 +11,11 @@ Real-time Online Retail Store System with MySQL database integration and TKinter
 ![seven](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/7fd84ae1-9b08-49d3-9acd-5deb11efc23e)
 ![eight](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/c7fb9c95-2c4f-4e60-a06c-12e39d58e561)
 
+<h2> Tech Stack </h2>
+
+- Python (**TKinter** Module)
+- **MySQL** Database
+- MySQL **Workbench**
 
 <h3> How to Run the Project </h3> 
 
@@ -39,5 +35,6 @@ Real-time Online Retail Store System with MySQL database integration and TKinter
 _**ENJOY BUYNGET SERVICES !!!**_
 
 <br/><br/>
+[YouTube Video Link](https://youtu.be/zmUMPOABBw4) <br/><br/>
 [About BuynGet](https://docs.google.com/document/d/1QEvfz7lhWIvfQ54ANqvYT_S8jbBNtCbRxYkOeCFZzX8/edit)<br/>
 [ER Diagram (Miro)](https://miro.com/app/board/uXjVON4nzeE=/)<br/>
