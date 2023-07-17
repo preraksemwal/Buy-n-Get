@@ -1,15 +1,14 @@
 <h4>Real-time Online Retail Store System with MySQL database integration and TKinter User Interface.</h4>
 
-![ER-Model](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/a1153f47-3020-4069-b2b6-2847c45228ba)
-
-![one](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/0c20acf5-a4a4-4ffd-be8d-b215f91d9ce2)
-![two](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/e7307f35-ba4b-4be5-a108-996bac81cff5)
-![three](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/b6656618-8643-4b5b-8005-24729d79b465)
-![four](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/dafc072c-d4f4-44d4-936c-b9dbbe7a6bcb)
-![five](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/ea199044-215a-427e-b1fb-8b884b1cda95)
-![six](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/16de8039-1e55-4319-a631-0ee466300717)
-![seven](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/7fd84ae1-9b08-49d3-9acd-5deb11efc23e)
-![eight](https://github.com/preraksemwal/Buy-n-Get/assets/77500750/c7fb9c95-2c4f-4e60-a06c-12e39d58e561)
+![screenshot1](images/screenshot1.png)
+![screenshot2](images/screenshot2.png)
+![screenshot3](images/screenshot3.png)
+![screenshot4](images/screenshot4.png)
+![screenshot5](images/screenshot5.png)
+![screenshot6](images/screenshot6.png)
+![screenshot6](images/screenshot7.png)
+![screenshot6](images/screenshot8.png)
+![screenshot6](images/screenshot9.png)
 
 <h2> Tech Stack </h2>
 
